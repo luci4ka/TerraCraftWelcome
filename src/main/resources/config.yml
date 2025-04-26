@@ -1,0 +1,20 @@
+messages:
+  motd: "<gradient:#8A2BE2:#4B0082>Добро пожаловать на сервер, <bold>{player}</bold>!"
+  default_join_message:
+    - "<green>+ {player} присоединился к нам!"
+    - "<yellow>{player} заглянул в гости!"
+    - "<blue>Приветствуем {player} на сервере!"
+    - "<gradient:#00FFFF:#0000FF>{player} появился среди нас!"
+  leave_message: "<red>- {player} покинул сервер."
+  death_message: "<dark_red><bold>{player}</bold> трагически погиб..."
+
+sound:
+  enable_sound: true
+  sound_type: "ENTITY_PLAYER_LEVELUP" # Классный звук при входе
+  volume: 1.0
+  pitch: 1.2
+
+particle_effect:
+  enable_particles: true
+  particle_type: "HAPPY_VILLAGER" # Весёлые частицы при входе
+  amount: 30

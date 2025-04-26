@@ -1,0 +1,6 @@
+name: welcome
+version: "1.0"
+main: luci.welcome.Main
+api-version: "1.21"
+description: Плагин с кастомными приветствиями и поддержкой локализации
+author: luci

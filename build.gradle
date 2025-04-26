@@ -1,0 +1,78 @@
+plugins {
+    id 'java'
+    id("xyz.jpenilla.run-paper") version "2.3.1"
+}
+
+group = 'luci'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+    maven {
+        name = "PlaceholderAPI"
+        url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
+    }
+    maven {
+        name = "Vault"
+        url = "https://repo.dmulloy2.net/repository/maven-public/"
+    }
+    // Добавляем локальный репозиторий
+    flatDir {
+        dirs 'libs'  // Указываем папку libs как источник локальных зависимостей
+    }
+}
+
+dependencies {
+    // Paper API зависимость
+    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+
+    // Зависимость для PlaceholderAPI (через локальную папку libs)
+    compileOnly name: 'PlaceholderAPI-2.11.6'  // Локальная зависимость из libs
+
+    // Зависимость для Vault (через локальную папку libs)
+    compileOnly name: 'Vault'  // Локальная зависимость из libs
+
+    // Добавь другие зависимости, если нужно
+}
+
+tasks {
+    runServer {
+        // Configure the Minecraft version for our task.
+        minecraftVersion("1.21")
+    }
+}
+
+def targetJavaVersion = 21
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release.set(targetJavaVersion)
+    }
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.yml' // Включает все YAML-файлы
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE // Исправляет возможные конфликты
+    filteringCharset 'UTF-8'
+}
+

@@ -1,0 +1,32 @@
+messages:
+  motd: "<gold>Добро пожаловать на наш сервер!</gold> <gray>Хорошей игры!</gray>"
+
+  # Сообщения при входе
+  default_join_message:
+    - "<green>Добро пожаловать, {player}!</green>"
+    - "<yellow>Привет, {player}! Мы рады тебя видеть!</yellow>"
+
+  donator_join_message:
+    - "<gold>Спасибо за поддержку, {player}, донатор!</gold>"
+    - "<yellow>Добро пожаловать, {player}, ты — наш донатор!</yellow>"
+
+  sponsor_join_message:
+    - "<dark_aqua>Спасибо, что поддерживаешь нас, {player}, ты — спонсор!</dark_aqua>"
+    - "<green>Привет, {player}, спонсор нашего сервера!</green>"
+
+  # Сообщение при выходе
+  leave_message: "<gray>{player} покинул сервер.</gray>"
+
+  # Сообщение о смерти
+  death_message: "<red>{player} погиб...</red>"
+
+sound:
+  enable_sound: true
+  sound_type: "BLOCK_NOTE_BLOCK_PLING"
+  volume: 1.0
+  pitch: 1.0
+
+particle_effect:
+  enable_particles: true
+  particle_type: "VILLAGER_HAPPY"
+  amount: 5
