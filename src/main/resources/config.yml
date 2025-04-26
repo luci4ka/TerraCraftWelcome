@@ -1,32 +1,24 @@
+config-version: 2
+
 messages:
-  enable_motd: true
-  motd: "<gradient:#8A2BE2:#4B0082>Добро пожаловать на сервер, <bold>{player}</bold>!"
-
-  enable_join_message: true
+  motd: "<gradient:#00FFFF:#0000FF>Добро пожаловать, <white>{player}</white>!"
   default_join_message:
-    - "<green>+ {player} присоединился к нам!"
-    - "<yellow>{player} заглянул в гости!"
-    - "<blue>Приветствуем {player} на сервере!"
-    - "<gradient:#00FFFF:#0000FF>{player} появился среди нас!"
-
-  enable_leave_message: true
-  leave_message: "<red>- {player} покинул сервер."
-
-  enable_death_message: true
-  death_message: "<dark_red><bold>{player}</bold> трагически погиб..."
+    - "<green>+ <gray>Игрок <white>{player}</white> зашёл на сервер!"
+    - "<blue>➤ <gray>Добро пожаловать, <white>{player}</white>!"
+  first_join_motd: "<gradient:#FFD700:#FF8C00>Добро пожаловать впервые, <white>{player}</white>!"
+  first_join_message:
+    - "<gold>🌟 Игрок <white>{player}</white> впервые зашёл на сервер!"
+    - "<yellow>➤ Добро пожаловать нового игрока: <white>{player}</white>!"
+  leave_message: "<red>- <gray>Игрок <white>{player}</white> вышел."
+  death_message: "<dark_red>✖ <gray><white>{player}</white> погиб."
 
 sound:
   enable_sound: true
-  sound_type: "ENTITY_PLAYER_LEVELUP"
+  sound_type: ENTITY_PLAYER_LEVELUP
   volume: 1.0
-  pitch: 1.2
+  pitch: 1.0
 
 particle_effect:
   enable_particles: true
-  particle_type: "HAPPY_VILLAGER"
-  amount: 30
-
-effects:
-  delay_ticks: 40 # Задержка перед частицами и звуками в тиках (20 тиков = 1 секунда)
-
-placeholderapi_support: true
+  particle_type: FIREWORKS_SPARK
+  amount: 50

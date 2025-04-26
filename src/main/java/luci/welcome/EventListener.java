@@ -2,7 +2,6 @@ package luci.welcome;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.Particle;
@@ -12,7 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.Random;
@@ -20,19 +18,10 @@ import java.util.Random;
 public class EventListener implements Listener {
     private final Main plugin;
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
-    private final Random random = new Random();
 
     public EventListener(Main plugin) {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
-        plugin.getLogger().info("EventListener загружен и зарегистрирован!");
-    }
-
-    private String parsePlaceholders(Player player, String message) {
-        if (plugin.getConfig().getBoolean("placeholderapi_support") && Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            return PlaceholderAPI.setPlaceholders(player, message);
-        }
-        return message.replace("{player}", player.getName());
     }
 
     @EventHandler
@@ -40,56 +29,39 @@ public class EventListener implements Listener {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
 
-        if (plugin.getConfig().getBoolean("messages.enable_motd")) {
-            String motd = plugin.getConfig().getString("messages.motd", "");
-            if (!motd.isEmpty()) {
-                motd = parsePlaceholders(player, motd);
-                player.sendMessage(miniMessage.deserialize(motd));
-            }
-        }
-
-        if (plugin.getConfig().getBoolean("messages.enable_join_message")) {
-            List<String> joinMessages = plugin.getConfig().getStringList("messages.default_join_message");
-            if (!joinMessages.isEmpty()) {
-                String joinMessage = joinMessages.get(random.nextInt(joinMessages.size()));
-                joinMessage = parsePlaceholders(player, joinMessage);
-                Bukkit.broadcast(miniMessage.deserialize(joinMessage));
-            }
-        }
-
-        int delay = plugin.getConfig().getInt("effects.delay_ticks", 0);
-        if (delay > 0) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    playEffects(player);
-                }
-            }.runTaskLater(plugin, delay);
+        boolean isFirstJoin = !player.hasPlayedBefore();
+        if (isFirstJoin) {
+            handleFirstJoin(player);
         } else {
-            playEffects(player);
+            handleNormalJoin(player);
+        }
+
+        playEffects(player);
+    }
+
+    private void handleFirstJoin(Player player) {
+        String motd = plugin.getConfig().getString("messages.first_join_motd");
+        if (motd != null && !motd.isEmpty()) {
+            sendMessage(player, motd);
+        }
+
+        List<String> joinMessages = plugin.getConfig().getStringList("messages.first_join_message");
+        if (!joinMessages.isEmpty()) {
+            String random = joinMessages.get(new Random().nextInt(joinMessages.size()));
+            broadcastMessage(player, random);
         }
     }
 
-    private void playEffects(Player player) {
-        if (plugin.getConfig().getBoolean("sound.enable_sound")) {
-            try {
-                String soundName = plugin.getConfig().getString("sound.sound_type");
-                float volume = (float) plugin.getConfig().getDouble("sound.volume", 1.0);
-                float pitch = (float) plugin.getConfig().getDouble("sound.pitch", 1.0);
-                player.playSound(player.getLocation(), Sound.valueOf(soundName), volume, pitch);
-            } catch (Exception e) {
-                plugin.getLogger().warning("Ошибка при воспроизведении звука для игрока " + player.getName());
-            }
+    private void handleNormalJoin(Player player) {
+        String motd = plugin.getConfig().getString("messages.motd");
+        if (motd != null && !motd.isEmpty()) {
+            sendMessage(player, motd);
         }
 
-        if (plugin.getConfig().getBoolean("particle_effect.enable_particles")) {
-            try {
-                String particleName = plugin.getConfig().getString("particle_effect.particle_type");
-                int amount = plugin.getConfig().getInt("particle_effect.amount", 20);
-                player.getWorld().spawnParticle(Particle.valueOf(particleName), player.getLocation(), amount);
-            } catch (Exception e) {
-                plugin.getLogger().warning("Ошибка при спавне частиц для игрока " + player.getName());
-            }
+        List<String> joinMessages = plugin.getConfig().getStringList("messages.default_join_message");
+        if (!joinMessages.isEmpty()) {
+            String random = joinMessages.get(new Random().nextInt(joinMessages.size()));
+            broadcastMessage(player, random);
         }
     }
 
@@ -98,10 +70,9 @@ public class EventListener implements Listener {
         Player player = event.getPlayer();
         event.setQuitMessage(null);
 
-        if (plugin.getConfig().getBoolean("messages.enable_leave_message")) {
-            String leaveMessage = plugin.getConfig().getString("messages.leave_message", "");
-            leaveMessage = parsePlaceholders(player, leaveMessage);
-            Bukkit.broadcast(miniMessage.deserialize(leaveMessage));
+        String leave = plugin.getConfig().getString("messages.leave_message");
+        if (leave != null) {
+            broadcastMessage(player, leave);
         }
     }
 
@@ -110,10 +81,40 @@ public class EventListener implements Listener {
         Player player = event.getEntity();
         event.setDeathMessage(null);
 
-        if (plugin.getConfig().getBoolean("messages.enable_death_message")) {
-            String deathMessage = plugin.getConfig().getString("messages.death_message", "");
-            deathMessage = parsePlaceholders(player, deathMessage);
-            Bukkit.broadcast(miniMessage.deserialize(deathMessage));
+        String death = plugin.getConfig().getString("messages.death_message");
+        if (death != null) {
+            broadcastMessage(player, death);
         }
+    }
+
+    public void playEffects(Player player) {
+        if (plugin.getConfig().getBoolean("sound.enable_sound")) {
+            try {
+                Sound sound = Sound.valueOf(plugin.getConfig().getString("sound.sound_type"));
+                float volume = (float) plugin.getConfig().getDouble("sound.volume");
+                float pitch = (float) plugin.getConfig().getDouble("sound.pitch");
+                player.playSound(player.getLocation(), sound, volume, pitch);
+            } catch (Exception ignored) {}
+        }
+
+        if (plugin.getConfig().getBoolean("particle_effect.enable_particles")) {
+            try {
+                Particle particle = Particle.valueOf(plugin.getConfig().getString("particle_effect.particle_type"));
+                int amount = plugin.getConfig().getInt("particle_effect.amount");
+                player.getWorld().spawnParticle(particle, player.getLocation(), amount);
+            } catch (Exception ignored) {}
+        }
+    }
+
+    private void sendMessage(Player player, String message) {
+        String parsed = plugin.parsePlaceholders(player, message);
+        Component component = miniMessage.deserialize(parsed);
+        player.sendMessage(component);
+    }
+
+    private void broadcastMessage(Player player, String message) {
+        String parsed = plugin.parsePlaceholders(player, message.replace("{player}", player.getName()));
+        Component component = miniMessage.deserialize(parsed);
+        Bukkit.broadcast(component);
     }
 }
