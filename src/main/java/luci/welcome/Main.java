@@ -22,19 +22,29 @@ public class Main extends JavaPlugin {
         new EventListener(this);
         new CommandManager(this);
 
-        papiEnabled = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
-        if (papiEnabled) {
-            getLogger().info("✅ PlaceholderAPI найден и будет использоваться.");
-        } else {
-            getLogger().warning("⚠ PlaceholderAPI не найден. Плейсхолдеры работать не будут.");
-        }
+        // Отложенная проверка PlaceholderAPI
+        Bukkit.getScheduler().runTask(this, () -> {
+            papiEnabled = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
+            if (papiEnabled) {
+                Bukkit.getConsoleSender().sendMessage("✅ §6PlaceholderAPI найден и будет использоваться.");
+            } else {
+                Bukkit.getConsoleSender().sendMessage("⚠ §6PlaceholderAPI не найден. Плейсхолдеры работать не будут.");
+            }
 
-        getLogger().info("✅ Welcome-плагин успешно загружен!");
+            // Приветственное сообщение в консоль
+            Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
+            Bukkit.getConsoleSender().sendMessage("§6[Welcome] §eПлагин успешно загружен! 🌟");
+            Bukkit.getConsoleSender().sendMessage("§6Версия: §a1.0 §7by luci");
+            Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
+
+            Bukkit.getConsoleSender().sendMessage("§3✅ Welcome-плагин успешно загружен!");
+            Bukkit.getConsoleSender().sendMessage("§6Используем PlaceholderAPI: " + (papiEnabled ? "§3Да" : "Нет"));
+        });
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("❌ Welcome-плагин был отключён.");
+        Bukkit.getConsoleSender().sendMessage("§4❌ Welcome-плагин был отключён.");
     }
 
     public boolean isPapiEnabled() {
@@ -53,7 +63,7 @@ public class Main extends JavaPlugin {
         FileConfiguration config = getConfig();
         int version = config.getInt("config-version", 1);
         if (version < 2) {
-            getLogger().warning("❗ Обнаружена старая версия конфига. Пересоздание...");
+            Bukkit.getConsoleSender().sendMessage("§4❗ Обнаружена старая версия конфига. Пересоздание...");
             getConfig().options().copyDefaults(true);
             saveResource("config.yml", true);
             reloadConfig();

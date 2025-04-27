@@ -3,14 +3,15 @@ package luci.welcome;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 import java.util.List;
 import java.util.Random;
@@ -27,70 +28,108 @@ public class EventListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage(null);
+        event.joinMessage(null);  // Убираем стандартное сообщение о входе
 
-        boolean isFirstJoin = !player.hasPlayedBefore();
-        if (isFirstJoin) {
-            handleFirstJoin(player);
-        } else {
-            handleNormalJoin(player);
+        // Личное сообщение MOTD
+        List<String> motd = plugin.getConfig().getStringList("messages.local.motd");
+        for (String line : motd) {
+            sendPersonalMessage(player, line);
         }
 
-        playEffects(player);
-    }
-
-    private void handleFirstJoin(Player player) {
-        String motd = plugin.getConfig().getString("messages.first_join_motd");
-        if (motd != null && !motd.isEmpty()) {
-            sendMessage(player, motd);
-        }
-
-        List<String> joinMessages = plugin.getConfig().getStringList("messages.first_join_message");
-        if (!joinMessages.isEmpty()) {
-            String random = joinMessages.get(new Random().nextInt(joinMessages.size()));
-            broadcastMessage(player, random);
-        }
-    }
-
-    private void handleNormalJoin(Player player) {
-        String motd = plugin.getConfig().getString("messages.motd");
-        if (motd != null && !motd.isEmpty()) {
-            sendMessage(player, motd);
-        }
-
-        List<String> joinMessages = plugin.getConfig().getStringList("messages.default_join_message");
-        if (!joinMessages.isEmpty()) {
-            String random = joinMessages.get(new Random().nextInt(joinMessages.size()));
-            broadcastMessage(player, random);
-        }
+        // Сообщение о входе для всех
+        List<String> joinMessages = plugin.getConfig().getStringList("messages.global.default_join_message");
+        sendRandomMessageToAll(joinMessages, player);
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        event.setQuitMessage(null);
+        event.quitMessage(null); // Убираем стандартное сообщение о выходе
 
-        String leave = plugin.getConfig().getString("messages.leave_message");
-        if (leave != null) {
-            broadcastMessage(player, leave);
-        }
+        // Сообщение о выходе для всех
+        List<String> leaveMessages = plugin.getConfig().getStringList("messages.global.leave_message");
+        sendRandomMessageToAll(leaveMessages, player);
+        playEffects(player, "leave");
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        event.setDeathMessage(null);
+        event.deathMessage(null);  // Убираем стандартное сообщение о смерти
 
-        String death = plugin.getConfig().getString("messages.death_message");
-        if (death != null) {
-            broadcastMessage(player, death);
+        if (plugin.getConfig().getBoolean("death.enabled")) {
+            // Получаем все строки из конфигурации, связанные с смертью
+            List<String> deathMessages = plugin.getConfig().getStringList("messages.death.message");
+
+            // Объединяем все строки в одно сообщение
+            StringBuilder fullMessage = new StringBuilder();
+            for (String line : deathMessages) {
+                fullMessage.append(line).append("\n");
+            }
+
+            // Отправляем полное сообщение игроку
+            sendPersonalMessage(player, fullMessage.toString());
+        }
+
+        playEffects(player, "death");
+    }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent event) {
+        Player player = event.getPlayer();
+
+        if (plugin.getConfig().getBoolean("respawn.enabled")) {
+            List<String> respawnMessages = plugin.getConfig().getStringList("messages.respawn.message");
+
+            // Объединяем все строки в одно сообщение
+            StringBuilder fullMessage = new StringBuilder();
+            for (String line : respawnMessages) {
+                fullMessage.append(line).append("\n");
+            }
+
+            // Отправляем полное сообщение игроку
+            sendPersonalMessage(player, fullMessage.toString());
+        }
+
+        playEffects(player, "respawn");
+    }
+
+    private void sendPersonalMessage(Player player, String message) {
+        String parsedMessage = plugin.parsePlaceholders(player, message);
+        Component component = miniMessage.deserialize(parsedMessage);  // Преобразуем строку с цветами в Component
+        player.sendMessage(component);
+    }
+
+    private void sendRandomMessageToAll(List<String> messages, Player sender) {
+        if (!messages.isEmpty()) {
+            String randomMessage = messages.get(new Random().nextInt(messages.size()));
+            randomMessage = randomMessage.replace("{player}", sender.getName());
+
+            // Лог для отладки
+            Bukkit.getLogger().info("Broadcasting message: " + randomMessage);
+
+            // Отправляем сообщение всем игрокам
+            Bukkit.broadcast(miniMessage.deserialize(randomMessage));  // Преобразуем строку с цветами в Component и отправляем всем
         }
     }
 
-    public void playEffects(Player player) {
+    private void sendRandomMessage(Player player, List<String> messages) {
+        if (!messages.isEmpty()) {
+            String randomMessage = messages.get(new Random().nextInt(messages.size()));
+            String parsedMessage = plugin.parsePlaceholders(player, randomMessage.replace("{player}", player.getName()));
+            Component component = miniMessage.deserialize(parsedMessage);  // Преобразуем строку с цветами в Component
+            player.sendMessage(component);
+        }
+    }
+
+    private void playEffects(Player player, String eventType) {
+        String soundType = plugin.getConfig().getString("effects." + eventType + ".sound");
+        String particleType = plugin.getConfig().getString("effects." + eventType + ".particle");
+
         if (plugin.getConfig().getBoolean("sound.enable_sound")) {
             try {
-                Sound sound = Sound.valueOf(plugin.getConfig().getString("sound.sound_type"));
+                assert soundType != null;
+                Sound sound = Sound.valueOf(soundType);
                 float volume = (float) plugin.getConfig().getDouble("sound.volume");
                 float pitch = (float) plugin.getConfig().getDouble("sound.pitch");
                 player.playSound(player.getLocation(), sound, volume, pitch);
@@ -99,22 +138,10 @@ public class EventListener implements Listener {
 
         if (plugin.getConfig().getBoolean("particle_effect.enable_particles")) {
             try {
-                Particle particle = Particle.valueOf(plugin.getConfig().getString("particle_effect.particle_type"));
+                Particle particle = Particle.valueOf(particleType);
                 int amount = plugin.getConfig().getInt("particle_effect.amount");
                 player.getWorld().spawnParticle(particle, player.getLocation(), amount);
             } catch (Exception ignored) {}
         }
-    }
-
-    private void sendMessage(Player player, String message) {
-        String parsed = plugin.parsePlaceholders(player, message);
-        Component component = miniMessage.deserialize(parsed);
-        player.sendMessage(component);
-    }
-
-    private void broadcastMessage(Player player, String message) {
-        String parsed = plugin.parsePlaceholders(player, message.replace("{player}", player.getName()));
-        Component component = miniMessage.deserialize(parsed);
-        Bukkit.broadcast(component);
     }
 }

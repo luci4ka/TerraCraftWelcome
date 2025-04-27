@@ -4,18 +4,21 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class CommandManager implements CommandExecutor {
     private final Main plugin;
 
     public CommandManager(Main plugin) {
         this.plugin = plugin;
-        plugin.getCommand("wconfig").setExecutor(this);
-        plugin.getCommand("welcome").setExecutor(this);
+        Objects.requireNonNull(plugin.getCommand("wconfig")).setExecutor(this);
+        Objects.requireNonNull(plugin.getCommand("welcome")).setExecutor(this);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String @NotNull [] args) {
         if (label.equalsIgnoreCase("wconfig")) {
             if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
                 plugin.reloadConfig();
@@ -26,16 +29,19 @@ public class CommandManager implements CommandExecutor {
             return true;
         }
 
-        if (label.equalsIgnoreCase("welcome")) {
-            if (args.length == 1 && args[0].equalsIgnoreCase("test")) {
-                if (sender instanceof Player player) {
-                    player.sendMessage("§bТест эффектов приветствия...");
-                    new EventListener(plugin).playEffects(player);
-                } else {
-                    sender.sendMessage("§cТолько игрок может использовать эту команду!");
-                }
+        if (label.equalsIgnoreCase("welcome") && args.length == 1) {
+            if (args[0].equalsIgnoreCase("toggle_sound")) {
+                boolean soundEnabled = plugin.getConfig().getBoolean("sound.enable_sound");
+                plugin.getConfig().set("sound.enable_sound", !soundEnabled);
+                plugin.saveConfig();
+                sender.sendMessage("§aЗвук " + (soundEnabled ? "выключен" : "включён"));
+            } else if (args[0].equalsIgnoreCase("toggle_particles")) {
+                boolean particlesEnabled = plugin.getConfig().getBoolean("particle_effect.enable_particles");
+                plugin.getConfig().set("particle_effect.enable_particles", !particlesEnabled);
+                plugin.saveConfig();
+                sender.sendMessage("§aЭффекты частиц " + (particlesEnabled ? "выключены" : "включены"));
             } else {
-                sender.sendMessage("§cИспользование: /welcome test");
+                sender.sendMessage("§cИспользование: /welcome toggle_sound или /welcome toggle_particles");
             }
             return true;
         }

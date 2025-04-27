@@ -1,6 +1,24 @@
-name: welcome
-version: "1.0"
+name: Welcome
+version: 1.1
 main: luci.welcome.Main
-api-version: "1.21"
-description: Плагин с кастомными приветствиями и поддержкой локализации
+api-version: 1.21
 author: luci
+depend: [PlaceholderAPI]
+
+commands:
+  wconfig:
+    description: Перезагрузка конфига Welcome-плагина
+    usage: /wconfig reload
+    permission: welcome.reload
+  welcome:
+    description: Тестирование эффектов приветствия
+    usage: /welcome test
+    permission: welcome.test
+
+permissions:
+  welcome.reload:
+    description: Позволяет перезагружать конфигурацию
+    default: op
+  welcome.test:
+    description: Позволяет тестировать эффекты
+    default: op

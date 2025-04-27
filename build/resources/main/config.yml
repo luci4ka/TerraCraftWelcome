@@ -1,32 +1,60 @@
+config-version: 2
+
 messages:
-  motd: "<gold>Добро пожаловать на наш сервер!</gold> <gray>Хорошей игры!</gray>"
+  # Личные сообщения для игрока при входе (MOTD)
+  local:
+    motd:
+      - '<gray>|  Приветик, <white>{player}</white></gray>'
+      - '<gray>|  Рады видеть тебя снова!</gray>'
+      - '<gray>|  Vk: https://vk.com/grand_mc</gray>'
+      - '<gray>|  Website: grandmc.ddns.net</gray>'
+      - '<gray>|  Discord: https://discord.gg/NTBdkEH</gray>'
+      - ''
+  # Глобальные сообщения для всех игроков (о входе, выходе и смерти)
+  global:
+    default_join_message:
+      - '<green>+ <gray>Игрок <white>{player}</white> зашёл на сервер!</gray>'
+      - '<blue>➤ <gray>Добро пожаловать, <white>{player}</white>!</gray>'
 
-  # Сообщения при входе
-  default_join_message:
-    - "<green>Добро пожаловать, {player}!</green>"
-    - "<yellow>Привет, {player}! Мы рады тебя видеть!</yellow>"
+    first_join_message:
+      - '<gold>🌟 Игрок <white>{player}</white> впервые зашёл на сервер!</gold>'
+      - '<yellow>➤ Добро пожаловать нового игрока: <white>{player}</white>!</yellow>'
 
-  donator_join_message:
-    - "<gold>Спасибо за поддержку, {player}, донатор!</gold>"
-    - "<yellow>Добро пожаловать, {player}, ты — наш донатор!</yellow>"
+    leave_message:
+      - '<red>- <gray>Игрок <white>{player}</white> вышел.</gray>'
 
-  sponsor_join_message:
-    - "<dark_aqua>Спасибо, что поддерживаешь нас, {player}, ты — спонсор!</dark_aqua>"
-    - "<green>Привет, {player}, спонсор нашего сервера!</green>"
+    death_message:
+      - '<dark_red>✖ <gray><white>{player}</white> погиб.</gray>'
 
-  # Сообщение при выходе
-  leave_message: "<gray>{player} покинул сервер.</gray>"
+  # Сообщение для нового игрока (когда игрок заходит впервые)
+  first_join_motd: '<gradient:#FFD700:#FF8C00>Добро пожаловать впервые, <white>{player}</white>!</gradient>'
 
-  # Сообщение о смерти
-  death_message: "<red>{player} погиб...</red>"
+death:
+  enabled: true
+  message:
+    - '<blue>Помните, что в мире <a>Ｇｒａｎｄ <2>ＭС <b>вы бессмертны!</b></blue>'
+    - '<blue>После каждой гибели игрок будет перемещен на ближайшую локацию возрождения.</blue>'
+    - '<blue>А вместе смерти, будет стоять надгробие, в котором сможете забрать свои вещи!</blue>'
+
+effects:
+  first_join:
+    sound: "ENTITY_PLAYER_LEVELUP"
+    particle: "FIREWORKS_SPARK"
+  normal_join:
+    sound: "ENTITY_PLAYER_LEVELUP"
+    particle: "EXPLOSION_LARGE"
+  leave:
+    sound: "BLOCK_NOTE_BLOCK_PLING"
+    particle: "VILLAGER_HAPPY"
+  death:
+    sound: "ENTITY_PLAYER_HURT"
+    particle: "SMOKE_NORMAL"
 
 sound:
   enable_sound: true
-  sound_type: "BLOCK_NOTE_BLOCK_PLING"
   volume: 1.0
   pitch: 1.0
 
 particle_effect:
   enable_particles: true
-  particle_type: "VILLAGER_HAPPY"
   amount: 5
