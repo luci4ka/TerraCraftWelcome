@@ -35,7 +35,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
 
     // Зависимость для PlaceholderAPI (через локальную папку libs)
-    compileOnly name: 'PlaceholderAPI-2.11.6'  // Локальная зависимость из libs
+    compileOnly 'me.clip:placeholderapi:2.11.5'
 
     // Зависимость для Vault (через локальную папку libs)
     compileOnly name: 'Vault'  // Локальная зависимость из libs

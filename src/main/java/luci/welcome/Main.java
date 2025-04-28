@@ -1,5 +1,7 @@
 package luci.welcome;
 
+import luci.welcome.event.PlayerDeathListener;
+import luci.welcome.event.PlayerJoinListener;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,8 +21,11 @@ public class Main extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         checkConfigVersion();
-        new EventListener(this);
-        new CommandManager(this);
+        new CommandManager(this);  // Команды, если они есть
+
+        // Регистрация обработчиков событий
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(this), this);
 
         // Отложенная проверка PlaceholderAPI
         Bukkit.getScheduler().runTask(this, () -> {
@@ -54,7 +59,7 @@ public class Main extends JavaPlugin {
     public String parsePlaceholders(org.bukkit.entity.Player player, String text) {
         if (text == null) return "";
         if (papiEnabled && player != null) {
-            return PlaceholderAPI.setPlaceholders(player, text);
+            return PlaceholderAPI.setPlaceholders(player, text);  // Используем PlaceholderAPI
         }
         return text;
     }

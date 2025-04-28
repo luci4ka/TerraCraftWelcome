@@ -3,7 +3,7 @@ version: 1.1
 main: luci.welcome.Main
 api-version: 1.21
 author: luci
-depend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI]
 
 commands:
   wconfig:
@@ -12,7 +12,7 @@ commands:
     permission: welcome.reload
   welcome:
     description: Тестирование эффектов приветствия
-    usage: /welcome test
+    usage: /welcome toggle_sound или /welcome toggle_particles
     permission: welcome.test
 
 permissions:
