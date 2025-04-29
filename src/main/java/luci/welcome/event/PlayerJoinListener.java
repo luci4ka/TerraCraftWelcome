@@ -66,40 +66,32 @@ public class PlayerJoinListener implements Listener {
     private void sendPersonalMOTD(Player player, List<String> motdLines) {
         if (motdLines == null || motdLines.isEmpty()) return;
 
+        Map<String, String> clickableLinks = getConfigLinks();
+
         for (String line : motdLines) {
-            if (line != null && !line.isEmpty()) {
-                // Заменяем стандартные плейсхолдеры (например, %player_name%)
-                String parsedLine = plugin.parsePlaceholders(player, line.replace("%player_name%", player.getName()));
+            if (line == null || line.isEmpty()) continue;
 
-                // Получаем все ссылки из конфигурации
-                Map<String, String> clickableLinks = getConfigLinks();
+            // Заменяем %player_name%
+            String parsedLine = line.replace("%player_name%", player.getName());
 
-                // Для каждой ссылки в конфиге заменяем ее в строке
-                for (Map.Entry<String, String> entry : clickableLinks.entrySet()) {
-                    String linkPlaceholder = "%" + entry.getKey() + "%"; // Например, "%vk_url%" или "%vk_text%"
-                    String linkValue = entry.getValue(); // Значение из конфига, например URL или текст ссылки
+            for (Map.Entry<String, String> entry : clickableLinks.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
 
-                    // Если строка содержит плейсхолдер, заменяем его на соответствующее значение
-                    if (parsedLine.contains(linkPlaceholder)) {
-                        // Если это URL, делаем его кликабельным
-                        if (linkPlaceholder.endsWith("_url")) {
-                            parsedLine = parsedLine.replace(linkPlaceholder, "<click:open_url:" + linkValue + ">" + linkValue + "</click>");
-                        } else if (linkPlaceholder.endsWith("_text")) {
-                            // Если это текст, заменяем его на текст ссылки
-                            parsedLine = parsedLine.replace(linkPlaceholder, linkValue);
-                        }
-                    }
+                if (key.endsWith("_url")) {
+                    parsedLine = parsedLine.replace("%" + key + "%", "<click:open_url:" + value + "><underlined><blue>" + value + "</blue></underlined></click>");
+                } else {
+                    parsedLine = parsedLine.replace("%" + key + "%", value);
                 }
-
-                // Отправляем обработанное сообщение с кликабельными ссылками
-                sendClickableMOTD(player, parsedLine);
             }
-        }
-    }
 
-    private void sendClickableMOTD(Player player, String line) {
-        // Отправляем строку как компонент с кликабельной ссылкой
-        player.sendMessage(miniMessage.deserialize(line));
+
+            // Применяем PlaceholderAPI, если она есть
+            parsedLine = plugin.parsePlaceholders(player, parsedLine);
+
+            // Отправляем через MiniMessage
+            player.sendMessage(miniMessage.deserialize(parsedLine));
+        }
     }
 
     private Map<String, String> getConfigLinks() {

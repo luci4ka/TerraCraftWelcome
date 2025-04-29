@@ -101,7 +101,7 @@ public class PlayerDeathListener implements Listener {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
-        if (plugin.getConfig().getBoolean("global.respawn", false)) {
+        if (plugin.getConfig().getBoolean("global.respawn", true)) {
             List<String> respawnMessages = plugin.getConfig().getStringList("messages.respawn_message.messages");
             logger.info("Обработка респауна для игрока: " + player.getName());
             sendRandomMessage(player, respawnMessages);

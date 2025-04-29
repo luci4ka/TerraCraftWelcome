@@ -3,52 +3,63 @@ config-version: 2
 messages:
   local:
     motd:
-      - "<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>"
+      - "<dark_purple>| <gold>Приветик, %luckperms_groups% %luckperms_prefix% %player_name%!</gold></dark_purple>"
       - "<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>"
-      - "<dark_purple>| <green>Подключайся к нашему VK:</green> <blue><click:open_url:%vk_url%>%vk_text%</click></blue>"
-      - "<dark_purple>| <green>Наш сайт:</green> <blue><click:open_url:%site_url%>%site_text%</click></blue>"
-      - "<dark_purple>| <green>Присоединяйся к нам в Discord:</green> <blue><click:open_url:%discord_url%>%discord_text%</click></blue>"
+      - "<dark_purple>| <green>Подключайся к нашему VK:</green> <blue>%vk_url%</blue>"
+      - "<dark_purple>| <green>Наш сайт:</green> <blue>%site_url%</blue>"
+      - "<dark_purple>| <green>Присоединяйся к нам в Discord:</green> <blue>%discord_url%</blue>"
       - "<dark_purple>| <gray>Желаем приятной игры!</gray>"
-      - "<dark_purple>| <bold><aqua>Время веселья!</aqua></bold>"
-      - "<dark_purple>| <reset><italic>Используйте команду /help для получения списка команд.</italic></reset>"
       - ""
 
   global:
     death: true
     join: true
+
     pvp_message:
       messages:
-        - '<red>⚔️ {killer} убил {victim}!</red>'
-        - '<gold>{killer}</gold> одержал победу над <red>{victim}</red> в бою!'
+        - "<red>⚔️ {killer} показал {victim}, кто тут босс!</red>"
+        - "<gold>{killer}</gold> выписал <red>{victim}</red> пропуск в мир духов!"
+
     lava_message:
       messages:
-        - '<dark_red>%player_name%</dark_red> сгорел в лаве!'
-        - '<gold>%player_name%</gold> погиб в огне лавы.'
+        - "<red>🔥 %player_name%</dark_red> пытался обняться с лавой. Не вышло."
+        - "<gold>%player_name%</gold> превратился в шашлык... Не самый вкусный."
+
     fall_message:
       messages:
-        - '<dark_red>%player_name%</dark_red> упал с большой высоты!'
-        - '<gold>%player_name%</gold> погиб от падения!'
+        - "<gray>💥 %player_name%</gray> решил, что умеет летать. Спойлер: нет."
+        - "<red>☠️ %player_name%</red> проиграл битву с гравитацией."
+
     player_kill_message:
       messages:
-        - '<red>%player_name%</red> погиб!'
-        - '<gold>%player_name%</gold> умер!'
+        - "<red>💀 %player_name%</red> улетел в лучший мир. По билету без возврата."
+        - "<gold>⚰️ %player_name%</gold> получил удар судьбы... или киркой."
+
     respawn_message:
       messages:
-        - 'Ты снова на ногах, %player_name%!'
+        - "<green>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</green>"
+
     first_join_message:
-      - "<gold>🌟 Игрок <white>%player_name%</white> впервые зашел на сервер!</gold>"
+      - "<gold>🎉 Новичок на сервере! Встречаем <white>%player_name%</white> бурными аплодисментами!</gold>"
+
     default_join_message:
-      - "<green>+ <gray>Игрок <white>%player_name%</white> зашел на сервер.</gray>"
+      - "<green>➕ <gray>Опа! <white>%player_name%</white> заглянул в гости. Не забудь тапки у входа!</gray>"
+
     default_quit_message:
-      - "<red>- <gray>Игрок <white>%player_name%</white> вышел с сервера.</gray>"
+      - "<red>➖ <gray><white>%player_name%</white> вышел... наверное, за чаем.</gray>"
+
     vip_join_message:
-      - "<gold>🌟 VIP <white>%player_name%</white> зашел на сервер!</gold>"
+      - "<yellow>👑 VIP <white>%player_name%</white> соизволил появиться. Ложитесь лицом к полу!</yellow>"
+
     vip_quit_message:
-      - "<yellow>👑 VIP <white>%player_name%</white> покинул сервер.</yellow>"
+      - "<gold>👋 VIP <white>%player_name%</white> ушёл. Сервер стал на 5% менее гламурным.</gold>"
+
     admin_join_message:
-      - "<red>⚡ Администратор <white>%player_name%</white> вошел в игру!</red>"
+      - "<red>⚡ Владыка сервера <white>%player_name%</white> снизошёл к смертным!</red>"
+
     admin_quit_message:
-      - "<dark_red>⚡ Администратор <white>%player_name%</white> покинул сервер!</dark_red>"
+      - "<dark_red>⚡ <white>%player_name%</white> — админ вышел. Беспредел отменяется.</dark_red>"
+
     mob_death_message:
       ZOMBIE:
         - "<dark_red>%player_name%</dark_red> был влюблен в зомби... теперь это не важно!"
