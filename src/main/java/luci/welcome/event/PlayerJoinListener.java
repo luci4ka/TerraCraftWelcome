@@ -1,10 +1,8 @@
 package luci.welcome.event;
 
 import luci.welcome.Main;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.event.ClickEvent;
-import net.kyori.adventure.text.event.HoverEvent;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -32,12 +30,16 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.joinMessage(null); // Отключаем стандартное сообщение
+        event.joinMessage(null);
 
         boolean isFirstJoin = !player.hasPlayedBefore();
 
-        List<String> motdList = plugin.getConfig().getStringList("messages.local.motd");
-        sendPersonalMOTD(player, motdList);
+        // Проверка: motd.enabled
+        ConfigurationSection motdSection = plugin.getConfig().getConfigurationSection("messages.local.motd");
+        if (motdSection != null && motdSection.getBoolean("enabled", true)) {
+            List<String> motdLines = motdSection.getStringList("lines");
+            sendPersonalMOTD(player, motdLines);
+        }
 
         if (isFirstJoin) {
             List<String> firstJoinMessages = plugin.getConfig().getStringList("messages.global.first_join_message");
@@ -54,7 +56,7 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        event.quitMessage(null); // Отключаем стандартное сообщение
+        event.quitMessage(null);
 
         if (plugin.getConfig().getBoolean("messages.global.quit", true)) {
             broadcastQuitMessage(player);
@@ -71,7 +73,6 @@ public class PlayerJoinListener implements Listener {
         for (String line : motdLines) {
             if (line == null || line.isEmpty()) continue;
 
-            // Заменяем %player_name%
             String parsedLine = line.replace("%player_name%", player.getName());
 
             for (Map.Entry<String, String> entry : clickableLinks.entrySet()) {
@@ -85,25 +86,20 @@ public class PlayerJoinListener implements Listener {
                 }
             }
 
-
-            // Применяем PlaceholderAPI, если она есть
             parsedLine = plugin.parsePlaceholders(player, parsedLine);
-
-            // Отправляем через MiniMessage
             player.sendMessage(miniMessage.deserialize(parsedLine));
         }
     }
 
     private Map<String, String> getConfigLinks() {
-        // Читаем конфигурацию и возвращаем ссылки
         ConfigurationSection section = plugin.getConfig().getConfigurationSection("links");
         if (section == null) return Map.of();
 
         return section.getValues(false).entrySet().stream()
                 .filter(entry -> entry.getValue() instanceof String)
                 .collect(Collectors.toMap(
-                        Map.Entry::getKey,       // Ключ - это название ссылки (например, "vk_url")
-                        entry -> (String) entry.getValue()  // Значение - это URL или текст
+                        Map.Entry::getKey,
+                        entry -> (String) entry.getValue()
                 ));
     }
 

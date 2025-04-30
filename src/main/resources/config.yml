@@ -1,17 +1,18 @@
 # Версия конфигурации (не трогай без необходимости)
-config-version: 2
+config-version: 2.1
 
 messages:
   local:
     motd:
-      # Сообщение дня (MOTD), отображается при входе игрока
-      - "<dark_purple>| <gold>Приветик, %luckperms_prefix% %player_name%!</gold></dark_purple>"  # Приветствие с префиксом LuckPerms и именем игрока
-      - "<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>"
-      - "<dark_purple>| <green>Подключайся к нашему VK:</green> <blue>%vk_url%</blue>"            # Ссылка на ВК
-      - "<dark_purple>| <green>Наш сайт:</green> <blue>%site_url%</blue>"                          # Ссылка на сайт
-      - "<dark_purple>| <green>Присоединяйся к нам в Discord:</green> <blue>%discord_url%</blue>"  # Ссылка на Discord
-      - "<dark_purple>| <gray>Желаем приятной игры!</gray>"
-      - ""  # Пустая строка — для отступа
+      enabled: true # Включены сообщения
+      lines:
+        - "<dark_purple>| <gold>Приветик, %luckperms_prefix% %player_name%!</gold></dark_purple>"
+        - "<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>"
+        - "<dark_purple>| <green>Подключайся к нашему VK:</green> <blue>%vk_url%</blue>"
+        - "<dark_purple>| <green>Наш сайт:</green> <blue>%site_url%</blue>"
+        - "<dark_purple>| <green>Присоединяйся к нам в Discord:</green> <blue>%discord_url%</blue>"
+        - "<dark_purple>| <gray>Желаем приятной игры!</gray>"
+        - ""
 
   global:
     death: true  # Включены сообщения о смерти
