@@ -26,6 +26,7 @@ public class Main extends JavaPlugin {
         // Регистрация обработчиков событий
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(this), this);
+        StatsManager.start(this, "Welcome", "2.0", true, 3600);
 
         // Отложенная проверка PlaceholderAPI
         Bukkit.getScheduler().runTask(this, () -> {
@@ -39,7 +40,7 @@ public class Main extends JavaPlugin {
             // Приветственное сообщение в консоль
             Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
             Bukkit.getConsoleSender().sendMessage("§6[Welcome] §eПлагин успешно загружен! 🌟");
-            Bukkit.getConsoleSender().sendMessage("§6Версия: §a1.0 §7by luci");
+            Bukkit.getConsoleSender().sendMessage("§6Версия: §a2.0 §7by luci");
             Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
 
             Bukkit.getConsoleSender().sendMessage("§3✅ Welcome-плагин успешно загружен!");
@@ -66,8 +67,8 @@ public class Main extends JavaPlugin {
 
     private void checkConfigVersion() {
         FileConfiguration config = getConfig();
-        int version = config.getInt("config-version", 1);
-        if (version < 2) {
+        int version = config.getInt("config-version", 2);
+        if (version < 2.1) {
             Bukkit.getConsoleSender().sendMessage("§4❗ Обнаружена старая версия конфига. Пересоздание...");
             getConfig().options().copyDefaults(true);
             saveResource("config.yml", true);

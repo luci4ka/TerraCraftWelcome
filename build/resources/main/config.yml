@@ -1,6 +1,10 @@
 # Версия конфигурации (не трогай без необходимости)
 config-version: 2.1
 
+stats:
+  enable: true
+  interval: 3600
+
 messages:
   local:
     motd:
@@ -17,6 +21,7 @@ messages:
   global:
     death: true  # Включены сообщения о смерти
     join: true   # Включены сообщения о входе
+    respawn: true
 
     # Сообщения при PvP-убийстве (игрок игрока)
     pvp_message:
@@ -27,7 +32,7 @@ messages:
     # Смерть в лаве
     lava_message:
       messages:
-        - "<red>🔥 %player_name%</dark_red> пытался обняться с лавой. Не вышло."
+        - "<red>🔥 %player_name%<red> пытался обняться с лавой. Не вышло."
         - "<gold>%player_name%</gold> превратился в шашлык... Не самый вкусный."
 
     # Смерть от падения
