@@ -37,10 +37,10 @@ public class PlayerDeathListener implements Listener {
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         String deathMessage = event.getDeathMessage() != null ? event.getDeathMessage() : "";
-        logger.info("Обработка смерти игрока: " + player.getName() + " | Оригинальное сообщение смерти: " + deathMessage);
+        // Удалено сообщение logger.info
 
         if (!plugin.getConfig().getBoolean("global.death", true)) {
-            logger.info("Глобальная смерть отключена в конфиге. Пропускаем обработку.");
+            logger.warning("Глобальная смерть отключена в конфиге. Пропускаем обработку.");
             return;
         }
 
@@ -50,13 +50,13 @@ public class PlayerDeathListener implements Listener {
         // Обработка смерти от PvP
         if (player.getKiller() != null) {
             List<String> pvpMessages = plugin.getConfig().getStringList("messages.global.pvp_message.messages");
-            logger.info("Обработка смерти от PvP для игрока: " + player.getName());
+            logger.warning("Обработка смерти от PvP для игрока: " + player.getName());
             sendRandomMessage(player, player.getKiller(), pvpMessages);
         }
         // Обработка смерти от падения
         else if (deathMessage.toLowerCase().contains("fell from a high place")) {
             List<String> fallMessages = plugin.getConfig().getStringList("messages.global.fall_message.messages");
-            logger.info("Обработка смерти от падения для игрока: " + player.getName());
+            logger.warning("Обработка смерти от падения для игрока: " + player.getName());
             sendRandomMessage(player, fallMessages);
         }
         // Обработка смерти от лавы
@@ -65,7 +65,7 @@ public class PlayerDeathListener implements Listener {
                 deathMessage.toLowerCase().contains("went up in flames") ||
                 deathMessage.toLowerCase().contains("was burned to death")) {
             List<String> lavaMessages = plugin.getConfig().getStringList("messages.global.lava_message.messages");
-            logger.info("Обработка смерти от лавы для игрока: " + player.getName());
+            logger.warning("Обработка смерти от лавы для игрока: " + player.getName());
             sendRandomMessage(player, lavaMessages);
         }
         // Обработка смерти от моба
@@ -75,14 +75,14 @@ public class PlayerDeathListener implements Listener {
             if (lastDamage instanceof EntityDamageByEntityEvent entityDamageByEntityEvent) {
                 if (entityDamageByEntityEvent.getDamager() instanceof Mob mob) {
                     String mobType = mob.getType().name(); // например, "SKELETON"
-                    logger.info("Смерть от моба: " + mobType);
+                    // Удалено сообщение logger.info
 
                     List<String> mobDeathMessages = plugin.getConfig().getStringList("messages.global.mob_death_message." + mobType);
                     if (mobDeathMessages.isEmpty()) {
                         mobDeathMessages = plugin.getConfig().getStringList("messages.global.mob_death_message.default");
                     }
 
-                    logger.info("Обработка смерти от моба для игрока: " + player.getName() + " от " + mobType);
+                    logger.warning("Обработка смерти от моба для игрока: " + player.getName() + " от " + mobType);
                     sendRandomMessage(player, mobDeathMessages);
                     return;
                 }
@@ -91,7 +91,7 @@ public class PlayerDeathListener implements Listener {
         // Обработка других случаев смерти
         else {
             List<String> deathMessages = plugin.getConfig().getStringList("messages.global.player_kill_message.messages");
-            logger.info("Обработка общей смерти для игрока: " + player.getName());
+            logger.warning("Обработка общей смерти для игрока: " + player.getName());
             sendRandomMessage(player, deathMessages);
         }
 
@@ -103,7 +103,7 @@ public class PlayerDeathListener implements Listener {
         Player player = event.getPlayer();
         if (plugin.getConfig().getBoolean("global.respawn", true)) {
             List<String> respawnMessages = plugin.getConfig().getStringList("messages.respawn_message");
-            logger.info("Обработка респауна для игрока: " + player.getName());
+            logger.warning("Обработка респауна для игрока: " + player.getName());
             sendRandomMessage(player, respawnMessages);
         }
     }
@@ -117,7 +117,7 @@ public class PlayerDeathListener implements Listener {
         String parsedMessage = applyPlaceholders(player, randomMessage);
         Component component = miniMessage.deserialize(parsedMessage);
         Bukkit.broadcast(component);
-        logger.info("Отправлено сообщение для игрока: " + player.getName() + " | Сообщение: " + parsedMessage);
+        // Удалено сообщение logger.info
     }
 
     private void sendRandomMessage(Player player, Player killer, List<String> messages) {
@@ -133,7 +133,7 @@ public class PlayerDeathListener implements Listener {
         String parsedMessage = applyPlaceholders(player, randomMessage);
         Component component = miniMessage.deserialize(parsedMessage);
         Bukkit.broadcast(component);
-        logger.info("Отправлено PvP сообщение для игрока: " + player.getName() + " | Сообщение: " + parsedMessage);
+        // Удалено сообщение logger.info
     }
 
     private void handleDeathEffects(Player player) {
@@ -145,7 +145,7 @@ public class PlayerDeathListener implements Listener {
             try {
                 Particle particle = Particle.valueOf(particleName.toUpperCase());
                 player.getWorld().spawnParticle(particle, player.getLocation(), amount);
-                logger.info("Появились частицы смерти для игрока: " + player.getName() + " | Частица: " + particleName);
+                logger.warning("Появились частицы смерти для игрока: " + player.getName() + " | Частица: " + particleName);
             } catch (IllegalArgumentException e) {
                 logger.warning("Неверное название частицы: " + particleName);
             }
@@ -160,7 +160,7 @@ public class PlayerDeathListener implements Listener {
             try {
                 Sound sound = Sound.valueOf(soundName.toUpperCase());
                 player.getWorld().playSound(player.getLocation(), sound, volume, pitch);
-                logger.info("Проигран звук смерти для игрока: " + player.getName() + " | Звук: " + soundName);
+                logger.warning("Проигран звук смерти для игрока: " + player.getName() + " | Звук: " + soundName);
             } catch (IllegalArgumentException e) {
                 logger.warning("Неверное название звука: " + soundName);
             }
@@ -169,10 +169,10 @@ public class PlayerDeathListener implements Listener {
 
     private String applyPlaceholders(Player player, String message) {
         if (placeholderApiEnabled) {
-            logger.info("PlaceholderAPI найден. Применяю плейсхолдеры.");
+            // Удалено сообщение logger.info
             return PlaceholderAPI.setPlaceholders(player, message);
         }
-        logger.info("PlaceholderAPI не найден. Плейсхолдеры не будут применены.");
+        // Удалено сообщение logger.info
         return message;
     }
 }
