@@ -36,18 +36,14 @@ public class Main extends JavaPlugin {
 
         // Отложенная проверка PlaceholderAPI
         Bukkit.getScheduler().runTask(this, () -> {
+            // Проверка, активен ли плагин PlaceholderAPI
             papiEnabled = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
-            if (papiEnabled) {
-                Bukkit.getConsoleSender().sendMessage("✅ §6PlaceholderAPI найден и будет использоваться.");
-            } else {
-                Bukkit.getConsoleSender().sendMessage("⚠ §6PlaceholderAPI не найден. Плейсхолдеры работать не будут.");
-            }
 
             // Приветственное сообщение в консоль
             Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
-            Bukkit.getConsoleSender().sendMessage("§6[Welcome] §eПлагин успешно загружен! 🌟");
-            Bukkit.getConsoleSender().sendMessage("§6Версия: §a2.0 §7by luci");
-            Bukkit.getConsoleSender().sendMessage("§6Используем PlaceholderAPI: " + (papiEnabled ? "§3Да" : "Нет"));
+            Bukkit.getConsoleSender().sendMessage("§6§l[Welcome] §eПлагин успешно загружен! 🎉✨");
+            Bukkit.getConsoleSender().sendMessage("§6Версия: §a2.0 §7by §3luci §f👨‍💻");
+            Bukkit.getConsoleSender().sendMessage("§6Используем PlaceholderAPI: " + (papiEnabled ? "§3Да ✅" : "§cНет ❌"));
             Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
         });
     }
