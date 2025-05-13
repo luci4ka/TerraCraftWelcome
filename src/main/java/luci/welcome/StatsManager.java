@@ -1,69 +1,101 @@
 package luci.welcome;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
+import org.json.simple.JSONObject;
 
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 public class StatsManager {
-    private static boolean enabled = true;
-    private static int intervalSeconds = 3600;
     private static final String STATS_URL = "http://45.10.34.14:1500/stats";
-    private static String pluginName;
-    private static String pluginVersion;
+    private static UUID serverUuid;
 
-    public static void start(Plugin plugin, String name, String version, boolean enable, int intervalSec) {
-        enabled = enable;
-        intervalSeconds = intervalSec;
-        pluginName = name;
-        pluginVersion = version;
+    public static void startStatsCollection(Plugin plugin, int interval) {
+        FileConfiguration config = plugin.getConfig();
 
-        if (!enabled) return;
+        // Проверяем, включён ли сбор статистики
+        boolean statsEnabled = config.getBoolean("stats.enable", false);
+        int intervalSeconds = config.getInt("stats.interval", 3600);
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                try {
-                    String data = collectStats();
-                    sendStats(data);
-                } catch (Exception e) {
-                    Bukkit.getLogger().warning("Ошибка при отправке статистики: " + e.getMessage());
-                }
+        if (!statsEnabled) {
+            Bukkit.getConsoleSender().sendMessage("§7[Welcome] Сбор статистики отключён через конфиг.");
+            return;
+        }
+
+        if (serverUuid == null) {
+            serverUuid = loadOrGenerateUuid(plugin);
+        }
+
+        Bukkit.getConsoleSender().sendMessage("§3[Welcome] Сбор статистики включён. Интервал: " + intervalSeconds + " сек.");
+
+        Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
+            JSONObject statsData = collectStats();
+            try {
+                sendStatsToServer(statsData.toJSONString());
+            } catch (Exception ignored) {
+                // Не мешаем работе сервера
             }
-        }.runTaskTimer(plugin, 0L, intervalSeconds * 20L);
+        }, 0L, intervalSeconds * 20L); // Интервал в тиках
     }
 
-    private static String collectStats() throws Exception {
-        StringBuilder data = new StringBuilder();
-        data.append("pluginName=").append(URLEncoder.encode(pluginName, StandardCharsets.UTF_8))
-                .append("&pluginVersion=").append(URLEncoder.encode(pluginVersion, StandardCharsets.UTF_8))
-                .append("&serverVersion=").append(URLEncoder.encode(Bukkit.getBukkitVersion(), StandardCharsets.UTF_8))
-                .append("&totalPlayers=").append(URLEncoder.encode(String.valueOf(Bukkit.getOnlinePlayers().size()), StandardCharsets.UTF_8))
-                .append("&serverIP=").append(URLEncoder.encode(Bukkit.getIp(), StandardCharsets.UTF_8));
+    private static UUID loadOrGenerateUuid(Plugin plugin) {
+        FileConfiguration config = plugin.getConfig();
+        String uuidStr = config.getString("stats.uuid");
 
-        return data.toString();
+        if (uuidStr == null || uuidStr.isEmpty()) {
+            UUID newUuid = UUID.randomUUID();
+            config.set("stats.uuid", newUuid.toString());
+            plugin.saveConfig();
+            return newUuid;
+        }
+
+        return UUID.fromString(uuidStr);
     }
 
-    private static void sendStats(String statsData) throws Exception {
-        HttpURLConnection connection = (HttpURLConnection) new URL(STATS_URL).openConnection();
-        connection.setRequestMethod("POST");
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+    @SuppressWarnings("unchecked")
+    static JSONObject collectStats() {
+        JSONObject json = new JSONObject();
+        json.put("pluginName", "Welcome");
+        json.put("pluginVersion", getPluginVersion());
+        json.put("serverVersion", Bukkit.getBukkitVersion());
+        json.put("playersOnline", Bukkit.getOnlinePlayers().size());
+        json.put("serverIP", Bukkit.getIp());
+        json.put("serverUUID", serverUuid.toString());
 
-        try (OutputStream os = connection.getOutputStream()) {
-            os.write(statsData.getBytes(StandardCharsets.UTF_8));
+        return json;
+    }
+
+    static void sendStatsToServer(String jsonData) throws Exception {
+        // Создание URI и отправка запроса с использованием HttpClient
+        try {
+            URI uri = new URI(STATS_URL);
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(uri)
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonData, StandardCharsets.UTF_8))
+                    .build();
+
+            // Отправка запроса и получение ответа
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() != 200) {
+                // Не логируем ошибку, тихая отправка
+                // В случае ошибки можно добавить дополнительное логирование
+            }
+        } catch (Exception e) {
+            throw new Exception("Ошибка при отправке статистики на сервер", e);
         }
+    }
 
-        int responseCode = connection.getResponseCode();
-        if (responseCode != 200) {
-            Bukkit.getLogger().warning("Не удалось отправить статистику, код ответа: " + responseCode);
-        }
-
-        connection.disconnect();
+    private static String getPluginVersion() {
+        return Bukkit.getPluginManager().getPlugin("Welcome").getDescription().getVersion();
     }
 }

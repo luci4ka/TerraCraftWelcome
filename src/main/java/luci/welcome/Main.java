@@ -9,12 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
     private static Main instance;
+    private boolean papiEnabled;
 
     public static Main getInstance() {
         return instance;
     }
-
-    private boolean papiEnabled;
 
     @Override
     public void onEnable() {
@@ -26,7 +25,14 @@ public class Main extends JavaPlugin {
         // Регистрация обработчиков событий
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(this), this);
-        StatsManager.start(this, "Welcome", "2.0", true, 3600);
+
+        // Проверка и запуск статистики, если она включена в конфиге
+        FileConfiguration config = getConfig();
+        boolean statsEnabled = config.getBoolean("stats.enable", false);
+        if (statsEnabled) {
+            int interval = config.getInt("stats.interval", 3600);
+            StatsManager.startStatsCollection(this, interval);
+        }
 
         // Отложенная проверка PlaceholderAPI
         Bukkit.getScheduler().runTask(this, () -> {
@@ -41,10 +47,8 @@ public class Main extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
             Bukkit.getConsoleSender().sendMessage("§6[Welcome] §eПлагин успешно загружен! 🌟");
             Bukkit.getConsoleSender().sendMessage("§6Версия: §a2.0 §7by luci");
-            Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
-
-            Bukkit.getConsoleSender().sendMessage("§3✅ Welcome-плагин успешно загружен!");
             Bukkit.getConsoleSender().sendMessage("§6Используем PlaceholderAPI: " + (papiEnabled ? "§3Да" : "Нет"));
+            Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
         });
     }
 
@@ -67,7 +71,7 @@ public class Main extends JavaPlugin {
 
     private void checkConfigVersion() {
         FileConfiguration config = getConfig();
-        int version = config.getInt("config-version", 2);
+        double version = config.getDouble("config-version", 2.1);
         if (version < 2.1) {
             Bukkit.getConsoleSender().sendMessage("§4❗ Обнаружена старая версия конфига. Пересоздание...");
             getConfig().options().copyDefaults(true);
