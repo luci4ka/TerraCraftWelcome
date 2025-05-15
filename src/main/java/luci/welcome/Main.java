@@ -6,6 +6,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.simple.JSONObject;
 
 public class Main extends JavaPlugin {
     private static Main instance;
@@ -21,18 +22,11 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
         checkConfigVersion();
         new CommandManager(this);  // Команды, если они есть
-
+        StatsManager.startStatsCollection();
         // Регистрация обработчиков событий
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(this), this);
 
-        // Проверка и запуск статистики, если она включена в конфиге
-        FileConfiguration config = getConfig();
-        boolean statsEnabled = config.getBoolean("stats.enable", false);
-        if (statsEnabled) {
-            int interval = config.getInt("stats.interval", 3600);
-            StatsManager.startStatsCollection(this, interval);
-        }
 
         // Отложенная проверка PlaceholderAPI
         Bukkit.getScheduler().runTask(this, () -> {
@@ -50,7 +44,15 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
         Bukkit.getConsoleSender().sendMessage("§4❌ Welcome-плагин был отключён.");
+        Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
+        try {
+            JSONObject finalStats = StatsManager.collectStats();
+            StatsManager.sendStatsToServer(finalStats.toJSONString());
+        } catch (Exception ignored) {
+            // Без логирования, чтобы не засорять выключение
+        }
     }
 
     public boolean isPapiEnabled() {
