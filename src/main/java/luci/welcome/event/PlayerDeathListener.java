@@ -95,8 +95,8 @@ public class PlayerDeathListener implements Listener {
     public void onRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
         if (plugin.getConfig().getBoolean("global.respawn", true)) {
-            List<String> respawnMessages = plugin.getConfig().getStringList("messages.respawn_message");
-            sendRandomMessage(player, respawnMessages);
+            List<String> respawnMessages = plugin.getConfig().getStringList("messages.global.respawn_message");
+            sendMessage(player, respawnMessages);
         }
     }
 
@@ -109,6 +109,18 @@ public class PlayerDeathListener implements Listener {
         String parsedMessage = applyPlaceholders(player, randomMessage);
         Component component = miniMessage.deserialize(parsedMessage);
         Bukkit.broadcast(component);
+        // Удалено сообщение logger.info
+    }
+
+    private void sendMessage(Player player, List<String> messages) {
+        if (messages.isEmpty()) {
+            logger.warning("Список сообщений пуст для игрока: " + player.getName() + " | Проверь конфиг.");
+            return;
+        }
+        String randomMessage = messages.get(random.nextInt(messages.size()));
+        String parsedMessage = applyPlaceholders(player, randomMessage);
+        Component component = miniMessage.deserialize(parsedMessage);
+        player.sendMessage(component);
         // Удалено сообщение logger.info
     }
 

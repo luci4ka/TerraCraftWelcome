@@ -21,13 +21,10 @@ repositories {
         url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
     }
     maven {
-        name = "Vault"
-        url = "https://repo.dmulloy2.net/repository/maven-public/"
+        name = "VaultAPI"
+        url = "https://jitpack.io"
     }
-    // Добавляем локальный репозиторий
-    flatDir {
-        dirs 'libs'  // Указываем папку libs как источник локальных зависимостей
-    }
+
 }
 
 dependencies {
@@ -37,8 +34,8 @@ dependencies {
     // Зависимость для PlaceholderAPI (через локальную папку libs)
     compileOnly 'me.clip:placeholderapi:2.11.5'
 
-    // Зависимость для Vault (через локальную папку libs)
-    compileOnly name: 'Vault'  // Локальная зависимость из libs
+    implementation 'com.github.MilkBowl:VaultAPI:1.7.1'
+
 }
 
 tasks {

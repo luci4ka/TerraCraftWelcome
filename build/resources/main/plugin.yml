@@ -3,7 +3,14 @@ version: 2.0
 main: luci.welcome.Main
 api-version: 1.21
 author: luci
-softdepend: [PlaceholderAPI]
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: true
+    Vault:
+      load: BEFORE
+      required: true
 
 commands:
   wconfig:
