@@ -5,7 +5,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -23,7 +22,7 @@ public class StatsManager {
     private static boolean statsCollectionStarted = false;
 
     private static JavaPlugin plugin() {
-        return JavaPlugin.getPlugin(Main.class);
+        return JavaPlugin.getPlugin(Main.class); // Убедись, что Main — это твой JavaPlugin-класс
     }
 
     public static void startStatsCollection() {
@@ -48,10 +47,7 @@ public class StatsManager {
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(plugin(), () -> {
             JSONObject statsData = collectStats();
-            try {
-                sendStatsToServer(statsData.toJSONString());
-            } catch (IOException ignored) {
-            }
+            sendStatsToServerAsync(statsData.toJSONString());
         }, 0L, intervalTicks);
     }
 
@@ -80,7 +76,7 @@ public class StatsManager {
         return json;
     }
 
-    public static void sendStatsToServer(String jsonData) throws IOException {
+    public static void sendStatsToServerAsync(String jsonData) {
         try {
             String fullUrl = String.format("http://%s:%d%s", STATS_IP, STATS_PORT, STATS_PATH);
             URI uri = new URI(fullUrl);
@@ -93,8 +89,19 @@ public class StatsManager {
                     .POST(HttpRequest.BodyPublishers.ofString(jsonData, StandardCharsets.UTF_8))
                     .build();
 
-            client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (Exception ignored) {
+            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenAccept(response -> {
+                        if (response.statusCode() != 200) {
+                            Bukkit.getLogger().warning("[Welcome] Ошибка отправки статистики: код " + response.statusCode());
+                        }
+                    })
+                    .exceptionally(e -> {
+                        Bukkit.getLogger().warning("[Welcome] Исключение при отправке статистики: " + e.getMessage());
+                        return null;
+                    });
+
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("[Welcome] Ошибка подготовки запроса статистики: " + e.getMessage());
         }
     }
 }

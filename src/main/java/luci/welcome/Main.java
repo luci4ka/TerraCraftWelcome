@@ -49,7 +49,7 @@ public class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§8════════════════════════════════════════════");
         try {
             JSONObject finalStats = StatsManager.collectStats();
-            StatsManager.sendStatsToServer(finalStats.toJSONString());
+            StatsManager.sendStatsToServerAsync(finalStats.toJSONString());
         } catch (Exception ignored) {
             // Без логирования, чтобы не засорять выключение
         }
