@@ -1,123 +1,313 @@
-# Версия конфигурации (не трогай без необходимости)
-config-version: 2.1
+# Версия конфигурации
+config-version: 2.2
 
-stats:
-  enable: true
-  interval: 3600
+# =========================
+# ССЫЛКИ
+# =========================
+links:
+  vk_url: "https://vk.com/grand_mc"
+  vk_text: "Вконтакте"
+  discord_url: "https://discord.gg/NTBdkEH"
+  discord_text: "Дискорд сервер"
+  site_url: "http://grandmc.ddns.net"
+  site_text: "Сайт"
 
+# =========================
+# СООБЩЕНИЯ
+# =========================
 messages:
+
   local:
     motd:
-      enabled: true # Включены сообщения
+      enabled: true
       lines:
         - "<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>"
         - "<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>"
-        - "<dark_purple>| <green>Подключайся к нашему VK:</green> <blue>%vk_url%</blue>"
-        - "<dark_purple>| <green>Наш сайт:</green> <blue>%site_url%</blue>"
-        - "<dark_purple>| <green>Присоединяйся к нам в Discord:</green> <blue>%discord_url%</blue>"
+        - "<dark_purple>| <green>Подключайся к нашему %vk_text%:</green>"
+        - "<dark_purple>| <green>Наш %site_text%:</green>"
+        - "<dark_purple>| <green>Присоединяйся в %discord_text%:</green>"
         - "<dark_purple>| <gray>Желаем приятной игры!</gray>"
         - ""
 
   global:
-    death: true  # Включены сообщения о смерти
-    join: true   # Включены сообщения о входе
+    join: true
     respawn: true
+    death: true
 
-    # Сообщения при PvP-убийстве (игрок игрока)
     pvp_message:
       messages:
         - "<red>⚔️ {killer} показал {victim}, кто тут босс!</red>"
         - "<gold>{killer}</gold> выписал <red>{victim}</red> пропуск в мир духов!"
+        - "<dark_red>{victim}</dark_red> не устоял против могущества {killer}!"
 
-    # Смерть в лаве
     lava_message:
       messages:
-        - "<red>🔥 %player_name%<red> пытался обняться с лавой. Не вышло."
+        - "<red>🔥 %player_name% пытался обняться с лавой. Не вышло."
         - "<gold>%player_name%</gold> превратился в шашлык... Не самый вкусный."
+        - "<dark_red>%player_name%</dark_red> понял, что лаву лучше смотреть издалека."
 
-    # Смерть от падения
     fall_message:
       messages:
-        - "<gray>💥 %player_name%</gray> решил, что умеет летать. Спойлер: нет."
+        - "<gray>💥 %player_name% решил, что умеет летать. Спойлер: нет."
         - "<red>☠️ %player_name%</red> проиграл битву с гравитацией."
+        - "<yellow>%player_name%</yellow> изучил законы физики на практике."
 
-    # Если игрок убит кем-то (любая причина)
     player_kill_message:
       messages:
         - "<red>💀 %player_name%</red> улетел в лучший мир. По билету без возврата."
         - "<gold>⚰️ %player_name%</gold> получил удар судьбы... или киркой."
+        - "<gray>%player_name%</gray> неожиданно встретил свою смерть."
 
-    # Сообщения при респауне
     respawn_message:
-        - "<green>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</green>"
+      - "<green>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</green>"
+      - "<yellow>⚡ %player_name% вернулся к жизни с новыми силами!</yellow>"
+      - "<aqua>%player_name% готов к новым приключениям!</aqua>"
 
-    # Первое подключение игрока
     first_join_message:
       - "<gold>🎉 Новичок на сервере! Встречаем <white>%player_name%</white> бурными аплодисментами!</gold>"
+      - "<green>✨ %player_name% только что присоединился!</green>"
+      - "<aqua>Добро пожаловать, %player_name%!</aqua>"
 
-    # Обычное подключение
     default_join_message:
       - "<green>➕ <gray>Опа! <white>%player_name%</white> заглянул в гости. Не забудь тапки у входа!</gray>"
+      - "<blue>%player_name% присоединился к нам!</blue>"
+      - "<yellow>Приветствуем %player_name%!</yellow>"
 
-    # Обычный выход
     default_quit_message:
       - "<red>➖ <gray><white>%player_name%</white> вышел... наверное, за чаем.</gray>"
+      - "<gray>%player_name% покинул сервер.</gray>"
+      - "<yellow>До встречи, %player_name%!</yellow>"
 
-    # Приветствие/уход VIP-игроков
     vip_join_message:
       - "<yellow>👑 VIP <white>%player_name%</white> соизволил появиться. Ложитесь лицом к полу!</yellow>"
+      - "<gold>VIP %player_name% присоединился к серверу!</gold>"
+      - "<green>Привет VIP %player_name%!</green>"
+
     vip_quit_message:
       - "<gold>👋 VIP <white>%player_name%</white> ушёл. Сервер стал на 5% менее гламурным.</gold>"
+      - "<yellow>VIP %player_name% покинул нас.</yellow>"
+      - "<gray>Прощай, VIP %player_name%!</gray>"
 
-    # Приветствие/уход администратора
     admin_join_message:
       - "<red>⚡ Владыка сервера <white>%player_name%</white> снизошёл к смертным!</red>"
+      - "<dark_red>%player_name% появился среди нас. Почти как бог.</dark_red>"
+      - "<gold>О, великий %player_name% вошёл!</gold>"
+
     admin_quit_message:
       - "<dark_red>⚡ <white>%player_name%</white> — админ вышел. Беспредел отменяется.</dark_red>"
+      - "<gray>%player_name% покинул сервер. Легенда ушла.</gray>"
+      - "<yellow>До свидания, великий %player_name%!</yellow>"
 
-    # Сообщения о смерти от конкретных мобов
+    # Сообщения о смерти от мобов
     mob_death_message:
       ZOMBIE:
         - "<dark_red>%player_name%</dark_red> был влюблен в зомби... теперь это не важно!"
         - "<gold>%player_name%</gold> стал любимым обедом для зомби!"
-      # ... остальные мобы аналогично
-
-      # Сообщение по умолчанию, если моб не указан выше
+        - "<gray>%player_name% попытался дружить с зомби, не вышло."
+      SKELETON:
+        - "<gray>%player_name%</gray> стал перекрёстной мишенью для скелетов!"
+        - "<white>%player_name%</white> встретил стрелы скелета лицом к лицу!"
+        - "<yellow>%player_name%</yellow> понял, что кости могут быть смертельны."
+      CREEPER:
+        - "<green>%player_name%</green> слишком близко подошёл к зелёному взрывному другу!"
+        - "<yellow>%player_name%</yellow> превратился в кучку блоков после встречи с крипером!"
+        - "<red>%player_name%</red> не рассчитал дистанцию от крипера!"
+      SPIDER:
+        - "<dark_purple>%player_name%</dark_purple> запутался в паутине и проиграл!"
+        - "<red>%player_name%</red> был укушен пауком!"
+        - "<gray>%player_name%</gray> понял, что пауки не друзья."
+      CAVE_SPIDER:
+        - "<dark_purple>%player_name%</dark_purple> столкнулся с ядовитой паутиной!"
+        - "<red>%player_name%</red> получил укус от паука!"
+        - "<gray>%player_name%</gray> пошёл отдыхать после ядовитой встречи."
+      WITCH:
+        - "<purple>%player_name%</purple> столкнулся с ведьмой и её зелиями!"
+        - "<dark_red>%player_name%</dark_red> стал жертвой магии ведьмы!"
+        - "<gray>%player_name%</gray> не оценил силу зелий."
+      ENDERMAN:
+        - "<black>%player_name%</black> встретил эндермена... и исчез почти сразу!"
+        - "<purple>%player_name%</purple> был схвачен взглядом эндермена!"
+        - "<gray>%player_name%</gray> понял, что смотреть на эндермена опасно."
+      SLIME:
+        - "<green>%player_name%</green> слишком близко подошёл к слайму!"
+        - "<yellow>%player_name%</yellow> стал частью слайма!"
+        - "<gray>%player_name%</gray> был растоптан слизью."
+      MAGMA_CUBE:
+        - "<red>%player_name%</red> прыгнул на магму куба!"
+        - "<orange>%player_name%</orange> плавится в магме!"
+        - "<gray>%player_name%</gray> понял, что магма обжигает."
+      BLAZE:
+        - "<yellow>%player_name%</yellow> столкнулся с пламенем Блейза!"
+        - "<red>%player_name%</red> загорелся от Блейза!"
+        - "<gray>%player_name%</gray> понял, что огонь — это боль."
+      GHAST:
+        - "<white>%player_name%</white> был поражён огненным шаром Гаста!"
+        - "<gray>%player_name%</gray> попытался увернуться, но не вышло!"
+        - "<yellow>%player_name%</yellow> понял, что летать рядом с Гастом опасно."
+      PIGLIN:
+        - "<gold>%player_name%</gold> попытался стащить у Пиглина что-то ценное!"
+        - "<red>%player_name%</red> получил по заслугам от Пиглина!"
+        - "<gray>%player_name%</gray> понял, что золото важно для Пиглинов."
+      PIGLIN_BRUTE:
+        - "<gold>%player_name%</gold> встретил Пиглина-варвара!"
+        - "<red>%player_name%</red> не справился с Пиглином-варваром!"
+        - "<gray>%player_name%</gray> ушёл с лёгкими ранами."
+      VINDICATOR:
+        - "<dark_red>%player_name%</dark_red> был атакован вендикатором!"
+        - "<red>%player_name%</red> не смог справиться с вендикатором!"
+        - "<gray>%player_name%</gray> понял, что вендикатор силён."
+      EVOKER:
+        - "<dark_purple>%player_name%</dark_purple> столкнулся с чародеем!"
+        - "<red>%player_name%</red> атакован магией чародея!"
+        - "<gray>%player_name%</gray> лучше держаться от них подальше."
+      SHULKER:
+        - "<purple>%player_name%</purple> столкнулся с шалкером!"
+        - "<gray>%player_name%</gray> был атакован шалкером!"
+        - "<yellow>%player_name%</yellow> почувствовал силу шалкера."
+      WARDEN:
+        - "<black>%player_name%</black> услышал стук Варда!"
+        - "<dark_gray>%player_name%</dark_gray> не успел убежать!"
+        - "<red>%player_name%</red> стал жертвой Варда!"
       default:
         - "<dark_red>%player_name%</dark_red> был убит каким-то злым мобом!"
         - "<gold>%player_name%</gold> стал жертвой загадочного существа!"
+        - "<gray>%player_name%</gray> почувствовал смерть."
 
-# Эффекты при разных действиях
-effects:
-  first_join:        # При первом заходе
-    sound: "ENTITY_PLAYER_LEVELUP"
-    particle: "FIREWORKS_SPARK"
-  normal_join:       # При обычном входе
-    sound: "ENTITY_PLAYER_LEVELUP"
-    particle: "EXPLOSION_LARGE"
-  leave:             # При выходе
-    sound: "BLOCK_NOTE_BLOCK_PLING"
-    particle: "VILLAGER_HAPPY"
-  death:             # При смерти
-    sound: "ENTITY_PLAYER_HURT"
-    particle: "SMOKE_NORMAL"
 
-# Общие настройки звука
-sound:
-  enable_sound: true  # Включить звуки
-  volume: 1.0         # Громкость
-  pitch: 1.0          # Высота тона
+# =========================
+# АВТО-СООБЩЕНИЯ
+# =========================
+auto_messages:
+  enabled: true
+  interval_ticks: 6000  # 5 минут
 
-# Общие настройки частиц
-particle_effect:
-  enable_particles: true  # Включить частицы
-  amount: 5               # Кол-во частиц
+  # Старые сообщения (для совместимости)
+  messages:
+    - "<green>Привет! Не забудьте посетить наш %site_text%: %site_url%</green>"
+    - "<aqua>Поддерживайте наши соцсети: %vk_text% и %discord_text%</aqua>"
+    - "<yellow>Веселись на сервере и приглашай друзей!</yellow>"
+    - "<gray>Не забывай проверять новости на нашем %site_text%!</gray>"
 
-# Ссылки, используемые в сообщениях
-links:
-  vk_url: "https://vk.com/grand_mc"
-  vk_text: "VK"
-  discord_url: "https://discord.gg/NTBdkEH"
-  discord_text: "Discord"
-  site_url: "http://grandmc.ddns.net"
-  site_text: "Сайт"
+  # Персонажи с цветом, префиксом и эмоциями
+  characters:
+    - name: "Лисёнок"
+      color: "<green>"
+      prefix: "🦊"
+      moods:
+        happy: "😊"
+        surprised: "😮"
+        excited: "🎉"
+    - name: "Волшебник"
+      color: "<aqua>"
+      prefix: "🧙"
+      moods:
+        happy: "✨"
+        angry: "⚡"
+        thoughtful: "🤔"
+    - name: "Рыцарь"
+      color: "<gold>"
+      prefix: "🛡"
+      moods:
+        proud: "🗡"
+        cautious: "⚔️"
+        cheerful: "😄"
+    - name: "Советник"
+      color: "<yellow>"
+      prefix: "📜"
+      moods:
+        wise: "📖"
+        serious: "⚠️"
+        friendly: "🙂"
+    - name: "Гном"
+      color: "<dark_aqua>"
+      prefix: "⛏"
+      moods:
+        hardworking: "💪"
+        grumpy: "😠"
+        cheerful: "😃"
+
+  # Сообщения от персонажей
+  messages_by_character:
+    greetings:
+      - "%character_prefix%%character_mood% %character_color%Привет, %player_name%! Добро пожаловать на сервер!"
+      - "%character_prefix%%character_mood% %character_color%Рад видеть тебя, %player_name%! 🥳"
+      - "%character_prefix%%character_mood% %character_color%С возвращением, %player_name%! 🌟"
+    tips:
+      - "%character_prefix%%character_mood% %character_color%Совет от %character_name%: используй /spawn, чтобы вернуться в спавн."
+      - "%character_prefix%%character_mood% %character_color%Не забудь /help для списка команд!"
+      - "%character_prefix%%character_mood% %character_color%Открой карту с помощью /map для поиска сокровищ."
+      - "%character_prefix%%character_mood% %character_color%Используй /warp для телепортации между зонами."
+    fun:
+      - "%character_prefix%%character_mood% %character_color%Веселись на сервере и приглашай друзей! 🎉"
+      - "%character_prefix%%character_mood% %character_color%Сегодня удачный день для приключений!"
+      - "%character_prefix%%character_mood% %character_color%Попробуй найти секретные сундуки на карте!"
+      - "%character_prefix%%character_mood% %character_color%Собери команду и отправляйся на охоту за монстрами!"
+
+# =========================
+# НАСТРОЙКИ
+# =========================
+settings:
+  effects:
+    first_join:
+      sound: "ENTITY_PLAYER_LEVELUP"
+      particle: "FIREWORKS_SPARK"
+    normal_join:
+      sound: "ENTITY_PLAYER_LEVELUP"
+      particle: "EXPLOSION_LARGE"
+    leave:
+      sound: "BLOCK_NOTE_BLOCK_PLING"
+      particle: "VILLAGER_HAPPY"
+    death:
+      sound: "ENTITY_PLAYER_HURT"
+      particle: "SMOKE_NORMAL"
+
+  sound:
+    enable_sound: true
+    volume: 1.0
+    pitch: 1.0
+
+  particle_effect:
+    enable_particles: true
+    amount: 5
+
+  boss_fight:
+    enabled: true
+    track_damage: true
+    show_top_hitters: true
+    messages:
+      boss_kill: "<gold>⚔️ Победа над боссом: <red>{boss_name}</red>!</gold>"
+      boss_top_intro: "<green>Игроки, нанесшие урон:</green>"
+      boss_top_player: "<yellow>{player_name}</yellow>: {damage}❤ (<gray>{percent}%</gray>)"
+
+  holidays:
+    enabled: true
+    interval_ticks: 1200
+    current: "new_year"
+    new_year:
+      particle: "FIREWORKS_SPARK"
+      sound: "ENTITY_FIREWORK_ROCKET_LAUNCH"
+      messages:
+        - "<gold>🎉 С Новым Годом, %player_name%! Пусть удача будет с тобой!"
+        - "<green>✨ Праздник на сервере начался! Веселись вместе с нами!"
+        - "<aqua>%player_name%, самое время для подарков и веселья!</aqua>"
+    september_first:
+      particle: "CAMPFIRE_COSY_SMOKE"
+      sound: "BLOCK_NOTE_BLOCK_PLING"
+      messages:
+        - "<aqua>📚 С 1 сентября, %player_name%! Время знаний и приключений!"
+        - "<blue>🎒 Добро пожаловать в новый учебный год на сервере!"
+        - "<yellow>Пусть учеба будет интересной и веселой, %player_name%!"
+    halloween:
+      particle: "FLAME"
+      sound: "ENTITY_ZOMBIE_AMBIENT"
+      messages:
+        - "<orange>🎃 С Хэллоуином, %player_name%! Пугай мобов!</orange>"
+        - "<red>👻 Мистическая ночь началась на сервере!</red>"
+        - "<purple>%player_name%, не забудь свои конфеты!</purple>"
+    christmas:
+      particle: "SNOW_SHOVEL"
+      sound: "ENTITY_PLAYER_LEVELUP"
+      messages:
+        - "<green>🎄 С Рождеством, %player_name%! Счастья и радости!</green>"
+        - "<red>✨ Праздник на сервере в полном разгаре!</red>"
+        - "<aqua>%player_name%, весело отмечаем вместе!</aqua>"

@@ -1,0 +1,26 @@
+name: Welcome
+version: 2.2
+main: com.welcome.Main
+api-version: 1.21
+author: luci
+description: "✨ Welcome-плагин: оповещения о входе, выходе и смерти игроков с настраиваемыми эффектами звука и частиц 🎉"
+
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: true
+    Vault:
+      load: BEFORE
+      required: true
+
+commands:
+  wconfig:
+    description: Перезагрузка конфигурации Welcome-плагина
+    usage: /wconfig reload
+    permission: welcome.reload
+
+permissions:
+  welcome.reload:
+    description: Позволяет перезагружать конфигурацию
+    default: op

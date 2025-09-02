@@ -4,43 +4,33 @@ plugins {
 }
 
 group = 'luci'
-version = '2.0'
+version = '2.2'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
+    maven { url "https://repo.essentialsx.net/releases" }
+    maven { url "https://jitpack.io" }
     maven {
-        name = "papermc-repo"
-        url = "https://repo.papermc.io/repository/maven-public/"
-    }
-    maven {
-        name = "sonatype"
-        url = "https://oss.sonatype.org/content/groups/public/"
-    }
-    maven {
-        name = "PlaceholderAPI"
-        url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
+        name = "luckperms"
+        url = "https://repo.lucko.me/repository/maven-public/"
     }
     maven {
         name = "VaultAPI"
         url = "https://jitpack.io"
     }
-
 }
 
 dependencies {
-    // Paper API зависимость
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
-
-    // Зависимость для PlaceholderAPI (через локальную папку libs)
     compileOnly 'me.clip:placeholderapi:2.11.5'
-
-    implementation 'com.github.MilkBowl:VaultAPI:1.7.1'
-
+    compileOnly "com.github.Foulest:Vault:6fe01e4b73"
+    compileOnly "net.luckperms:api:5.4"
 }
 
 tasks {
     runServer {
-        // Configure the Minecraft version for our task.
         minecraftVersion("1.21")
     }
 }
@@ -57,7 +47,6 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release.set(targetJavaVersion)
     }
@@ -65,9 +54,8 @@ tasks.withType(JavaCompile).configureEach {
 
 processResources {
     from(sourceSets.main.resources.srcDirs) {
-        include '**/*.yml' // Включает все YAML-файлы
+        include '**/*.yml'
     }
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE // Исправляет возможные конфликты
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
     filteringCharset 'UTF-8'
 }
-
