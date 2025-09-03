@@ -19,81 +19,84 @@ public class AutoMessageTask extends BukkitRunnable {
     private final Random random = new Random();
     private int intervalTicks;
     private String lastMessage = "";
+    private final List<String> allMessages = new ArrayList<>();
 
     public AutoMessageTask(Main plugin, ConfigHandler config) {
         this.plugin = plugin;
         this.config = config;
         this.intervalTicks = config.getInt("auto_messages.interval_ticks", 6000);
+        loadMessages(); // загружаем все сообщения при старте
+    }
+
+    private void loadMessages() {
+        allMessages.clear();
+
+        // старые
+        allMessages.addAll(config.getMessageList("auto_messages.messages"));
+
+        // новые
+        List<Map<?, ?>> charactersRaw = plugin.getConfig().getMapList("auto_messages.characters");
+        ConfigurationSection autoMessages = plugin.getConfig().getConfigurationSection("auto_messages");
+        ConfigurationSection messagesSection = autoMessages != null ? autoMessages.getConfigurationSection("messages_by_character") : null;
+
+        if (charactersRaw == null || charactersRaw.isEmpty() || messagesSection == null) return;
+
+        for (Map<?, ?> rawCharMap : charactersRaw) {
+            Map<String, Object> charMap = new HashMap<>();
+            for (Map.Entry<?, ?> entry : rawCharMap.entrySet()) {
+                if (entry.getKey() instanceof String key) {
+                    charMap.put(key, entry.getValue());
+                }
+            }
+
+            String charName = Objects.toString(charMap.get("name"), "");
+            String charColor = Objects.toString(charMap.get("color"), "<white>");
+            String charPrefix = Objects.toString(charMap.get("prefix"), "");
+
+            @SuppressWarnings("unchecked")
+            Map<String, String> moods = charMap.get("moods") instanceof Map<?, ?> m
+                    ? m.entrySet().stream()
+                    .filter(e -> e.getKey() instanceof String && e.getValue() instanceof String)
+                    .collect(HashMap::new, (hm, e) -> hm.put((String) e.getKey(), (String) e.getValue()), HashMap::putAll)
+                    : Map.of();
+
+            for (String category : messagesSection.getKeys(false)) {
+                List<String> messages = messagesSection.getStringList(category);
+                for (String msg : messages) {
+                    String mood = "";
+                    if (!moods.isEmpty()) {
+                        List<String> moodKeys = new ArrayList<>(moods.keySet());
+                        String rawMood = moods.get(moodKeys.get(random.nextInt(moodKeys.size())));
+                        // красим смайл в цвет персонажа
+                        mood = charColor + rawMood;
+                    }
+
+                    msg = msg.replace("%character_name%", charName)
+                            .replace("%character_prefix%", charPrefix)
+                            .replace("%character_color%", charColor)
+                            .replace("%character_mood%", mood);
+
+                    allMessages.add(msg);
+                }
+            }
+        }
     }
 
     @Override
     public void run() {
         if (!config.getBoolean("auto_messages.enabled", true)) return;
+        if (allMessages.isEmpty()) return;
 
-        List<String> finalMessages = new ArrayList<>();
-        finalMessages.addAll(config.getMessageList("auto_messages.messages")); // Старые сообщения
-
-        // Загрузка персонажей
-        ConfigurationSection charactersSection = plugin.getConfig().getConfigurationSection("auto_messages.characters");
-        ConfigurationSection messagesSection = plugin.getConfig().getConfigurationSection("auto_messages.messages_by_character");
-
-        if (charactersSection != null && messagesSection != null) {
-            List<Map<String, Object>> characterMaps = new ArrayList<>();
-            for (Object obj : plugin.getConfig().getList("auto_messages.characters", Collections.emptyList())) {
-                if (obj instanceof Map<?, ?> rawMap) {
-                    Map<String, Object> safeMap = new HashMap<>();
-                    for (Map.Entry<?, ?> entry : rawMap.entrySet()) {
-                        if (entry.getKey() instanceof String key) {
-                            safeMap.put(key, entry.getValue());
-                        }
-                    }
-                    characterMaps.add(safeMap);
-                }
-            }
-
-            for (Map<String, Object> charMap : characterMaps) {
-                String charName = Objects.toString(charMap.getOrDefault("name", ""), "");
-                String charColor = Objects.toString(charMap.getOrDefault("color", "<white>"), "<white>");
-                String charPrefix = Objects.toString(charMap.getOrDefault("prefix", ""), "");
-
-                @SuppressWarnings("unchecked")
-                Map<String, String> moods = charMap.get("moods") instanceof Map<?, ?> m
-                        ? m.entrySet().stream()
-                        .filter(e -> e.getKey() instanceof String k && e.getValue() instanceof String v)
-                        .collect(HashMap::new, (hm, e) -> hm.put((String)e.getKey(), (String)e.getValue()), HashMap::putAll)
-                        : Map.of();
-
-                for (String category : messagesSection.getKeys(false)) {
-                    List<String> messages = messagesSection.getStringList(category);
-                    for (String msg : messages) {
-                        // Случайное настроение
-                        String mood = "";
-                        if (!moods.isEmpty()) {
-                            List<String> moodKeys = new ArrayList<>(moods.keySet());
-                            mood = moods.get(moodKeys.get(random.nextInt(moodKeys.size())));
-                        }
-
-                        msg = msg.replace("%character_name%", charName)
-                                .replace("%character_prefix%", charPrefix)
-                                .replace("%character_color%", charColor)
-                                .replace("%character_mood%", mood);
-
-                        finalMessages.add(msg);
-                    }
-                }
-            }
-        }
-
-        if (finalMessages.isEmpty()) return;
-
-        // Выбираем случайное сообщение, отличное от последнего
+        // случайное сообщение ≠ последнему
         String message;
+        int attempts = 0;
         do {
-            message = finalMessages.get(random.nextInt(finalMessages.size()));
-        } while (finalMessages.size() > 1 && message.equals(lastMessage));
+            message = allMessages.get(random.nextInt(allMessages.size()));
+            attempts++;
+        } while (allMessages.size() > 1 && message.equals(lastMessage) && attempts < 10);
         lastMessage = message;
 
-        // Случайный онлайн игрок
+        // случайный игрок
         Collection<? extends Player> onlinePlayers = Bukkit.getOnlinePlayers();
         Player randomPlayer = null;
         if (!onlinePlayers.isEmpty()) {
@@ -104,12 +107,12 @@ public class AutoMessageTask extends BukkitRunnable {
         String playerName = randomPlayer != null ? randomPlayer.getName() : "Игрок";
         message = message.replace("%player_name%", playerName);
 
-        // Заменяем ссылки
+        // ссылки
         message = config.replaceLinksMsg(message);
 
         Component component = miniMessage.deserialize(message);
 
-        // Отправка всем игрокам
+        // отправка всем
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(component);
         }

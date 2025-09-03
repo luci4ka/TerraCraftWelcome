@@ -89,10 +89,10 @@ public final class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("§8════════════════════════════════════════════");
         getServer().getConsoleSender().sendMessage("§b[Welcome] 🌟 Плагин успешно включен!");
         getServer().getConsoleSender().sendMessage("§6Версия: §a2.2 §7by §3luci §f👨‍💻");
-        getServer().getConsoleSender().sendMessage("§6PlaceholderAPI: " + (papiEnabled ? "§3Да ✅" : "§cНет ❌"));
-        getServer().getConsoleSender().sendMessage("§6Авто-сообщения: " + (autoMessagesEnabled ? "§aВключены ✅" : "§cВыключены ❌"));
-        getServer().getConsoleSender().sendMessage("§6Праздничные эффекты: " + (holidaysEnabled ? "§aВключены ✅" : "§cВыключены ❌"));
-        getServer().getConsoleSender().sendMessage("§6Эффекты боссов: " + (bossfightEnabled ? "§aВключены ✅" : "§cВыключены ❌"));
+        getServer().getConsoleSender().sendMessage("§6PlaceholderAPI: " + (papiEnabled ? "§3Да " : "§cНет "));
+        getServer().getConsoleSender().sendMessage("§6Авто-сообщения: " + (autoMessagesEnabled ? "§aВключены " : "§cВыключены "));
+        getServer().getConsoleSender().sendMessage("§6Праздничные эффекты: " + (holidaysEnabled ? "§aВключены " : "§cВыключены "));
+        getServer().getConsoleSender().sendMessage("§6Эффекты боссов: " + (bossfightEnabled ? "§aВключены " : "§cВыключены "));
         getServer().getConsoleSender().sendMessage("§8════════════════════════════════════════════");
     }
 }
