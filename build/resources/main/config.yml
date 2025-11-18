@@ -183,8 +183,8 @@ auto_messages:
 
   # Старые сообщения (для совместимости)
   messages:
-    - "<green>Привет! Не забудьте посетить наш %site_text%: %site_url%</green>"
-    - "<aqua>Поддерживайте наши соцсети: %vk_text% и %discord_text%</aqua>"
+    - "<green>Привет! Не забудьте посетить наш сайт</green>"
+    - "<aqua>Поддерживайте наши соцсети</aqua>"
     - "<yellow>Веселись на сервере и приглашай друзей!</yellow>"
     - "<gray>Не забывай проверять новости на нашем %site_text%!</gray>"
 
@@ -231,11 +231,9 @@ auto_messages:
     greetings:
       - "%character_prefix%%character_mood% %character_color%Привет, %player_name%! Добро пожаловать на сервер!"
       - "%character_prefix%%character_mood% %character_color%Рад видеть тебя, %player_name%! 🥳"
-      - "%character_prefix%%character_mood% %character_color%С возвращением, %player_name%! 🌟"
     tips:
       - "%character_prefix%%character_mood% %character_color%Совет от %character_name%: используй /spawn, чтобы вернуться в спавн."
       - "%character_prefix%%character_mood% %character_color%Не забудь /help для списка команд!"
-      - "%character_prefix%%character_mood% %character_color%Открой карту с помощью /map для поиска сокровищ."
       - "%character_prefix%%character_mood% %character_color%Используй /warp для телепортации между зонами."
     fun:
       - "%character_prefix%%character_mood% %character_color%Веселись на сервере и приглашай друзей! 🎉"

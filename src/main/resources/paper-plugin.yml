@@ -1,6 +1,6 @@
 name: Welcome
 version: 2.2
-main: com.welcome.Main
+main: com.luci.welcome.Main
 api-version: 1.21
 author: luci
 description: "✨ Welcome-плагин: оповещения о входе, выходе и смерти игроков с настраиваемыми эффектами звука и частиц 🎉"

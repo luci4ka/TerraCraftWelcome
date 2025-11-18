@@ -1,12 +1,13 @@
-package com.welcome.config;
+package com.luci.welcome.config;
 
-import com.welcome.Main;
+import com.luci.welcome.Main;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.slf4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,11 +18,18 @@ import java.util.stream.Collectors;
 public class ConfigHandler {
 
     private final Main plugin;
+    private final Logger logger;
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
     private final Random random = new Random();
     private boolean papiEnabled;
 
     private Map<String, LinkEntry> links = new HashMap<>();
+
+    public ConfigHandler(Main plugin) {
+        this.plugin = plugin;
+        this.logger = plugin.getSLF4JLogger();
+        reload();
+    }
 
     // -------------------- Звуки и частицы --------------------
     public boolean isSoundEnabled() {
@@ -49,7 +57,7 @@ public class ConfigHandler {
             float pitch = (float) getDouble("sound.pitch", 1.0);
             player.playSound(player.getLocation(), sound, volume, pitch);
         } catch (IllegalArgumentException ex) {
-            getPlugin().getLogger().warning("Неверное имя звука: " + soundName);
+            logger.warn("Неверное имя звука: {}", soundName, ex);
         }
     }
 
@@ -64,18 +72,13 @@ public class ConfigHandler {
             int amount = getInt("particle_effect.amount", 5);
             player.getWorld().spawnParticle(particle, player.getLocation(), amount);
         } catch (IllegalArgumentException ex) {
-            getPlugin().getLogger().warning("Неверное имя частицы: " + particleName);
+            logger.warn("Неверное имя частицы: {}", particleName, ex);
         }
     }
 
     // -------------------- Конфигурация --------------------
     public ConfigurationSection getConfigSection(String path) {
-        return getPlugin().getConfig().getConfigurationSection(path);
-    }
-
-    public ConfigHandler(Main plugin) {
-        this.plugin = plugin;
-        reload();
+        return plugin.getConfig().getConfigurationSection(path);
     }
 
     public void reload() {
@@ -87,8 +90,7 @@ public class ConfigHandler {
     public void checkConfigVersion(double expectedVersion) {
         double actual = plugin.getConfig().getDouble("config-version", -1);
         if (actual != expectedVersion) {
-            plugin.getLogger().warning("⚠ Версия конфига (" + actual +
-                    ") не совпадает с ожидаемой (" + expectedVersion + ")");
+            logger.warn("⚠ Версия конфига ({}) не совпадает с ожидаемой ({})", actual, expectedVersion);
         }
     }
 
@@ -183,7 +185,6 @@ public class ConfigHandler {
         }
         return message;
     }
-
 
     public Map<String, LinkEntry> getLinks() {
         return links;

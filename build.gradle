@@ -27,6 +27,8 @@ dependencies {
     compileOnly 'me.clip:placeholderapi:2.11.5'
     compileOnly "com.github.Foulest:Vault:6fe01e4b73"
     compileOnly "net.luckperms:api:5.4"
+    implementation 'ch.qos.logback:logback-classic:1.5.13'
+    implementation 'org.slf4j:slf4j-api:2.0.9'
 }
 
 tasks {
