@@ -1,43 +1,182 @@
 package com.luci.welcome.config;
 
 import com.luci.welcome.Main;
-import me.clip.placeholderapi.PlaceholderAPI;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ConfigHandler {
 
     private final Main plugin;
     private final Logger logger;
-    private final MiniMessage miniMessage = MiniMessage.miniMessage();
     private final Random random = new Random();
-    private boolean papiEnabled;
-
     private Map<String, LinkEntry> links = new HashMap<>();
 
     public ConfigHandler(Main plugin) {
         this.plugin = plugin;
-        this.logger = plugin.getSLF4JLogger();
-        reload();
+        this.logger = LoggerFactory.getLogger(plugin.getName());
+        loadLinks();
     }
 
-    // -------------------- Звуки и частицы --------------------
+    public FileConfiguration getConfig() {
+        return plugin.getConfig();
+    }
+
+    public void reloadConfig() {
+        plugin.reloadConfig();
+        plugin.getLanguageManager().reloadLanguages(); // Перезагружаем языки
+        loadLinks();
+        logger.info("✓ Конфигурация перезагружена");
+    }
+
+    public void checkConfigVersion(double expectedVersion) {
+        double actual = getDouble("config-version", -1);
+        if (actual != expectedVersion) {
+            logger.warn("⚠ Версия конфига ({}) не совпадает с ожидаемой ({}). Рекомендуется обновить конфиг!",
+                    actual, expectedVersion);
+        } else {
+            logger.info("✓ Версия конфига актуальна: {}", actual);
+        }
+    }
+
+    public String parsePlaceholders(Player player, String text) {
+        if (text == null || text.isEmpty()) return "";
+
+        if (plugin.getHookManager().isPapiEnabled() && player != null && player.isOnline()) {
+            try {
+                return plugin.getHookManager().getPapiHook().parse(player, text);
+            } catch (Exception e) {
+                logger.error("Ошибка парсинга плейсхолдеров для игрока: {}", player.getName(), e);
+                return text;
+            }
+        }
+
+        // Базовая замена плейсхолдеров, если PAPI не доступен
+        if (player != null) {
+            text = text.replace("%player%", player.getName())
+                    .replace("%displayname%", player.getDisplayName())
+                    .replace("%world%", player.getWorld().getName());
+        }
+
+        return text;
+    }
+
+    // Безопасные методы получения значений из config.yml
+    public boolean getBoolean(String path, boolean def) {
+        try {
+            return getConfig().getBoolean(path, def);
+        } catch (Exception e) {
+            logger.warn("Ошибка чтения boolean из '{}': {}", path, e.getMessage());
+            return def;
+        }
+    }
+
+    public int getInt(String path, int def) {
+        try {
+            return getConfig().getInt(path, def);
+        } catch (Exception e) {
+            logger.warn("Ошибка чтения int из '{}': {}", path, e.getMessage());
+            return def;
+        }
+    }
+
+    public double getDouble(String path, double def) {
+        try {
+            return getConfig().getDouble(path, def);
+        } catch (Exception e) {
+            logger.warn("Ошибка чтения double из '{}': {}", path, e.getMessage());
+            return def;
+        }
+    }
+
+    public String getString(String path, String def) {
+        try {
+            String value = getConfig().getString(path);
+            return value != null ? value : def;
+        } catch (Exception e) {
+            logger.warn("Ошибка чтения string из '{}': {}", path, e.getMessage());
+            return def;
+        }
+    }
+
+    public List<String> getStringList(String path) {
+        try {
+            List<String> value = getConfig().getStringList(path);
+            return value != null ? value : new ArrayList<>();
+        } catch (Exception e) {
+            logger.warn("Ошибка чтения списка из '{}': {}", path, e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public List<Map<?, ?>> getMapList(String path) {
+        try {
+            return getConfig().getMapList(path);
+        } catch (Exception e) {
+            logger.warn("Ошибка чтения map list из '{}': {}", path, e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public ConfigurationSection getConfigurationSection(String path) {
+        ConfigurationSection section = getConfig().getConfigurationSection(path);
+        if (section == null) {
+            logger.debug("Секция '{}' не найдена в конфиге", path);
+        }
+        return section;
+    }
+
+    public Set<String> getKeys(String path, boolean deep) {
+        ConfigurationSection section = getConfigurationSection(path);
+        if (section != null) {
+            return section.getKeys(deep);
+        }
+        return new HashSet<>();
+    }
+
+    public boolean contains(String path) {
+        return getConfig().contains(path);
+    }
+
+    // ========================================
+    // Методы для работы с языковыми файлами
+    // ========================================
+
+    /**
+     * Получить сообщение из языкового файла
+     */
+    public String getLangMessage(String path, String def) {
+        return plugin.getLanguageManager().getMessage(path, def);
+    }
+
+    /**
+     * Получить сообщение из языкового файла
+     */
+    public String getLangMessage(String path) {
+        return plugin.getLanguageManager().getMessage(path);
+    }
+
+    /**
+     * Получить список сообщений из языкового файла
+     */
+    public List<String> getLangMessageList(String path) {
+        return plugin.getLanguageManager().getMessageList(path);
+    }
+
+    // Методы для звуков и частиц
     public boolean isSoundEnabled() {
-        return getBoolean("sound.enable_sound", true);
+        return getBoolean("settings.sound.enable_sound", true);
     }
 
     public boolean isParticlesEnabled() {
-        return getBoolean("particle_effect.enable_particles", true);
+        return getBoolean("settings.particle_effect.enable_particles", true);
     }
 
     public void playEffect(Player player, String soundPath, String particlePath) {
@@ -46,99 +185,50 @@ public class ConfigHandler {
     }
 
     public void playSound(Player player, String path) {
-        if (!isSoundEnabled()) return;
+        if (!isSoundEnabled() || player == null || !player.isOnline()) return;
 
         String soundName = getString(path, null);
         if (soundName == null) return;
 
         try {
             Sound sound = Sound.valueOf(soundName.toUpperCase());
-            float volume = (float) getDouble("sound.volume", 1.0);
-            float pitch = (float) getDouble("sound.pitch", 1.0);
+            float volume = (float) getDouble("settings.sound.volume", 1.0);
+            float pitch = (float) getDouble("settings.sound.pitch", 1.0);
             player.playSound(player.getLocation(), sound, volume, pitch);
-        } catch (IllegalArgumentException ex) {
-            logger.warn("Неверное имя звука: {}", soundName, ex);
+        } catch (IllegalArgumentException e) {
+            logger.warn("Неверное имя звука '{}': {}", soundName, e.getMessage());
         }
     }
 
     public void playParticle(Player player, String path) {
-        if (!isParticlesEnabled()) return;
+        if (!isParticlesEnabled() || player == null || !player.isOnline()) return;
 
         String particleName = getString(path, null);
         if (particleName == null) return;
 
         try {
             Particle particle = Particle.valueOf(particleName.toUpperCase());
-            int amount = getInt("particle_effect.amount", 5);
+            int amount = getInt("settings.particle_effect.amount", 5);
             player.getWorld().spawnParticle(particle, player.getLocation(), amount);
-        } catch (IllegalArgumentException ex) {
-            logger.warn("Неверное имя частицы: {}", particleName, ex);
+        } catch (IllegalArgumentException e) {
+            logger.warn("Неверное имя частицы '{}': {}", particleName, e.getMessage());
         }
     }
 
-    // -------------------- Конфигурация --------------------
-    public ConfigurationSection getConfigSection(String path) {
-        return plugin.getConfig().getConfigurationSection(path);
+    // Рандомные эффекты
+    public void playRandomSound(Player player, String... soundPaths) {
+        if (soundPaths.length == 0) return;
+        String randomPath = soundPaths[random.nextInt(soundPaths.length)];
+        playSound(player, randomPath);
     }
 
-    public void reload() {
-        plugin.reloadConfig();
-        papiEnabled = plugin.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI");
-        loadLinks();
+    public void playRandomParticle(Player player, String... particlePaths) {
+        if (particlePaths.length == 0) return;
+        String randomPath = particlePaths[random.nextInt(particlePaths.length)];
+        playParticle(player, randomPath);
     }
 
-    public void checkConfigVersion(double expectedVersion) {
-        double actual = plugin.getConfig().getDouble("config-version", -1);
-        if (actual != expectedVersion) {
-            logger.warn("⚠ Версия конфига ({}) не совпадает с ожидаемой ({})", actual, expectedVersion);
-        }
-    }
-
-    public boolean getBoolean(String path, boolean def) {
-        return plugin.getConfig().getBoolean(path, def);
-    }
-
-    public int getInt(String path, int def) {
-        return plugin.getConfig().getInt(path, def);
-    }
-
-    public double getDouble(String path, double def) {
-        return plugin.getConfig().getDouble(path, def);
-    }
-
-    public String getString(String path, String def) {
-        String value = plugin.getConfig().getString(path);
-        return value != null ? value : def;
-    }
-
-    public List<String> getMessageList(String path) {
-        List<String> raw = plugin.getConfig().getStringList(path);
-        return replaceLinks(raw);
-    }
-
-    public String getMessage(String path) {
-        String raw = plugin.getConfig().getString(path, "");
-        return replaceLinks(raw);
-    }
-
-    // -------------------- PlaceholderAPI --------------------
-    public void setPapiEnabled(boolean enabled) {
-        this.papiEnabled = enabled;
-    }
-
-    public boolean isPapiEnabled() {
-        return papiEnabled;
-    }
-
-    public String parseMessage(Player player, String text) {
-        if (text == null) return "";
-        if (papiEnabled && player != null) {
-            text = PlaceholderAPI.setPlaceholders(player, text);
-        }
-        return text;
-    }
-
-    // -------------------- LINKS --------------------
+    // LINKS
     public static class LinkEntry {
         private final String url;
         private final String text;
@@ -150,11 +240,19 @@ public class ConfigHandler {
 
         public String getUrl() { return url; }
         public String getText() { return text; }
+
+        @Override
+        public String toString() {
+            return "LinkEntry{url='" + url + "', text='" + text + "'}";
+        }
     }
 
     private void loadLinks() {
-        ConfigurationSection section = plugin.getConfig().getConfigurationSection("links");
-        if (section == null) return;
+        ConfigurationSection section = getConfig().getConfigurationSection("links");
+        if (section == null) {
+            logger.debug("Секция 'links' не найдена в конфиге");
+            return;
+        }
 
         Map<String, LinkEntry> result = new HashMap<>();
         for (String key : section.getKeys(false)) {
@@ -162,32 +260,13 @@ public class ConfigHandler {
                 String baseKey = key.replace("_url", "");
                 String url = section.getString(key, "");
                 String text = section.getString(baseKey + "_text", baseKey);
-                result.put(baseKey, new LinkEntry(url, text));
+                if (!url.isEmpty()) {
+                    result.put(baseKey, new LinkEntry(url, text));
+                }
             }
         }
         this.links = result;
-    }
-
-    public String replaceLinksMsg(String message) {
-        if (message == null) return "";
-        for (Map.Entry<String, LinkEntry> entry : links.entrySet()) {
-            String key = entry.getKey();
-            String url = entry.getValue().getUrl();
-            String text = entry.getValue().getText();
-
-            // MiniMessage тег для кликабельной ссылки
-            String miniTag = "<click:open_url='" + url + "'>" + text + "</click>";
-
-            // Заменяем в сообщении
-            message = message.replace("%" + key + "_link%", miniTag)
-                    .replace("%" + key + "_url%", url)
-                    .replace("%" + key + "_text%", text);
-        }
-        return message;
-    }
-
-    public Map<String, LinkEntry> getLinks() {
-        return links;
+        logger.debug("Загружено {} ссылок", result.size());
     }
 
     public String replaceLinks(String text) {
@@ -201,13 +280,38 @@ public class ConfigHandler {
         return text;
     }
 
-    public List<String> replaceLinks(List<String> lines) {
+    public String replaceLinksWithMiniMessage(String text) {
+        if (text == null) return "";
+        for (Map.Entry<String, LinkEntry> entry : links.entrySet()) {
+            String key = entry.getKey();
+            String url = entry.getValue().getUrl();
+            String linkText = entry.getValue().getText();
+
+            String miniMessageTag = "<click:open_url:'" + url + "'><hover:show_text:'Нажмите для перехода'>" + linkText + "</hover></click>";
+
+            text = text.replace("%" + key + "_link%", miniMessageTag)
+                    .replace("%" + key + "_url%", url)
+                    .replace("%" + key + "_text%", linkText);
+        }
+        return text;
+    }
+
+    public List<String> replaceLinksInList(List<String> lines) {
+        if (lines == null) return new ArrayList<>();
         return lines.stream()
                 .map(this::replaceLinks)
                 .collect(Collectors.toList());
     }
 
-    public Main getPlugin() {
-        return plugin;
+    public Map<String, LinkEntry> getLinks() {
+        return Map.copyOf(links);
+    }
+
+    public LinkEntry getLink(String key) {
+        return links.get(key);
+    }
+
+    public boolean hasLink(String key) {
+        return links.containsKey(key);
     }
 }
