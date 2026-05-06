@@ -93,23 +93,23 @@ settings:
   effects:
     first_join:
       sound: "ENTITY_PLAYER_LEVELUP"
-      particle: "FIREWORKS_SPARK"
+      particle: "FIREWORK"
       firework: true
     normal_join:
       sound: "ENTITY_PLAYER_LEVELUP"
-      particle: "EXPLOSION_LARGE"
+      particle: "EXPLOSION"          # ← Было EXPLOSION_LARGE
     leave:
       sound: "BLOCK_NOTE_BLOCK_PLING"
-      particle: "VILLAGER_HAPPY"
+      particle: "HAPPY_VILLAGER"     # ← Было VILLAGER_HAPPY
     death:
       sound: "ENTITY_PLAYER_HURT"
-      particle: "SMOKE_NORMAL"
+      particle: "SMOKE"              # ← Было SMOKE_NORMAL
     respawn:
       sound: "ENTITY_PLAYER_LEVELUP"
-      particle: "HEART"
+      particle: "HEART"              # ← OK
     killer:
       sound: "ENTITY_PLAYER_LEVELUP"
-      particle: "EXPLOSION_LARGE"
+      particle: "EXPLOSION"          # ← Было EXPLOSION_LARGE
 
   # Звуки
   sound:
@@ -122,17 +122,16 @@ settings:
     enable_particles: true
     amount: 5
 
-  # Босс-трекер (всё в одной секции!)
+  # Босс-трекер
   boss_fight:
     enabled: true
     track_damage: true
     show_top_hitters: true
     max_top_players: 5
     min_damage: 0.0
-    boss_names: []  # Пустой = использовать boss_list
-    worlds: []       # Пустой = все миры
+    boss_names: []
+    worlds: []
 
-    # Список боссов
     boss_list:
       ENDER_DRAGON:
         name: "Эндер Дракон"
@@ -155,10 +154,8 @@ settings:
         health_multiplier: 2.0
         track_damage: true
 
-    # Награды
     rewards:
       enabled: true
-      # Топ-1
       place_1:
         commands:
           - "give %player% diamond 5"
@@ -168,7 +165,6 @@ settings:
           - "GOLDEN_APPLE:5"
         money: 1000.0
         experience: 500
-      # Топ-2
       place_2:
         commands:
           - "give %player% diamond 3"
@@ -177,7 +173,6 @@ settings:
           - "ENDER_PEARL:16"
         money: 500.0
         experience: 300
-      # Топ-3
       place_3:
         commands:
           - "give %player% diamond 1"
@@ -191,7 +186,7 @@ settings:
   holidays:
     enabled: false
     interval_ticks: 1200
-    current: "auto"  # auto, new_year, halloween, etc.
+    current: "auto"
     settings:
       volume: 1.0
       pitch: 1.0

@@ -33,7 +33,7 @@ public class ConfigHandler {
         plugin.reloadConfig();
         plugin.getLanguageManager().reloadLanguages(); // Перезагружаем языки
         loadLinks();
-        logger.info("✓ Конфигурация перезагружена");
+        plugin.getLogUtil().info("✓ Конфигурация перезагружена");
     }
 
     public void checkConfigVersion(double expectedVersion) {
@@ -287,7 +287,11 @@ public class ConfigHandler {
             String url = entry.getValue().getUrl();
             String linkText = entry.getValue().getText();
 
-            String miniMessageTag = "<click:open_url:'" + url + "'><hover:show_text:'Нажмите для перехода'>" + linkText + "</hover></click>";
+            // MiniMessage: <click:open_url:'url'><hover:show_text:'подсказка'>ТЕКСТ</hover></click>
+            String miniMessageTag = "<click:open_url:'" + url + "'>" +
+                    "<hover:show_text:'Нажмите для перехода'>" +
+                    linkText +
+                    "</hover></click>";
 
             text = text.replace("%" + key + "_link%", miniMessageTag)
                     .replace("%" + key + "_url%", url)

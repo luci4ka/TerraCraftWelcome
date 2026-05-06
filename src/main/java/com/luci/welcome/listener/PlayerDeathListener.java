@@ -72,7 +72,7 @@ public class PlayerDeathListener implements Listener {
             deathConfig.broadcastEnvironmentDeath(player);
         }
 
-        if (plugin.getHookManager().isPapiEnabled()) {
+        if (plugin.getHookManager().isPapiEnabled() && plugin.getHookManager().getPapiHook().getExpansion() != null) {
             String cause = event.getDeathMessage() != null ?
                     event.getDeathMessage().replace(player.getName(), "") : "Неизвестно";
             plugin.getHookManager().getPapiHook().getExpansion().recordDeath(

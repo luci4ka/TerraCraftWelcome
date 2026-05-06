@@ -7,9 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.slf4j.LoggerFactory;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BossFightConfig {
 
@@ -30,22 +28,17 @@ public class BossFightConfig {
     public Map<String, String> getBossList() {
         ConfigurationSection section = config.getConfigurationSection("settings.boss_fight.boss_list");
         Map<String, String> bosses = new LinkedHashMap<>();
-
         if (section != null) {
             for (String key : section.getKeys(false)) {
-                String name = section.getString(key + ".name", key);
-                bosses.put(key.toUpperCase(), name);
+                bosses.put(key.toUpperCase(), section.getString(key + ".name", key));
             }
         }
-
-        // Стандартные боссы если список пуст
         if (bosses.isEmpty()) {
             bosses.put("ENDER_DRAGON", "Эндер Дракон");
             bosses.put("WITHER", "Визер");
             bosses.put("ELDER_GUARDIAN", "Древний Страж");
             bosses.put("WARDEN", "Хранитель");
         }
-
         return bosses;
     }
 
@@ -77,33 +70,23 @@ public class BossFightConfig {
         return config.getDouble("settings.boss_fight.min_damage", 0.0);
     }
 
-    // Сообщения
+    // Сообщения (✅ из языкового файла)
     public String getBossKillMessage(String bossName) {
-        return config.getString(
-                "settings.boss_fight.messages.boss_kill",
-                "<gold>⚔ Победа над боссом: <red>{boss_name}</red>!</gold>"
-        ).replace("{boss_name}", bossName);
+        return config.getLangMessage("boss.kill", "<gold>⚔ Победа над боссом: <red>{boss_name}</red>!</gold>")
+                .replace("{boss_name}", bossName);
     }
 
     public String getBossTopIntro() {
-        return config.getString(
-                "settings.boss_fight.messages.boss_top_intro",
-                "<green>Игроки, нанесшие урон:</green>"
-        );
+        return config.getLangMessage("boss.top_intro", "<green>Игроки, нанесшие урон:</green>");
     }
 
     public String getBossTopOutro() {
-        return config.getString(
-                "settings.boss_fight.messages.boss_top_outro",
-                "<green>Поздравляем победителей!</green>"
-        );
+        return config.getLangMessage("boss.top_outro", "<green>Поздравляем победителей!</green>");
     }
 
     public String formatBossTopPlayer(String playerName, double damage, double percent) {
-        String template = config.getString(
-                "settings.boss_fight.messages.boss_top_player",
-                "<yellow>{player_name}</yellow>: {damage}❤ (<gray>{percent}%</gray>)"
-        );
+        String template = config.getLangMessage("boss.top_player",
+                "<yellow>{player_name}</yellow>: {damage}❤ (<gray>{percent}%</gray>)");
         return template
                 .replace("{player_name}", playerName)
                 .replace("{damage}", String.format("%.1f", damage))
@@ -111,19 +94,20 @@ public class BossFightConfig {
     }
 
     public String formatBossTopPlayerAdvanced(int position, String playerName, double damage, double percent) {
-        // Используем formatBossTopPlayer внутри!
-        String base = formatBossTopPlayer(playerName, damage, percent);
-        return "<gold>#" + position + "</gold> " + base;
+        String template = config.getLangMessage("boss.top_player_advanced",
+                "<gold>#{position}</gold> <yellow>{player_name}</yellow>: <red>{damage}❤</red> (<gray>{percent}%</gray>)");
+        return template
+                .replace("{position}", String.valueOf(position))
+                .replace("{player_name}", playerName)
+                .replace("{damage}", String.format("%.1f", damage))
+                .replace("{percent}", String.format("%.1f", percent));
     }
 
     public String getNoDamageMessage() {
-        return config.getString(
-                "settings.boss_fight.messages.no_damage",
-                "<gray>Никто не нанёс урон боссу</gray>"
-        );
+        return config.getLangMessage("boss.no_damage", "<gray>Никто не нанёс урон боссу</gray>");
     }
 
-    // Компоненты для отправки (используем в листенере)
+    // Компоненты
     public Component getBossKillMessageComponent(String bossName) {
         return miniMessage.deserialize(getBossKillMessage(bossName));
     }
@@ -170,25 +154,11 @@ public class BossFightConfig {
     }
 
     public List<String> getRewardCommands(String place) {
-        return config.getStringList("settings.boss_fight.rewards." + place);
+        return config.getStringList("settings.boss_fight.rewards." + place + ".commands");
     }
 
     public double getRewardMoney(String place) {
-        return config.getDouble("settings.boss_fight.rewards." + place + "_money", 0.0);
-    }
-
-    // Информация о боссах
-    public List<String> getBossNames() {
-        List<String> names = config.getStringList("settings.boss_fight.boss_names");
-        if (names.isEmpty()) {
-            names = List.of("ENDER_DRAGON", "WITHER", "ELDER_GUARDIAN", "WARDEN");
-        }
-        return names;
-    }
-
-    public boolean isBossWorld(String worldName) {
-        List<String> worlds = config.getStringList("settings.boss_fight.worlds");
-        return worlds.isEmpty() || worlds.contains(worldName) || worlds.contains("*");
+        return config.getDouble("settings.boss_fight.rewards." + place + ".money", 0.0);
     }
 
     public int getRewardExperience(String place) {
@@ -199,12 +169,16 @@ public class BossFightConfig {
         return config.getStringList("settings.boss_fight.rewards." + place + ".items");
     }
 
-    // Уведомления (используем getBossSpawnMessage в компоненте)
+    // Боссы
+    public boolean isBossWorld(String worldName) {
+        List<String> worlds = config.getStringList("settings.boss_fight.worlds");
+        return worlds.isEmpty() || worlds.contains(worldName) || worlds.contains("*");
+    }
+
+    // Уведомления (✅ из языкового файла)
     public String getBossSpawnMessage(String bossName) {
-        return config.getString(
-                "settings.boss_fight.messages.boss_spawn",
-                "<red>⚠ Босс {boss_name} появился!</red>"
-        ).replace("{boss_name}", bossName);
+        return config.getLangMessage("boss.spawn", "<red>⚠ Босс {boss_name} появился!</red>")
+                .replace("{boss_name}", bossName);
     }
 
     public Component getBossSpawnMessageComponent(String bossName) {
@@ -212,11 +186,11 @@ public class BossFightConfig {
     }
 
     public String getBossSpawnTitle() {
-        return config.getString("settings.boss_fight.messages.boss_title", "<red>Босс появился!</red>");
+        return config.getLangMessage("titles.boss_spawn.title", "<red>Босс появился!</red>");
     }
 
     public String getBossSpawnSubtitle() {
-        return config.getString("settings.boss_fight.messages.boss_subtitle", "<gold>Приготовьтесь к битве!</gold>");
+        return config.getLangMessage("titles.boss_spawn.subtitle", "<gold>Приготовьтесь к битве!</gold>");
     }
 
     public LoggerUtil getLogger() {

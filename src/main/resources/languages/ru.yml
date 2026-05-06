@@ -5,9 +5,9 @@ motd:
   lines:
     - "<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>"
     - "<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>"
-    - "<dark_purple>| <green>Подключайся к нашему %vk_text%:</green>"
-    - "<dark_purple>| <green>Наш %site_text%:</green>"
-    - "<dark_purple>| <green>Присоединяйся в %discord_text%:</green>"
+    - "<dark_purple>| <green>Подключайся к нашему %vk_link%:</green>"
+    - "<dark_purple>| <green>Наш %site_link%:</green>"
+    - "<dark_purple>| <green>Присоединяйся в %discord_link%:</green>"
     - "<dark_purple>| <gray>Желаем приятной игры!</gray>"
 
 # Титулы

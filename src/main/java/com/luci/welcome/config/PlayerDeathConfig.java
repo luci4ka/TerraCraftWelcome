@@ -4,7 +4,6 @@ import com.luci.welcome.utils.LoggerUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.slf4j.LoggerFactory;
@@ -38,22 +37,20 @@ public class PlayerDeathConfig {
     public void broadcastPvpDeath(Player victim, Player killer) {
         if (victim == null || killer == null) return;
 
-        List<String> messages = config.getStringList("messages.global.pvp_message.messages");
+        // ✅ Берём из языкового файла
+        List<String> messages = config.getLangMessageList("death.pvp");
         if (messages.isEmpty()) {
-            messages = getDefaultPvpMessages();
+            messages = List.of("<red>⚔ {killer} убил {victim} в PvP битве!</red>");
         }
 
         String template = messages.get(random.nextInt(messages.size()));
         String msg = template
                 .replace("{killer}", killer.getName())
                 .replace("{victim}", victim.getName())
-                .replace("{player}", victim.getName())
                 .replace("%player_name%", victim.getName());
 
         msg = config.replaceLinksWithMiniMessage(msg);
         broadcast(msg);
-
-        logger.debug("PVP: " + killer.getName() + " убил " + victim.getName());
     }
 
     // -------------------
@@ -63,14 +60,12 @@ public class PlayerDeathConfig {
         if (player == null || mob == null) return;
 
         String mobKey = mob.getType().name().toUpperCase();
-        List<String> messages = config.getStringList("messages.global.mob_death_message." + mobKey);
 
-        // Если нет сообщений для конкретного моба, используем default
+        // ✅ Берём из языкового файла: death.mob.ZOMBIE, death.mob.SKELETON, death.mob.default
+        List<String> messages = config.getLangMessageList("death.mob." + mobKey);
         if (messages.isEmpty()) {
-            messages = config.getStringList("messages.global.mob_death_message.default");
+            messages = config.getLangMessageList("death.mob.default");
         }
-
-        // Если и default нет, используем запасное сообщение
         if (messages.isEmpty()) {
             messages = List.of("<gray>%player_name% был убит мобом</gray>");
         }
@@ -82,8 +77,6 @@ public class PlayerDeathConfig {
             msg = config.replaceLinksWithMiniMessage(msg);
             broadcast(msg);
         }
-
-        logger.debug("Игрок " + player.getName() + " убит мобом: " + mob.getType().name());
     }
 
     // -------------------
@@ -92,27 +85,26 @@ public class PlayerDeathConfig {
     public void broadcastEnvironmentDeath(Player player) {
         if (player == null) return;
 
-        List<String> messages = config.getStringList("messages.global.player_kill_message.messages");
+        // ✅ Берём из языкового файла: death.player_kill
+        List<String> messages = config.getLangMessageList("death.player_kill");
         if (messages.isEmpty()) {
-            messages = getDefaultEnvironmentMessages();
+            messages = List.of("<gray>☠ %player_name% погиб</gray>");
         }
 
         String template = messages.get(random.nextInt(messages.size()));
-        String msg = template.replace("%player_name%", player.getName())
-                .replace("{player}", player.getName());
+        String msg = template.replace("%player_name%", player.getName());
         msg = config.replaceLinksWithMiniMessage(msg);
         broadcast(msg);
-
-        logger.debug("Игрок " + player.getName() + " умер от окружения");
     }
 
     // -------------------
-    // Custom death messages
+    // Custom death messages (лава, падение, взрыв...)
     // -------------------
     public void broadcastCustomDeath(Player player, String deathType) {
         if (player == null || deathType == null) return;
 
-        List<String> messages = config.getStringList("messages.global." + deathType + ".messages");
+        // ✅ Берём из языкового файла: death.lava, death.fall, death.explosion
+        List<String> messages = config.getLangMessageList("death." + deathType);
         if (messages.isEmpty()) {
             broadcastEnvironmentDeath(player);
             return;
@@ -130,7 +122,8 @@ public class PlayerDeathConfig {
     public void sendRespawn(Player player) {
         if (player == null || !player.isOnline()) return;
 
-        List<String> messages = config.getStringList("messages.global.respawn_message");
+        // ✅ Берём из языкового файла: respawn
+        List<String> messages = config.getLangMessageList("respawn");
         if (messages.isEmpty()) {
             messages = List.of("<green>Вы возродились!</green>");
         }
@@ -141,8 +134,6 @@ public class PlayerDeathConfig {
 
         Component component = miniMessage.deserialize(msg);
         player.sendMessage(component);
-
-        logger.debug("Игрок " + player.getName() + " возродился");
     }
 
     // -------------------
@@ -151,8 +142,9 @@ public class PlayerDeathConfig {
     public void sendDeathTitle(Player player) {
         if (player == null || !player.isOnline()) return;
 
-        String title = config.getString("messages.global.death_title.title", "<red>Вы погибли!</red>");
-        String subtitle = config.getString("messages.global.death_title.subtitle", "<gray>Но вы ещё вернётесь...</gray>");
+        // ✅ Берём из языкового файла: titles.death.title, titles.death.subtitle
+        String title = config.getLangMessage("titles.death.title", "<red>Вы погибли!</red>");
+        String subtitle = config.getLangMessage("titles.death.subtitle", "<gray>Но вы ещё вернётесь...</gray>");
 
         player.sendTitlePart(
                 net.kyori.adventure.title.TitlePart.TITLE,
@@ -180,23 +172,6 @@ public class PlayerDeathConfig {
     public void playKillerEffect(Player killer) {
         if (killer == null || !killer.isOnline()) return;
         config.playEffect(killer, "settings.effects.killer.sound", "settings.effects.killer.particle");
-    }
-
-    // -------------------
-    // Default messages
-    // -------------------
-    private List<String> getDefaultPvpMessages() {
-        return List.of(
-                "<red>⚔ {killer} убил {victim} в PvP битве!</red>",
-                "<gold>{victim} был повержен игроком {killer}</gold>"
-        );
-    }
-
-    private List<String> getDefaultEnvironmentMessages() {
-        return List.of(
-                "<gray>☠ %player_name% погиб</gray>",
-                "<dark_gray>RIP %player_name%</dark_gray>"
-        );
     }
 
     // -------------------

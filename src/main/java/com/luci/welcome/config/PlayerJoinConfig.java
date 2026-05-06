@@ -8,7 +8,6 @@ import net.kyori.adventure.title.TitlePart;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -35,38 +34,34 @@ public class PlayerJoinConfig {
     public void sendMOTD(Player player) {
         if (player == null || !player.isOnline()) return;
 
-        ConfigurationSection motd = config.getConfigurationSection("messages.local.motd");
-        if (motd == null || !motd.getBoolean("enabled", true)) return;
+        // Проверяем, включён ли MOTD в config.yml
+        if (!isMOTDEnabled()) return;
 
-        List<String> lines = motd.getStringList("lines");
+        // ✅ Берём строки из языкового файла
+        List<String> lines = config.getLangMessageList("motd.lines");
+
         if (lines.isEmpty()) {
-            logger.debug("MOTD не настроен, пропускаем");
+            logger.debug("MOTD не настроен в языковом файле, пропускаем");
             return;
         }
 
-        int sentCount = 0;
         for (String line : lines) {
             if (line == null || line.isEmpty()) continue;
-            if (sendLine(player, line)) {
-                sentCount++;
-            }
+            sendLine(player, line);
         }
     }
 
     private boolean sendLine(Player player, String line) {
         try {
-            // Замена базовых плейсхолдеров
             line = line.replace("%player_name%", player.getName())
                     .replace("%player_displayname%", player.getDisplayName())
                     .replace("%player_world%", player.getWorld().getName())
                     .replace("%online_players%", String.valueOf(Bukkit.getOnlinePlayers().size()))
                     .replace("%max_players%", String.valueOf(Bukkit.getMaxPlayers()));
 
-            // Замена ссылок и плейсхолдеров
             line = config.replaceLinksWithMiniMessage(line);
             line = config.parsePlaceholders(player, line);
 
-            // Парсим и отправляем
             Component component = miniMessage.deserialize(line);
             player.sendMessage(component);
             return true;
@@ -82,25 +77,20 @@ public class PlayerJoinConfig {
     public void broadcastJoinMessage(Player player, boolean firstJoin) {
         if (!isJoinEnabled() || player == null) return;
 
-        String path = "messages.global.";
-        if (firstJoin) {
-            path += "first_join_message";
-        } else {
-            path += "join_message";
-        }
-
+        String path = firstJoin ? "join.first_join" : "join.default";
         broadcastRandomMessage(player, path);
     }
 
     public void broadcastQuitMessage(Player player) {
         if (!isQuitEnabled() || player == null) return;
-        broadcastRandomMessage(player, "messages.global.quit_message");
+        broadcastRandomMessage(player, "quit.default");
     }
 
     public void broadcastRandomMessage(Player player, String path) {
         if (player == null) return;
 
-        List<String> messages = config.getStringList(path);
+        // ✅ Берём сообщения из языкового файла
+        List<String> messages = config.getLangMessageList(path);
         if (messages.isEmpty()) {
             messages = getDefaultMessages(path);
         }
@@ -114,31 +104,30 @@ public class PlayerJoinConfig {
     public void broadcastPermissionMessage(Player player, String type) {
         if (player == null) return;
 
-        String path;
+        String permissionPath;
         if (player.hasPermission("welcome.admin")) {
-            path = "messages.global.admin_" + type + "_message";
+            permissionPath = type + ".admin";
         } else if (player.hasPermission("welcome.vip")) {
-            path = "messages.global.vip_" + type + "_message";
+            permissionPath = type + ".vip";
         } else {
-            path = "messages.global.default_" + type + "_message";
+            permissionPath = type + ".default";
         }
 
-        broadcastRandomMessage(player, path);
+        broadcastRandomMessage(player, permissionPath);
     }
 
     // -------------------
     // Titles
     // -------------------
     public void sendJoinTitle(Player player, boolean firstJoin) {
-        if (player == null || !player.isOnline()) return;
+        if (player == null || !player.isOnline() || !isTitlesEnabled()) return;
 
-        String titlePath = firstJoin ? "messages.local.first_join_title" : "messages.local.join_title";
-        String subtitlePath = firstJoin ? "messages.local.first_join_subtitle" : "messages.local.join_subtitle";
+        String titleKey = firstJoin ? "titles.first_join.title" : "titles.join.title";
+        String subtitleKey = firstJoin ? "titles.first_join.subtitle" : "titles.join.subtitle";
 
-        String title = config.getString(titlePath + ".title", firstJoin ?
+        String title = config.getLangMessage(titleKey, firstJoin ?
                 "<gold>Добро пожаловать!</gold>" : "<green>С возвращением!</green>");
-        String subtitle = config.getString(subtitlePath + ".subtitle",
-                "<gray>%player_name%</gray>");
+        String subtitle = config.getLangMessage(subtitleKey, "<gray>%player_name%</gray>");
 
         title = processMessage(title, player);
         subtitle = processMessage(subtitle, player);
@@ -146,7 +135,6 @@ public class PlayerJoinConfig {
         player.sendTitlePart(TitlePart.TITLE, miniMessage.deserialize(title));
         player.sendTitlePart(TitlePart.SUBTITLE, miniMessage.deserialize(subtitle));
 
-        // Настройки титула
         int fadeIn = config.getInt("messages.local.join_title.fade_in", 10);
         int stay = config.getInt("messages.local.join_title.stay", 70);
         int fadeOut = config.getInt("messages.local.join_title.fade_out", 20);
@@ -206,21 +194,12 @@ public class PlayerJoinConfig {
                     .withTrail()
                     .build();
 
-            Firework firework = player.getWorld().spawn(
-                    player.getLocation(),
-                    Firework.class
-            );
-
-            // Правильный способ: через FireworkMeta
+            Firework firework = player.getWorld().spawn(player.getLocation(), Firework.class);
             FireworkMeta meta = firework.getFireworkMeta();
             meta.addEffect(effect);
-            meta.setPower(1); // Сила полёта (1-3)
+            meta.setPower(1);
             firework.setFireworkMeta(meta);
-
-            // Запускаем фейерверк
-            firework.detonate(); // мгновенный взрыв на месте
-            // firework.launch(); // альтернатива: запустить в воздух
-
+            firework.detonate();
         } catch (Exception e) {
             logger.error("Ошибка спавна фейерверка для игрока " + player.getName(), e);
         }
@@ -251,24 +230,20 @@ public class PlayerJoinConfig {
     private String processMessage(String message, Player player) {
         if (message == null || player == null) return "";
 
-        // Замена базовых плейсхолдеров
         message = message.replace("%player_name%", player.getName())
                 .replace("%player_displayname%", player.getDisplayName())
                 .replace("%player_world%", player.getWorld().getName())
                 .replace("%online_players%", String.valueOf(Bukkit.getOnlinePlayers().size()))
                 .replace("%max_players%", String.valueOf(Bukkit.getMaxPlayers()));
 
-        // Замена ссылок с MiniMessage
         message = config.replaceLinksWithMiniMessage(message);
-
-        // Парсинг PlaceholderAPI
         message = config.parsePlaceholders(player, message);
 
         return message;
     }
 
     private List<String> getDefaultMessages(String path) {
-        if (path.contains("join")) {
+        if (path.contains("join") || path.contains("first_join")) {
             return List.of(
                     "<green>➜ %player_name% присоединился к серверу!</green>",
                     "<gold>Рады видеть тебя, %player_name%!</gold>"
@@ -277,10 +252,6 @@ public class PlayerJoinConfig {
             return List.of(
                     "<red>⬅ %player_name% покинул сервер</red>",
                     "<gray>%player_name% ушёл... Но обещал вернуться!</gray>"
-            );
-        } else if (path.contains("first_join")) {
-            return List.of(
-                    "<gold>✨ %player_name% впервые на сервере! Поприветствуем! ✨</gold>"
             );
         }
         return List.of("<gray>%player_name%</gray>");

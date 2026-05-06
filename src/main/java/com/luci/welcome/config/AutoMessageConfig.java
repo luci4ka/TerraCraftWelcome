@@ -3,7 +3,6 @@ package com.luci.welcome.config;
 import com.luci.welcome.utils.LoggerUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.slf4j.LoggerFactory;
 
@@ -34,42 +33,37 @@ public class AutoMessageConfig {
         return Math.max(100, config.getInt("auto_messages.interval_ticks", 6000));
     }
 
-    /**
-     * Загружает все авто-сообщения и сообщения персонажей из конфигурации
-     */
     public void loadMessages() {
         allMessages.clear();
 
-        // Загружаем базовые авто-сообщения из языкового файла
+        // ✅ Базовые авто-сообщения из языкового файла: auto_messages
         List<String> baseMessages = config.getLangMessageList("auto_messages");
         if (!baseMessages.isEmpty()) {
             allMessages.addAll(baseMessages);
             logger.info("Загружено " + baseMessages.size() + " базовых авто-сообщений из языка");
         }
 
-        // Загружаем сообщения персонажей из конфига
-        loadCharacterMessages();
+        // ✅ Сообщения персонажей из языкового файла: characters.greetings, characters.tips, characters.fun
+        loadCharacterMessagesFromLang();
 
         logger.info("Итоговое количество авто-сообщений: " + allMessages.size());
     }
 
     /**
-     * Загружает сообщения персонажей из конфигурации
+     * Загружает сообщения персонажей из языкового файла
      */
-    private void loadCharacterMessages() {
+    private void loadCharacterMessagesFromLang() {
+        // Персонажи всё ещё из config.yml (настройка)
         List<Map<?, ?>> charactersRaw = config.getMapList("auto_messages.characters");
         if (charactersRaw == null || charactersRaw.isEmpty()) {
             logger.debug("Персонажи не найдены в конфиге");
             return;
         }
 
-        ConfigurationSection messagesByChar = config.getConfigurationSection("auto_messages.messages_by_character");
-        if (messagesByChar == null) {
-            logger.warn("Секция 'messages_by_character' не найдена");
-            return;
-        }
-
+        // ✅ Категории сообщений из языкового файла: characters.greetings, characters.tips, characters.fun
+        String[] categories = {"greetings", "tips", "fun"};
         int charMessageCount = 0;
+
         for (Map<?, ?> rawCharMap : charactersRaw) {
             Map<String, Object> charMap = convertMap(rawCharMap);
             if (charMap.isEmpty()) continue;
@@ -83,8 +77,10 @@ public class AutoMessageConfig {
             for (Map.Entry<String, String> moodEntry : moods.entrySet()) {
                 String mood = color + moodEntry.getValue();
 
-                for (String category : messagesByChar.getKeys(false)) {
-                    List<String> msgs = messagesByChar.getStringList(category);
+                for (String category : categories) {
+                    // ✅ Берём сообщения из языкового файла
+                    List<String> msgs = config.getLangMessageList("characters." + category);
+                    if (msgs.isEmpty()) continue;
 
                     for (String msg : msgs) {
                         if (msg == null || msg.isEmpty()) continue;
@@ -101,12 +97,9 @@ public class AutoMessageConfig {
             }
         }
 
-        logger.debug("Загружено " + charMessageCount + " сообщений от персонажей");
+        logger.debug("Загружено сообщений от персонажей из языка: " + charMessageCount);
     }
 
-    /**
-     * Безопасное преобразование Map
-     */
     private Map<String, Object> convertMap(Map<?, ?> rawMap) {
         Map<String, Object> result = new HashMap<>();
         for (Map.Entry<?, ?> entry : rawMap.entrySet()) {
@@ -117,9 +110,6 @@ public class AutoMessageConfig {
         return result;
     }
 
-    /**
-     * Безопасное получение Map с эмоциями
-     */
     private Map<String, String> getMoodsMap(Object moodsObject) {
         if (moodsObject instanceof Map<?, ?> rawMoods) {
             return rawMoods.entrySet().stream()
@@ -132,9 +122,6 @@ public class AutoMessageConfig {
         return new HashMap<>();
     }
 
-    /**
-     * Возвращает случайное сообщение для игрока
-     */
     public String getRandomMessage(Player player) {
         if (allMessages.isEmpty()) {
             return "<red>Нет доступных сообщений</red>";
@@ -151,7 +138,6 @@ public class AutoMessageConfig {
 
         lastMessage = message;
 
-        // Заменяем плейсхолдеры игрока
         if (player != null) {
             message = message.replace("%player_name%", player.getName())
                     .replace("%player_displayname%", player.getDisplayName())
@@ -161,13 +147,8 @@ public class AutoMessageConfig {
         return message;
     }
 
-    /**
-     * Преобразует строку в Component для отправки игроку
-     */
     public Component deserialize(String message) {
-        if (message == null || message.isEmpty()) {
-            return Component.empty();
-        }
+        if (message == null || message.isEmpty()) return Component.empty();
 
         try {
             String withLinks = config.replaceLinksWithMiniMessage(message);
@@ -178,9 +159,6 @@ public class AutoMessageConfig {
         }
     }
 
-    /**
-     * Отправляет сообщение игроку
-     */
     public void sendMessage(Player player, String message) {
         if (player == null || !player.isOnline() || message == null) return;
 
@@ -192,9 +170,6 @@ public class AutoMessageConfig {
         }
     }
 
-    /**
-     * Проверить, есть ли сообщения
-     */
     public boolean hasMessages() {
         return !allMessages.isEmpty();
     }

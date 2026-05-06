@@ -60,7 +60,7 @@ public class PlayerJoinListener implements Listener {
             }
         }
 
-        if (plugin.getHookManager().isPapiEnabled()) {
+        if (plugin.getHookManager().isPapiEnabled() && plugin.getHookManager().getPapiHook().getExpansion() != null) {
             plugin.getHookManager().getPapiHook().getExpansion().recordJoin(player.getUniqueId());
         }
 

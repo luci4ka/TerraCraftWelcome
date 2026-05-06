@@ -133,24 +133,11 @@ public class HolidayEffectTask {
      * Применяет эффекты к конкретному игроку
      */
     private void applyEffectsToPlayer(Player player, String holiday, Particle particle, Sound sound) {
-        // Спавним частицы
-        int particleAmount = plugin.getConfig().getInt("holidays.settings.particle_amount", 10);
-        player.getWorld().spawnParticle(particle, player.getLocation(), particleAmount);
+        // Воспроизводим эффекты (звук + частицы)
+        holidayConfig.playHolidayEffect(player, holiday);
 
-        // Воспроизводим звук
-        float volume = (float) plugin.getConfig().getDouble("holidays.settings.volume", 1.0);
-        float pitch = (float) plugin.getConfig().getDouble("holidays.settings.pitch", 1.0);
-        player.playSound(player.getLocation(), sound, volume, pitch);
-
-        // Отправляем сообщение (опционально)
-        boolean sendMessages = plugin.getConfig().getBoolean("holidays.settings.send_messages", true);
-        if (sendMessages) {
-            String message = holidayConfig.getRandomMessage(holiday, player);
-            if (message != null && !message.isEmpty()) {
-                Component component = holidayConfig.deserialize(message);
-                player.sendMessage(component);
-            }
-        }
+        // Отправляем сообщение
+        holidayConfig.sendHolidayMessage(player);
 
         // Дополнительные эффекты
         applyExtraEffects(player, holiday);
