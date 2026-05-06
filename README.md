@@ -1,12 +1,10 @@
-Конечно! Вот стильный README для твоего Welcome плагина:
-
 ```markdown
 # 🎉 Welcome Plugin v2.2
 
-[![Paper](https://img.shields.io/badge/Paper-1.21.4-blue?style=flat-square&logo=minecraft)](https://papermc.io)
-[![Java](https://img.shields.io/badge/Java-21-orange?style=flat-square&logo=java)](https://adoptium.net)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![bStats](https://img.shields.io/badge/bStats-✨-yellow?style=flat-square)](https://bstats.org)
+![Paper](https://img.shields.io/badge/Paper-1.21.4-blue)
+![Java](https://img.shields.io/badge/Java-21-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+![bStats](https://img.shields.io/badge/bStats-metrics-yellow)
 
 > ✨ Современный плагин для Paper 1.21.4 с кастомными оповещениями о входе, выходе, смерти игроков, босс-трекером, праздничными эффектами и поддержкой PlaceholderAPI.
 
