@@ -1,37 +1,19 @@
 name: Welcome
-version: '2.2'
-main: com.luci.welcome.Main
+version: '2.0'
+main: ru.net.terracraft.welcome.Main
 api-version: '1.21'
-author: luci
-description: "✨ Welcome-плагин: оповещения о входе, выходе и смерти игроков с настраиваемыми эффектами звука и частиц 🎉"
+authors: [luci]
+description: "Welcome: оповещения о входе, выходе и смерти игроков \n с настраиваемыми эффектами звука и частиц"
+website: terracraft.net.ru
 
 dependencies:
   server:
     PlaceholderAPI:
       load: BEFORE
       required: false
-      join-classpath: true
     Vault:
       load: BEFORE
       required: false
-      join-classpath: true
-
-permissions:
-  welcome.use:
-    description: Использование команды /welcome
-    default: true
-  welcome.admin:
-    description: Административные команды Welcome
-    default: op
-    children:
-      welcome.reload: true
-      welcome.language: true
-  welcome.vip:
-    description: VIP статус для особых сообщений
-    default: false
-  welcome.reload:
-    description: Перезагрузка конфигурации
-    default: op
-  welcome.language:
-    description: Смена языка плагина
-    default: op
+    LuckPerms:
+      load: BEFORE
+      required: false

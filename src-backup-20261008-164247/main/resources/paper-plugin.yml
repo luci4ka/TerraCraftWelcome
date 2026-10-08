@@ -1,0 +1,19 @@
+name: Welcome
+version: '2.0'
+main: ru.net.terracraft.welcome.Main
+api-version: '1.21'
+authors: [luci]
+description: "Welcome: оповещения о входе, выходе и смерти игроков \n с настраиваемыми эффектами звука и частиц"
+website: terracraft.net.ru
+
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+    Vault:
+      load: BEFORE
+      required: false
+    LuckPerms:
+      load: BEFORE
+      required: false

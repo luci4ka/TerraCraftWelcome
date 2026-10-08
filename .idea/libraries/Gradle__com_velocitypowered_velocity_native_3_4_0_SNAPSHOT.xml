@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.velocitypowered:velocity-native:3.4.0-SNAPSHOT" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.velocitypowered" artifactId="velocity-native" version="3.4.0-SNAPSHOT" baseVersion="3.4.0-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/com.velocitypowered/velocity-native/3.4.0-SNAPSHOT/132240556d676676a9b6ce2e97e8bc0c0d81e1b9/velocity-native-3.4.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
