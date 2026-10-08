@@ -1,0 +1,200 @@
+# Русский язык - Welcome Plugin
+
+# MOTD
+motd:
+  lines:
+    - "<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>"
+    - "<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>"
+    - "<dark_purple>| <green>Подключайся к нашему %vk_link%:</green>"
+    - "<dark_purple>| <green>Наш %site_link%:</green>"
+    - "<dark_purple>| <green>Присоединяйся в %discord_link%:</green>"
+    - "<dark_purple>| <gray>Желаем приятной игры!</gray>"
+
+# Титулы
+titles:
+  first_join:
+    title: "<gold>Добро пожаловать!</gold>"
+    subtitle: "<gray>%player_name%, ты у нас впервые!</gray>"
+  join:
+    title: "<green>С возвращением!</green>"
+    subtitle: "<gray>%player_name%</gray>"
+  death:
+    title: "<red>Вы погибли!</red>"
+    subtitle: "<gray>Но вы ещё вернётесь...</gray>"
+
+# Action Bar
+actionbar:
+  first_join: "<gold>✨ Добро пожаловать на сервер!</gold>"
+  join: "<green>С возвращением, %player_name%!</green>"
+
+# Сообщения входа/выхода
+join:
+  first_join:
+    - "<gold>🎉 Новичок на сервере! Встречаем <white>%player_name%</white> бурными аплодисментами!</gold>"
+    - "<green>✨ %player_name% только что присоединился!</green>"
+    - "<aqua>Добро пожаловать, %player_name%!</aqua>"
+  default:
+    - "<green>➕ <gray>Опа! <white>%player_name%</white> заглянул в гости. Не забудь тапки у входа!</gray>"
+    - "<blue>%player_name% присоединился к нам!</blue>"
+    - "<yellow>Приветствуем %player_name%!</yellow>"
+  vip:
+    - "<yellow>👑 VIP <white>%player_name%</white> соизволил появиться. Ложитесь лицом к полу!</yellow>"
+    - "<gold>VIP %player_name% присоединился к серверу!</gold>"
+    - "<green>Привет VIP %player_name%!</green>"
+  admin:
+    - "<red>⚡ Владыка сервера <white>%player_name%</white> снизошёл к смертным!</red>"
+    - "<dark_red>%player_name% появился среди нас. Почти как бог.</dark_red>"
+    - "<gold>О, великий %player_name% вошёл!</gold>"
+
+quit:
+  default:
+    - "<red>➖ <gray><white>%player_name%</white> вышел... наверное, за чаем.</gray>"
+    - "<gray>%player_name% покинул сервер.</gray>"
+    - "<yellow>До встречи, %player_name%!</yellow>"
+  vip:
+    - "<gold>👋 VIP <white>%player_name%</white> ушёл. Сервер стал на 5% менее гламурным.</gold>"
+    - "<yellow>VIP %player_name% покинул нас.</yellow>"
+    - "<gray>Прощай, VIP %player_name%!</gray>"
+  admin:
+    - "<dark_red>⚡ <white>%player_name%</white> — админ вышел. Беспредел отменяется.</dark_red>"
+    - "<gray>%player_name% покинул сервер. Легенда ушла.</gray>"
+    - "<yellow>До свидания, великий %player_name%!</yellow>"
+
+# Смерти
+death:
+  pvp:
+    - "<red>⚔ {killer} показал {victim}, кто тут босс!</red>"
+    - "<gold>{killer}</gold> выписал <red>{victim}</red> пропуск в мир духов!"
+    - "<dark_red>{victim}</dark_red> не устоял против могущества {killer}!"
+
+  lava:
+    - "<red>🔥 %player_name% пытался обняться с лавой. Не вышло."
+    - "<gold>%player_name%</gold> превратился в шашлык... Не самый вкусный."
+    - "<dark_red>%player_name%</dark_red> понял, что лаву лучше смотреть издалека."
+
+  fall:
+    - "<gray>💥 %player_name% решил, что умеет летать. Спойлер: нет."
+    - "<red>☠ %player_name%</red> проиграл битву с гравитацией."
+    - "<yellow>%player_name%</yellow> изучил законы физики на практике."
+
+  explosion:
+    - "<red>💥 %player_name% взорвался!</red>"
+    - "<gold>%player_name%</gold> слишком близко подошёл к взрывчатке."
+
+  player_kill:
+    - "<red>💀 %player_name%</red> улетел в лучший мир. По билету без возврата."
+    - "<gold>⚰ %player_name%</gold> получил удар судьбы... или киркой."
+    - "<gray>%player_name%</gray> неожиданно встретил свою смерть."
+
+  mob:
+    ZOMBIE:
+      - "<dark_red>%player_name%</dark_red> был влюблен в зомби... теперь это не важно!"
+      - "<gold>%player_name%</gold> стал любимым обедом для зомби!"
+      - "<gray>%player_name% попытался дружить с зомби, не вышло."
+    SKELETON:
+      - "<gray>%player_name%</gray> стал перекрёстной мишенью для скелетов!"
+      - "<white>%player_name%</white> встретил стрелы скелета лицом к лицу!"
+      - "<yellow>%player_name%</yellow> понял, что кости могут быть смертельны."
+    CREEPER:
+      - "<green>%player_name%</green> слишком близко подошёл к зелёному взрывному другу!"
+      - "<yellow>%player_name%</yellow> превратился в кучку блоков после встречи с крипером!"
+      - "<red>%player_name%</red> не рассчитал дистанцию от крипера!"
+    SPIDER:
+      - "<dark_purple>%player_name%</dark_purple> запутался в паутине и проиграл!"
+      - "<red>%player_name%</red> был укушен пауком!"
+      - "<gray>%player_name%</gray> понял, что пауки не друзья."
+    WITCH:
+      - "<purple>%player_name%</purple> столкнулся с ведьмой и её зелиями!"
+      - "<dark_red>%player_name%</dark_red> стал жертвой магии ведьмы!"
+      - "<gray>%player_name%</gray> не оценил силу зелий."
+    ENDERMAN:
+      - "<black>%player_name%</black> встретил эндермена... и исчез почти сразу!"
+      - "<purple>%player_name%</purple> был схвачен взглядом эндермена!"
+      - "<gray>%player_name%</gray> понял, что смотреть на эндермена опасно."
+    WARDEN:
+      - "<black>%player_name%</black> услышал стук Варда!"
+      - "<dark_gray>%player_name%</dark_gray> не успел убежать!"
+      - "<red>%player_name%</red> стал жертвой Варда!"
+    default:
+      - "<dark_red>%player_name%</dark_red> был убит каким-то злым мобом!"
+      - "<gold>%player_name%</gold> стал жертвой загадочного существа!"
+      - "<gray>%player_name%</gray> почувствовал смерть."
+
+# Возрождение
+respawn:
+  - "<green>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</green>"
+  - "<yellow>⚡ %player_name% вернулся к жизни с новыми силами!</yellow>"
+  - "<aqua>%player_name% готов к новым приключениям!</aqua>"
+
+# Авто-сообщения
+auto_messages:
+  - "<green>Привет! Не забудьте посетить наш сайт</green>"
+  - "<aqua>Поддерживайте наши соцсети</aqua>"
+  - "<yellow>Веселись на сервере и приглашай друзей!</yellow>"
+  - "<gray>Не забывай проверять новости на нашем %site_text%!</gray>"
+
+# Персонажи
+characters:
+  greetings:
+    - "%character_prefix%%character_mood% %character_color%Привет, %player_name%! Добро пожаловать на сервер!"
+    - "%character_prefix%%character_mood% %character_color%Рад видеть тебя, %player_name%! 🥳"
+  tips:
+    - "%character_prefix%%character_mood% %character_color%Совет от %character_name%: используй /spawn, чтобы вернуться в спавн."
+    - "%character_prefix%%character_mood% %character_color%Не забудь /help для списка команд!"
+    - "%character_prefix%%character_mood% %character_color%Используй /warp для телепортации между зонами."
+  fun:
+    - "%character_prefix%%character_mood% %character_color%Веселись на сервере и приглашай друзей! 🎉"
+    - "%character_prefix%%character_mood% %character_color%Сегодня удачный день для приключений!"
+    - "%character_prefix%%character_mood% %character_color%Попробуй найти секретные сундуки на карте!"
+    - "%character_prefix%%character_mood% %character_color%Собери команду и отправляйся на охоту за монстрами!"
+
+# Боссы
+boss:
+  kill: "<gold>⚔ Победа над боссом: <red>{boss_name}</red>!</gold>"
+  top_intro: "<green>Игроки, нанесшие урон:</green>"
+  top_player: "<yellow>{player_name}</yellow>: {damage}❤ (<gray>{percent}%</gray>)"
+  top_player_advanced: "<gold>#{position}</gold> <yellow>{player_name}</yellow>: <red>{damage}❤</red> (<gray>{percent}%</gray>)"
+  spawn: "<red>⚠ Босс {boss_name} появился!</red>"
+  no_damage: "<gray>Никто не нанёс урон боссу</gray>"
+
+# Праздники
+holidays:
+  womens_day:
+    messages:
+      - "<pink>🌸 С 8 Марта, %player_name%! Весеннего настроения!</pink>"
+  defender_day:
+    messages:
+      - "<red>⭐ С 23 Февраля, %player_name%! Мужества и силы!</red>"
+  april_fools:
+    messages:
+      - "<yellow>😜 С 1 Апреля, %player_name%! Никому не верь сегодня!</yellow>"
+  victory_day:
+    messages:
+      - "<dark_red>🎖 С Днём Победы! Вечная память героям!</dark_red>"
+  new_year:
+    messages:
+      - "<gold>🎉 С Новым Годом, %player_name%! Пусть удача будет с тобой!"
+      - "<green>✨ Праздник на сервере начался! Веселись вместе с нами!"
+      - "<aqua>%player_name%, самое время для подарков и веселья!</aqua>"
+  september_first:
+    messages:
+      - "<aqua>📚 С 1 сентября, %player_name%! Время знаний и приключений!"
+      - "<blue>🎒 Добро пожаловать в новый учебный год на сервере!"
+      - "<yellow>Пусть учеба будет интересной и веселой, %player_name%!"
+  halloween:
+    messages:
+      - "<orange>🎃 С Хэллоуином, %player_name%! Пугай мобов!</orange>"
+      - "<red>👻 Мистическая ночь началась на сервере!</red>"
+      - "<purple>%player_name%, не забудь свои конфеты!</purple>"
+  christmas:
+    messages:
+      - "<green>🎄 С Рождеством, %player_name%! Счастья и радости!</green>"
+      - "<red>✨ Праздник на сервере в полном разгаре!</red>"
+      - "<aqua>%player_name%, весело отмечаем вместе!</aqua>"
+
+# Команды
+commands:
+  reload: "<green>✓ Конфигурация успешно перезагружена!</green>"
+  no_permission: "<red>У вас нет прав для этой команды!</red>"
+  language_changed: "<green>Язык изменён на: {lang}</green>"
+  update_available: "<gold>📦 Доступна новая версия: {version}</gold>"
