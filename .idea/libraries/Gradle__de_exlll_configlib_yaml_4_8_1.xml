@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: de.exlll:configlib-yaml:4.8.1" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="de.exlll" artifactId="configlib-yaml" version="4.8.1" baseVersion="4.8.1" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/de.exlll/configlib-yaml/4.8.1/aba477468a8b5c66e18cd7be00181307b9ca64dc/configlib-yaml-4.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

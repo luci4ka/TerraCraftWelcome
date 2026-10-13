@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: dev.jorel:commandapi-core:12.1.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="dev.jorel" artifactId="commandapi-core" version="12.1.0" baseVersion="12.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/dev.jorel/commandapi-core/12.1.0/d8b8a636a937d2eacbdf3871a7abd126fc7d7651/commandapi-core-12.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

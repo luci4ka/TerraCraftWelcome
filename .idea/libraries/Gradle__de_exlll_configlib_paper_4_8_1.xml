@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: de.exlll:configlib-paper:4.8.1" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="de.exlll" artifactId="configlib-paper" version="4.8.1" baseVersion="4.8.1" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/de.exlll/configlib-paper/4.8.1/851b7d1034d4586f36a2734ef5c004c3298485da/configlib-paper-4.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

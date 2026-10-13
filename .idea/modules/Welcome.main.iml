@@ -4,8 +4,8 @@
     <output url="file://$MODULE_DIR$/../../build/classes/java/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -18,11 +18,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: dev.jorel:commandapi-paper-core:12.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: me.clip:placeholderapi:2.12.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.luckperms:api:5.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Foulest:Vault:2.5.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.tchristofferson:ConfigUpdater:2.2-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: de.exlll:configlib-paper:4.8.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.ez-plugins:mc-plugin-update-notifier:1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: org.bstats:bstats-bukkit:3.2.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: dev.jorel:commandapi-bukkit-core:12.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: de.exlll:configlib-yaml:4.8.1" level="project" />
     <orderEntry type="library" name="Gradle: org.bstats:bstats-base:3.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: ca.spottedleaf:concurrentutil:0.0.8" level="project" />
@@ -44,6 +48,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: io.papermc:reflection-rewriter-runtime:0.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: me.lucko:spark-api:0.1-20240720.200737-2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: me.lucko:spark-paper:1.10.152" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: dev.jorel:commandapi-core:12.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: de.exlll:configlib-core:4.8.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.kyori:adventure-text-logger-slf4j:4.26.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.kyori:adventure-text-minimessage:4.26.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.kyori:adventure-text-serializer-legacy:4.26.1" level="project" />
@@ -133,5 +139,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.codehaus.plexus:plexus-interpolation:1.26" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.maven:maven-builder-support:3.9.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.eclipse.sisu:org.eclipse.sisu.inject:0.9.0.M2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.snakeyaml:snakeyaml-engine:2.7" level="project" />
   </component>
 </module>

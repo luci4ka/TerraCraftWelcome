@@ -1,0 +1,28 @@
+name: Welcome
+version: '2.0'
+main: ru.net.terracraft.welcome.WelcomePlugin
+api-version: '1.21'
+authors: [luci]
+description: |
+  Welcome: оповещения о входе, выходе и смерти игроков
+  с настраиваемыми эффектами звука и частиц
+website: terracraft.net.ru
+
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    Vault:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    LuckPerms:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    CommandAPI:
+      load: BEFORE
+      required: true
+      join-classpath: true

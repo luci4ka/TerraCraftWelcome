@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.snakeyaml:snakeyaml-engine:2.7" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.snakeyaml" artifactId="snakeyaml-engine" version="2.7" baseVersion="2.7" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/org.snakeyaml/snakeyaml-engine/2.7/5213e62e87e62ac009d80aeb64c8240075bf078a/snakeyaml-engine-2.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

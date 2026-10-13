@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: dev.jorel:commandapi-paper-core:12.1.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="dev.jorel" artifactId="commandapi-paper-core" version="12.1.0" baseVersion="12.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/dev.jorel/commandapi-paper-core/12.1.0/8c81ea9bea5c98827bacae15cea99960a12ee965/commandapi-paper-core-12.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

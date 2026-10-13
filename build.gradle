@@ -11,42 +11,52 @@ repositories {
     mavenCentral()
 
     maven { url 'https://repo.papermc.io/repository/maven-public/' }
-    maven { url "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
-    maven { url "https://repo.essentialsx.net/releases" }
-    maven {
-        name = "jitpack"
-        url = "https://jitpack.io/"
-    }
-
-    maven {
-        name = "luckperms"
-        url = "https://repo.lucko.me/repository/maven-public/"
-    }
+    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://repo.lucko.me/repository/maven-public/' }
+    maven { url 'https://repo.codemc.io/repository/maven-public/' }
+    maven { url 'https://repo.tchristofferson.com/repository/maven-snapshots/' }
 }
-
 
 dependencies {
-    // Paper API — включает Adventure (Component, MiniMessage, Audience)
-    paperweight.paperDevBundle("1.21.11-R0.1-SNAPSHOT")
+    // Paper API
+    paperweight.paperDevBundle('1.21.11-R0.1-SNAPSHOT')
 
-    implementation 'com.tchristofferson:ConfigUpdater:2.2-SNAPSHOT'
-    implementation("org.bstats:bstats-bukkit:3.2.1")
+    // ConfigLib (Exlll)
+    implementation 'de.exlll:configlib-paper:4.8.1'
 
+    // CommandAPI (Paper)
+    compileOnly("dev.jorel:commandapi-paper-core:12.1.0")
+
+    // Update checker (ez-plugins)
+
+    implementation('com.github.ez-plugins:mc-plugin-update-notifier:1.0.0')
+
+    // bStats
+    implementation 'org.bstats:bstats-bukkit:3.2.1'
+
+    // Compile-only
     compileOnly 'me.clip:placeholderapi:2.12.3'
-    compileOnly "net.luckperms:api:5.5"
+    compileOnly 'net.luckperms:api:5.5'
     compileOnly 'com.github.Foulest:Vault:2.5.0'
 }
-
 
 shadowJar {
     archiveClassifier.set('')
 
     relocate 'org.bstats', 'ru.net.terracraft.welcome.libs.bstats'
-    relocate 'com.tchristofferson.configupdater', 'ru.net.terracraft.welcome.libs.configupdater'
+    relocate 'de.exlll.configlib', 'ru.net.terracraft.welcome.libs.configlib'
+    relocate 'com.github.ezplugins', 'ru.net.terracraft.chat.libs.updater'
+
+    exclude 'org/yaml/snakeyaml/**'
+    exclude 'META-INF/versions/**'
+    exclude 'META-INF/maven/**'
+    exclude 'module-info.class'
+
+    mergeServiceFiles()
 }
 
-
-def targetJavaVersion = 25
+def targetJavaVersion = 25   // ← оставляем, раз у вас Java 25 и работает
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
