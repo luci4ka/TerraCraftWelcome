@@ -1,0 +1,82 @@
+groups:
+
+  # ─── default ───
+  default:
+    priority: 0
+    inherits: []
+
+  # ─── deluxe ───
+  deluxe:
+    priority: 30
+    inherits:
+      - default
+
+  # ─── elite ───
+  elite:
+    priority: 40
+    inherits:
+      - deluxe
+      - default
+
+  # ─── overlord ───
+  overlord:
+    priority: 50
+    inherits:
+      - elite
+      - deluxe
+      - default
+
+  # ─── oldtimer ───
+  oldtimer:
+    priority: 60
+    inherits:
+      - overlord
+      - elite
+      - deluxe
+      - default
+
+  # ─── helper ───
+  helper:
+    priority: 70
+    inherits:
+      - oldtimer
+      - overlord
+      - elite
+      - deluxe
+      - default
+
+  # ─── moderator ───
+  moderator:
+    priority: 80
+    inherits:
+      - helper
+      - oldtimer
+      - overlord
+      - elite
+      - deluxe
+      - default
+
+  # ─── admin ───
+  admin:
+    priority: 90
+    inherits:
+      - moderator
+      - helper
+      - oldtimer
+      - overlord
+      - elite
+      - deluxe
+      - default
+
+  # ─── headadmin ───
+  headadmin:
+    priority: 100
+    inherits:
+      - admin
+      - moderator
+      - helper
+      - oldtimer
+      - overlord
+      - elite
+      - deluxe
+      - default

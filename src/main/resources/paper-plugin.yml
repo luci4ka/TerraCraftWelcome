@@ -1,6 +1,6 @@
 name: Welcome
 version: '${version}'
-main: ru.net.terracraft.welcome.WelcomePlugin
+main: ru.terracraft.welcome.WelcomePlugin
 api-version: '1.21'
 authors: [luci]
 description: |

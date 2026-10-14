@@ -4,7 +4,7 @@ plugins {
     id 'com.gradleup.shadow' version '9.3.2'
 }
 
-group = 'ru.net.terracraft'
+group = 'ru.terracraft'
 version = '2.0'
 
 repositories {
@@ -29,7 +29,6 @@ dependencies {
     compileOnly("dev.jorel:commandapi-paper-core:12.1.0")
 
     // Update checker (ez-plugins)
-
     implementation('com.github.ez-plugins:mc-plugin-update-notifier:1.0.0')
 
     // bStats
@@ -44,9 +43,9 @@ dependencies {
 shadowJar {
     archiveClassifier.set('')
 
-    relocate 'org.bstats', 'ru.net.terracraft.welcome.libs.bstats'
-    relocate 'de.exlll.configlib', 'ru.net.terracraft.welcome.libs.configlib'
-    relocate 'com.github.ezplugins', 'ru.net.terracraft.chat.libs.updater'
+    relocate 'org.bstats', 'ru.terracraft.welcome.libs.bstats'
+    relocate 'de.exlll.configlib', 'ru.terracraft.welcome.libs.configlib'
+    relocate 'com.github.ezplugins', 'ru.terracraft.welcome.libs.updater'
 
     exclude 'org/yaml/snakeyaml/**'
     exclude 'META-INF/versions/**'
@@ -56,7 +55,7 @@ shadowJar {
     mergeServiceFiles()
 }
 
-def targetJavaVersion = 25   // ← оставляем, раз у вас Java 25 и работает
+def targetJavaVersion = 25
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -74,7 +73,10 @@ processResources {
     def props = [version: version]
     inputs.properties props
     filteringCharset 'UTF-8'
-    filesMatching(['paper-plugin.yml', 'lang/*.yml']) {
+
+    // paper-plugin.yml — expand ${version}
+    filesMatching('paper-plugin.yml') {
         expand props
     }
+
 }
