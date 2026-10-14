@@ -12,10 +12,10 @@ import java.util.*;
  * Менеджер групп с наследованием.
  *
  * groups.yml — id + priority + inherits.
- * Тексты — в lang/<locale>.yml, секция "groups.<id>.join/quit".
+ * Тексты — в lang/<locale>.lang, секция "groups.<id>.join/quit".
  *
  * Наследование: группа может использовать сообщения младших групп.
- * Пример: legend.inherits = [admin, moderator, vip, default]
+ * Пример: overlord.inherits = [elite, deluxe, default]
  *
  * Выбор игрока хранится в players.yml (UUID.group).
  */
@@ -79,26 +79,52 @@ public class GroupManager {
         }
     }
 
+    /**
+     * Дефолтные группы под LuckPerms-раскладку TerraCraft.
+     * Порядок priority: default < deluxe < elite < overlord < oldtimer
+     *                  < helper < moderator < admin < headadmin
+     */
     private void createDefaultGroups() {
         // ─── default ───
         groupsYaml.set("groups.default.priority", 0);
         groupsYaml.set("groups.default.inherits", List.of());
 
-        // ─── vip ───
-        groupsYaml.set("groups.vip.priority", 50);
-        groupsYaml.set("groups.vip.inherits", List.of("default"));
+        // ─── deluxe ───
+        groupsYaml.set("groups.deluxe.priority", 30);
+        groupsYaml.set("groups.deluxe.inherits", List.of("default"));
+
+        // ─── elite ───
+        groupsYaml.set("groups.elite.priority", 40);
+        groupsYaml.set("groups.elite.inherits", List.of("deluxe", "default"));
+
+        // ─── overlord ───
+        groupsYaml.set("groups.overlord.priority", 50);
+        groupsYaml.set("groups.overlord.inherits", List.of("elite", "deluxe", "default"));
+
+        // ─── oldtimer ───
+        groupsYaml.set("groups.oldtimer.priority", 60);
+        groupsYaml.set("groups.oldtimer.inherits",
+                List.of("overlord", "elite", "deluxe", "default"));
+
+        // ─── helper ───
+        groupsYaml.set("groups.helper.priority", 70);
+        groupsYaml.set("groups.helper.inherits",
+                List.of("oldtimer", "overlord", "elite", "deluxe", "default"));
 
         // ─── moderator ───
-        groupsYaml.set("groups.moderator.priority", 75);
-        groupsYaml.set("groups.moderator.inherits", List.of("default"));
+        groupsYaml.set("groups.moderator.priority", 80);
+        groupsYaml.set("groups.moderator.inherits",
+                List.of("helper", "oldtimer", "overlord", "elite", "deluxe", "default"));
 
         // ─── admin ───
-        groupsYaml.set("groups.admin.priority", 100);
-        groupsYaml.set("groups.admin.inherits", List.of("moderator", "vip", "default"));
+        groupsYaml.set("groups.admin.priority", 90);
+        groupsYaml.set("groups.admin.inherits",
+                List.of("moderator", "helper", "oldtimer", "overlord", "elite", "deluxe", "default"));
 
-        // ─── legend ───
-        groupsYaml.set("groups.legend.priority", 120);
-        groupsYaml.set("groups.legend.inherits", List.of("admin", "moderator", "vip", "default"));
+        // ─── headadmin ───
+        groupsYaml.set("groups.headadmin.priority", 100);
+        groupsYaml.set("groups.headadmin.inherits",
+                List.of("admin", "moderator", "helper", "oldtimer", "overlord", "elite", "deluxe", "default"));
     }
 
     private void rebuildCache() {

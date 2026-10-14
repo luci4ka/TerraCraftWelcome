@@ -6,7 +6,6 @@ import ru.terracraft.welcome.api.WelcomeApiProvider;
 import ru.terracraft.welcome.command.CommandRegistrar;
 import ru.terracraft.welcome.config.ConfigLoader;
 import ru.terracraft.welcome.config.MainConfig;
-import ru.net.terracraft.welcome.core.feature.*;
 import ru.terracraft.welcome.core.feature.*;
 import ru.terracraft.welcome.core.group.GroupManager;
 import ru.terracraft.welcome.core.i18n.LanguageManager;
