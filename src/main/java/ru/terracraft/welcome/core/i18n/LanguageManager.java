@@ -111,7 +111,14 @@ public class LanguageManager {
         // 3. Только язык: ru
         if (languages.containsKey(lang)) return lang;
 
-        // 4. Fallback на currentLanguage / DEFAULT
+        // 4. Поиск по префиксу: ru → ru_ru, en → en_us
+        for (String code : languages.keySet()) {
+            if (code.startsWith(lang + "_")) {
+                return code;
+            }
+        }
+
+        // 5. Fallback на currentLanguage / DEFAULT
         if (languages.containsKey(currentLanguage)) return currentLanguage;
         return DEFAULT_LANGUAGE;
     }
