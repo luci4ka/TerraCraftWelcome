@@ -1,254 +1,262 @@
 # ═══════════════════════════════════════════
 #  Welcome Plugin — English (en_us)
+#  TerraCraft Palette:
+#    Primary:   #4CAF50 (green)
+#    Secondary: #8BC34A (light green)
+#    Accent:    #FFC107 (gold)
+#    Divider:   #1B5E20 (dark green)
+#    Text:      #E8F5E9 (off-white)
+#    Muted:     #A5D6A7 (muted green)
 # ═══════════════════════════════════════════
 
 # ═══════════════ MOTD ═══════════════
-motd.lines.1=<dark_purple>| <gold>Hello, %player_name%!</gold></dark_purple>
-motd.lines.2=<dark_purple>| <gray>Glad to see you back on the server!</gray>
-motd.lines.3=<dark_purple>| <green>VK: %welcome_vk_url%</green>
-motd.lines.4=<dark_purple>| <green>Website: %welcome_site_url%</green>
-motd.lines.5=<dark_purple>| <green>Discord: %welcome_discord_url%</green>
-motd.lines.6=<dark_purple>| <gray>Have a nice game!</gray>
+motd.lines.1=<gradient:#4CAF50:#FFC107>TerraCraft</gradient> <#1B5E20>│</#1B5E20> <#E8F5E9>Hello, %player_name%!</#E8F5E9>
+motd.lines.2=<#A5D6A7>Glad to see you back on the server!</#A5D6A7>
+motd.lines.3=<#A5D6A7>VK:</#A5D6A7> <gradient:#8BC34A:#FFC107>%welcome_vk_url%</gradient>
+motd.lines.4=<#A5D6A7>Website:</#A5D6A7> <gradient:#8BC34A:#FFC107>%welcome_site_url%</gradient>
+motd.lines.5=<#A5D6A7>Discord:</#A5D6A7> <gradient:#8BC34A:#FFC107>%welcome_discord_url%</gradient>
+motd.lines.6=<#A5D6A7>Have a nice game!</#A5D6A7>
 
 # ═══════════════ TITLES ═══════════════
-titles.first_join.title=<gold>Welcome!</gold>
-titles.first_join.subtitle=<gray>%player_name%, you're new here! <yellow>#%number%</yellow></gray>
-titles.join.title=<green>Welcome back!</green>
-titles.join.subtitle=<gray>%player_name%</gray>
-titles.death.title=<red>You died!</red>
-titles.death.subtitle=<gray>But you'll be back...</gray>
+titles.first_join.title=<gradient:#4CAF50:#FFC107>Welcome!</gradient>
+titles.first_join.subtitle=<#E8F5E9>%player_name%, you're new here!</#E8F5E9> <#FFC107>#%number%</#FFC107>
+titles.join.title=<gradient:#4CAF50:#FFC107>Welcome back!</gradient>
+titles.join.subtitle=<#E8F5E9>%player_name%</#E8F5E9>
+titles.death.title=<#EF5350>You died!</#EF5350>
+titles.death.subtitle=<#A5D6A7>But you'll be back...</#A5D6A7>
 
 # ═══════════════ ACTION BAR ═══════════════
-actionbar.first_join=<gold>✨ Welcome to the server, %player_name%!</gold>
-actionbar.join=<green>Welcome back, %player_name%!</green>
+actionbar.first_join=<gradient:#4CAF50:#FFC107>Welcome to the server, %player_name%!</gradient>
+actionbar.join=<#8BC34A>Welcome back, %player_name%!</#8BC34A>
 
 # ═══════════════ JOIN ═══════════════
-join.first_join.1=<gold>🎉 Newcomer alert! Let's welcome <white>%player_name%</white> with applause! <gray>(#%number%)</gray></gold>
-join.first_join.2=<green>✨ <white>%player_name%</white> just joined! <gray>(#%number%)</gray></green>
-join.first_join.3=<aqua>Welcome, %player_name%! You're newcomer #%number%!</aqua>
+join.first_join.1=<gradient:#4CAF50:#FFC107>Newcomer alert!</gradient> <#E8F5E9>Let's welcome</#E8F5E9> <white>%player_name%</white> <#A5D6A7>(#%number%)</#A5D6A7>
+join.first_join.2=<gradient:#8BC34A:#FFC107>%player_name%</gradient> <#E8F5E9>just joined!</#E8F5E9> <#A5D6A7>(#%number%)</#A5D6A7>
+join.first_join.3=<#E8F5E9>Welcome,</#E8F5E9> <gradient:#4CAF50:#FFC107>%player_name%</gradient><#E8F5E9>! You're newcomer #%number%!</#E8F5E9>
 
-join.default.1=<green>Welcome, %player_name%!</green>
-join.default.2=<yellow>Hi, %player_name%!</yellow>
-join.default.3=<aqua>Glad to see you, %player_name%!</aqua>
+join.default.1=<#8BC34A>Welcome, %player_name%!</#8BC34A>
+join.default.2=<#A5D6A7>Hi, %player_name%!</#A5D6A7>
+join.default.3=<#E8F5E9>Glad to see you, %player_name%!</#E8F5E9>
 
-quit.default.1=<red>➖ <gray><white>%player_name%</white> left... probably to get some tea.</gray>
-quit.default.2=<gray>%player_name% left the server.</gray>
-quit.default.3=<yellow>See you, %player_name%!</yellow>
+quit.default.1=<#EF5350>➖</#EF5350> <#A5D6A7>%player_name% left... probably to get some tea.</#A5D6A7>
+quit.default.2=<#A5D6A7>%player_name% left the server.</#A5D6A7>
+quit.default.3=<#8BC34A>See you, %player_name%!</#8BC34A>
 
 # ═══════════════ GROUPS ═══════════════
 
 # ─── default ───
-groups.default.join.1=<green>➕ <gray>Oops! <white>%player_name%</white> dropped by for a visit. Don't forget your slippers!</gray>
-groups.default.join.2=<blue>%player_name% joined us!</blue>
-groups.default.join.3=<yellow>Welcome %player_name%!</yellow>
-groups.default.quit.1=<red>➖ <gray><white>%player_name%</white> left... probably to get some tea.</gray>
-groups.default.quit.2=<gray>%player_name% left the server.</gray>
-groups.default.quit.3=<yellow>See you, %player_name%!</yellow>
+groups.default.join.1=<#4CAF50>➕</#4CAF50> <#A5D6A7>Oops! %player_name% dropped by for a visit. Don't forget your slippers!</#A5D6A7>
+groups.default.join.2=<#8BC34A>%player_name% joined us!</#8BC34A>
+groups.default.join.3=<#A5D6A7>Welcome %player_name%!</#A5D6A7>
+groups.default.quit.1=<#EF5350>➖</#EF5350> <#A5D6A7>%player_name% left... probably to get some tea.</#A5D6A7>
+groups.default.quit.2=<#A5D6A7>%player_name% left the server.</#A5D6A7>
+groups.default.quit.3=<#8BC34A>See you, %player_name%!</#8BC34A>
 
 # ─── deluxe ───
-groups.deluxe.join.1=<aqua>💎 Deluxe <white>%player_name%</white> dropped by!</aqua>
-groups.deluxe.join.2=<aqua>💎 <white>%player_name%</white> (Deluxe) is online!</aqua>
-groups.deluxe.join.3=<light_purple>✨ Deluxe %player_name% is here!</light_purple>
-groups.deluxe.quit.1=<aqua>💎 Deluxe <white>%player_name%</white> left on business.</aqua>
-groups.deluxe.quit.2=<gray>Deluxe %player_name% left us.</gray>
-groups.deluxe.quit.3=<aqua>💎 Bye, %player_name%!</aqua>
+groups.deluxe.join.1=<#29B6F6>💎 Deluxe</#29B6F6> <white>%player_name%</white> <#A5D6A7>dropped by!</#A5D6A7>
+groups.deluxe.join.2=<#29B6F6>💎 %player_name% (Deluxe) is online!</#29B6F6>
+groups.deluxe.join.3=<#29B6F6>✨ Deluxe %player_name% is here!</#29B6F6>
+groups.deluxe.quit.1=<#29B6F6>💎 Deluxe %player_name% left on business.</#29B6F6>
+groups.deluxe.quit.2=<#A5D6A7>Deluxe %player_name% left us.</#A5D6A7>
+groups.deluxe.quit.3=<#29B6F6>💎 Bye, %player_name%!</#29B6F6>
 
 # ─── elite ───
-groups.elite.join.1=<light_purple>🌟 Elite <white>%player_name%</white> graced us with their presence!</light_purple>
-groups.elite.join.2=<light_purple>🌟 <white>%player_name%</white> (Elite) is online!</light_purple>
-groups.elite.join.3=<gold>✨ Elite %player_name% is here!</gold>
-groups.elite.quit.1=<light_purple>🌟 Elite <white>%player_name%</white> rode into the sunset.</light_purple>
-groups.elite.quit.2=<gray>Elite %player_name% left the server.</gray>
-groups.elite.quit.3=<light_purple>🌟 See you, %player_name%!</light_purple>
+groups.elite.join.1=<#AB47BC>🌟 Elite</#AB47BC> <white>%player_name%</white> <#A5D6A7>graced us with their presence!</#A5D6A7>
+groups.elite.join.2=<#AB47BC>🌟 %player_name% (Elite) is online!</#AB47BC>
+groups.elite.join.3=<#AB47BC>✨ Elite %player_name% is here!</#AB47BC>
+groups.elite.quit.1=<#AB47BC>🌟 Elite %player_name% rode into the sunset.</#AB47BC>
+groups.elite.quit.2=<#A5D6A7>Elite %player_name% left the server.</#A5D6A7>
+groups.elite.quit.3=<#AB47BC>🌟 See you, %player_name%!</#AB47BC>
 
 # ─── overlord ───
-groups.overlord.join.1=<gold>👑 Overlord <white>%player_name%</white> has descended upon mortals!</gold>
-groups.overlord.join.2=<gold>👑 <white>%player_name%</white> (Overlord) is online!</gold>
-groups.overlord.join.3=<dark_gold>⚜ Overlord %player_name% has arrived!</dark_gold>
-groups.overlord.quit.1=<gold>👑 Overlord <white>%player_name%</white> returned to their halls.</gold>
-groups.overlord.quit.2=<gray>Overlord %player_name% left us.</gray>
-groups.overlord.quit.3=<gold>⚜ Farewell, Overlord %player_name%!</gold>
+groups.overlord.join.1=<#FFC107>👑 Overlord</#FFC107> <white>%player_name%</white> <#A5D6A7>has descended upon mortals!</#A5D6A7>
+groups.overlord.join.2=<#FFC107>👑 %player_name% (Overlord) is online!</#FFC107>
+groups.overlord.join.3=<#FF8F00>⚜ Overlord %player_name% has arrived!</#FF8F00>
+groups.overlord.quit.1=<#FFC107>👑 Overlord %player_name% returned to their halls.</#FFC107>
+groups.overlord.quit.2=<#A5D6A7>Overlord %player_name% left us.</#A5D6A7>
+groups.overlord.quit.3=<#FFC107>⚜ Farewell, Overlord %player_name%!</#FFC107>
 
 # ─── oldtimer ───
-groups.oldtimer.join.1=<yellow>🏆 Oldtimer <white>%player_name%</white> is back with us!</yellow>
-groups.oldtimer.join.2=<yellow>🏆 <white>%player_name%</white> (Oldtimer) is online!</yellow>
-groups.oldtimer.join.3=<gold>Veteran %player_name% has returned!</gold>
-groups.oldtimer.quit.1=<yellow>🏆 Oldtimer <white>%player_name%</white> left. A legend is gone.</yellow>
-groups.oldtimer.quit.2=<gray>Oldtimer %player_name% left us.</gray>
-groups.oldtimer.quit.3=<yellow>See you, %player_name%!</yellow>
+groups.oldtimer.join.1=<#FFA726>🏆 Oldtimer</#FFA726> <white>%player_name%</white> <#A5D6A7>is back with us!</#A5D6A7>
+groups.oldtimer.join.2=<#FFA726>🏆 %player_name% (Oldtimer) is online!</#FFA726>
+groups.oldtimer.join.3=<#FFA726>Veteran %player_name% has returned!</#FFA726>
+groups.oldtimer.quit.1=<#FFA726>🏆 Oldtimer %player_name% left. A legend is gone.</#FFA726>
+groups.oldtimer.quit.2=<#A5D6A7>Oldtimer %player_name% left us.</#A5D6A7>
+groups.oldtimer.quit.3=<#FFA726>See you, %player_name%!</#FFA726>
 
 # ─── helper ───
-groups.helper.join.1=<green>🛠 Helper <white>%player_name%</white> is online!</green>
-groups.helper.join.2=<green>🛠 <white>%player_name%</white> (Helper) is ready to help!</green>
-groups.helper.join.3=<aqua>Helper %player_name% has arrived!</aqua>
-groups.helper.quit.1=<green>🛠 Helper <white>%player_name%</white> left.</green>
-groups.helper.quit.2=<gray>Helper %player_name% left us.</gray>
-groups.helper.quit.3=<green>See you, %player_name%!</green>
+groups.helper.join.1=<#8BC34A>🛠 Helper</#8BC34A> <white>%player_name%</white> <#A5D6A7>is online!</#A5D6A7>
+groups.helper.join.2=<#8BC34A>🛠 %player_name% (Helper) is ready to help!</#8BC34A>
+groups.helper.join.3=<#8BC34A>Helper %player_name% has arrived!</#8BC34A>
+groups.helper.quit.1=<#8BC34A>🛠 Helper %player_name% left.</#8BC34A>
+groups.helper.quit.2=<#A5D6A7>Helper %player_name% left us.</#A5D6A7>
+groups.helper.quit.3=<#8BC34A>See you, %player_name%!</#8BC34A>
 
 # ─── moderator ───
-groups.moderator.join.1=<blue>🛡 Moderator <white>%player_name%</white> is online!</blue>
-groups.moderator.join.2=<blue>🛡 <white>%player_name%</white> (Moderator) keeps order!</blue>
-groups.moderator.join.3=<aqua>Moderator %player_name% has arrived!</aqua>
-groups.moderator.quit.1=<blue>🛡 Moderator <white>%player_name%</white> left.</blue>
-groups.moderator.quit.2=<gray>Moderator %player_name% left us.</gray>
-groups.moderator.quit.3=<blue>Goodbye, %player_name%!</blue>
+groups.moderator.join.1=<#42A5F5>🛡 Moderator</#42A5F5> <white>%player_name%</white> <#A5D6A7>is online!</#A5D6A7>
+groups.moderator.join.2=<#42A5F5>🛡 %player_name% (Moderator) keeps order!</#42A5F5>
+groups.moderator.join.3=<#42A5F5>Moderator %player_name% has arrived!</#42A5F5>
+groups.moderator.quit.1=<#42A5F5>🛡 Moderator %player_name% left.</#42A5F5>
+groups.moderator.quit.2=<#A5D6A7>Moderator %player_name% left us.</#A5D6A7>
+groups.moderator.quit.3=<#42A5F5>Goodbye, %player_name%!</#42A5F5>
 
 # ─── admin ───
-groups.admin.join.1=<red>⚡ Admin <white>%player_name%</white> is online!</red>
-groups.admin.join.2=<red>⚡ <white>%player_name%</white> (Admin) has joined!</red>
-groups.admin.join.3=<dark_red>Admin %player_name% has arrived!</dark_red>
-groups.admin.quit.1=<red>⚡ Admin <white>%player_name%</white> left.</red>
-groups.admin.quit.2=<gray>Admin %player_name% left us.</gray>
-groups.admin.quit.3=<red>See you, %player_name%!</red>
+groups.admin.join.1=<#EF5350>⚡ Admin</#EF5350> <white>%player_name%</white> <#A5D6A7>is online!</#A5D6A7>
+groups.admin.join.2=<#EF5350>⚡ %player_name% (Admin) has joined!</#EF5350>
+groups.admin.join.3=<#EF5350>Admin %player_name% has arrived!</#EF5350>
+groups.admin.quit.1=<#EF5350>⚡ Admin %player_name% left.</#EF5350>
+groups.admin.quit.2=<#A5D6A7>Admin %player_name% left us.</#A5D6A7>
+groups.admin.quit.3=<#EF5350>See you, %player_name%!</#EF5350>
 
 # ─── headadmin ───
-groups.headadmin.join.1=<dark_red>👑 Head Admin <white>%player_name%</white> has descended upon us!</dark_red>
-groups.headadmin.join.2=<dark_red>👑 <white>%player_name%</white> (Head Admin) is online!</dark_red>
-groups.headadmin.join.3=<gold>⚡ Head Admin %player_name% has arrived!</gold>
-groups.headadmin.quit.1=<dark_red>👑 Head Admin <white>%player_name%</white> left us.</dark_red>
-groups.headadmin.quit.2=<gray>Head Admin %player_name% left.</gray>
-groups.headadmin.quit.3=<dark_red>Farewell, Head Admin %player_name%!</dark_red>
+groups.headadmin.join.1=<#C62828>👑 Head Admin</#C62828> <white>%player_name%</white> <#A5D6A7>has descended upon us!</#A5D6A7>
+groups.headadmin.join.2=<#C62828>👑 %player_name% (Head Admin) is online!</#C62828>
+groups.headadmin.join.3=<#C62828>⚡ Head Admin %player_name% has arrived!</#C62828>
+groups.headadmin.quit.1=<#C62828>👑 Head Admin %player_name% left us.</#C62828>
+groups.headadmin.quit.2=<#A5D6A7>Head Admin %player_name% left.</#A5D6A7>
+groups.headadmin.quit.3=<#C62828>Farewell, Head Admin %player_name%!</#C62828>
 
 # ═══════════════ DEATH ═══════════════
-death.pvp.1=<red>⚔ {killer} showed {victim} who's boss!</red>
-death.pvp.2=<gold>{killer}</gold> sent <red>{victim}</red> to the spirit world!
-death.pvp.3=<dark_red>{victim}</dark_red> couldn't withstand {killer}'s power!
+death.pvp.1=<#EF5350>⚔</#EF5350> <#E8F5E9>{killer} showed {victim} who's boss!</#E8F5E9>
+death.pvp.2=<#FFC107>{killer}</#FFC107> <#E8F5E9>sent</#E8F5E9> <#EF5350>{victim}</#EF5350> <#E8F5E9>to the spirit world!</#E8F5E9>
+death.pvp.3=<#C62828>{victim}</#C62828> <#E8F5E9>couldn't withstand {killer}'s power!</#E8F5E9>
 
-death.lava.1=<red>🔥 %player_name% tried to hug lava. It didn't work.</red>
-death.lava.2=<gold>%player_name%</gold> turned into barbecue... not the tastiest.
-death.lava.3=<dark_red>%player_name%</dark_red> learned to admire lava from a distance.
+death.lava.1=<#EF5350>🔥 %player_name% tried to hug lava. It didn't work.</#EF5350>
+death.lava.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>turned into barbecue... not the tastiest.</#E8F5E9>
+death.lava.3=<#C62828>%player_name%</#C62828> <#E8F5E9>learned to admire lava from a distance.</#E8F5E9>
 
-death.fall.1=<gray>💥 %player_name% thought they could fly. Spoiler: no.</gray>
-death.fall.2=<red>☠ %player_name%</red> lost the battle with gravity.
-death.fall.3=<yellow>%player_name%</yellow> learned physics the hard way.
+death.fall.1=<#A5D6A7>💥 %player_name% thought they could fly. Spoiler: no.</#A5D6A7>
+death.fall.2=<#EF5350>☠ %player_name%</#EF5350> <#E8F5E9>lost the battle with gravity.</#E8F5E9>
+death.fall.3=<#FFA726>%player_name%</#FFA726> <#E8F5E9>learned physics the hard way.</#E8F5E9>
 
-death.explosion.1=<red>💥 %player_name% exploded!</red>
-death.explosion.2=<gold>%player_name%</gold> got too close to explosives.
+death.explosion.1=<#EF5350>💥 %player_name% exploded!</#EF5350>
+death.explosion.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>got too close to explosives.</#E8F5E9>
 
-death.drowning.1=<blue>💧 %player_name% drowned. Fish say hi.</blue>
-death.drowning.2=<aqua>%player_name%</aqua> never learned to breathe underwater.
+death.drowning.1=<#29B6F6>💧 %player_name% drowned. Fish say hi.</#29B6F6>
+death.drowning.2=<#29B6F6>%player_name%</#29B6F6> <#E8F5E9>never learned to breathe underwater.</#E8F5E9>
 
-death.fire.1=<red>🔥 %player_name% burned. That was hot.</red>
-death.fire.2=<gold>%player_name%</gold> became a torch for the server.
+death.fire.1=<#EF5350>🔥 %player_name% burned. That was hot.</#EF5350>
+death.fire.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>became a torch for the server.</#E8F5E9>
 
-death.void.1=<dark_purple>🌌 %player_name% fell into the void. Farewell, traveller.</dark_purple>
-death.void.2=<dark_gray>%player_name%</dark_gray> literally left this world.
+death.void.1=<#7E57C2>🌌 %player_name% fell into the void. Farewell, traveller.</#7E57C2>
+death.void.2=<#616161>%player_name%</#616161> <#E8F5E9>literally left this world.</#E8F5E9>
 
-death.player_kill.1=<red>💀 %player_name%</red> flew to a better world. One-way ticket.
-death.player_kill.2=<gold>⚰ %player_name%</gold> got hit by fate... or a pickaxe.
-death.player_kill.3=<gray>%player_name%</gray> unexpectedly met their death.
+death.player_kill.1=<#EF5350>💀 %player_name%</#EF5350> <#E8F5E9>flew to a better world. One-way ticket.</#E8F5E9>
+death.player_kill.2=<#FFC107>⚰ %player_name%</#FFC107> <#E8F5E9>got hit by fate... or a pickaxe.</#E8F5E9>
+death.player_kill.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>unexpectedly met their death.</#E8F5E9>
 
-death.mob.ZOMBIE.1=<dark_red>%player_name%</dark_red> was in love with a zombie... doesn't matter now!
-death.mob.ZOMBIE.2=<gold>%player_name%</gold> became a zombie's favourite meal!
-death.mob.ZOMBIE.3=<gray>%player_name% tried to befriend a zombie. It didn't work.</gray>
-death.mob.SKELETON.1=<gray>%player_name%</gray> became target practice for skeletons!
-death.mob.SKELETON.2=<white>%player_name%</white> met skeleton arrows face to face!
-death.mob.SKELETON.3=<yellow>%player_name%</yellow> learned that bones can be deadly.
-death.mob.CREEPER.1=<green>%player_name%</green> got too close to a green explosive friend!
-death.mob.CREEPER.2=<yellow>%player_name%</yellow> turned into a pile of blocks after meeting a creeper!
-death.mob.CREEPER.3=<red>%player_name%</red> miscalculated the distance from a creeper!
-death.mob.SPIDER.1=<dark_purple>%player_name%</dark_purple> got tangled in a web and lost!
-death.mob.SPIDER.2=<red>%player_name%</red> was bitten by a spider!
-death.mob.SPIDER.3=<gray>%player_name%</gray> learned that spiders aren't friends.
-death.mob.WITCH.1=<purple>%player_name%</purple> met a witch and her potions!
-death.mob.WITCH.2=<dark_red>%player_name%</dark_red> became a victim of witch magic!
-death.mob.WITCH.3=<gray>%player_name%</gray> didn't appreciate the power of potions.
-death.mob.ENDERMAN.1=<black>%player_name%</black> met an enderman... and vanished almost instantly!
-death.mob.ENDERMAN.2=<purple>%player_name%</purple> was caught by an enderman's gaze!
-death.mob.ENDERMAN.3=<gray>%player_name%</gray> learned that looking at endermen is dangerous.
-death.mob.WARDEN.1=<black>%player_name%</black> heard the Warden's heartbeat!
-death.mob.WARDEN.2=<dark_gray>%player_name%</dark_gray> didn't run fast enough!
-death.mob.WARDEN.3=<red>%player_name%</red> became a victim of the Warden!
-death.mob.default.1=<dark_red>%player_name%</dark_red> was killed by some evil mob!
-death.mob.default.2=<gold>%player_name%</gold> became a victim of a mysterious creature!
-death.mob.default.3=<gray>%player_name%</gray> felt death.
+death.mob.ZOMBIE.1=<#C62828>%player_name%</#C62828> <#E8F5E9>was in love with a zombie... doesn't matter now!</#E8F5E9>
+death.mob.ZOMBIE.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>became a zombie's favourite meal!</#E8F5E9>
+death.mob.ZOMBIE.3=<#A5D6A7>%player_name% tried to befriend a zombie. It didn't work.</#A5D6A7>
+death.mob.SKELETON.1=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>became target practice for skeletons!</#E8F5E9>
+death.mob.SKELETON.2=<#E8F5E9>%player_name% met skeleton arrows face to face!</#E8F5E9>
+death.mob.SKELETON.3=<#FFA726>%player_name%</#FFA726> <#E8F5E9>learned that bones can be deadly.</#E8F5E9>
+death.mob.CREEPER.1=<#8BC34A>%player_name%</#8BC34A> <#E8F5E9>got too close to a green explosive friend!</#E8F5E9>
+death.mob.CREEPER.2=<#FFA726>%player_name%</#FFA726> <#E8F5E9>turned into a pile of blocks after meeting a creeper!</#E8F5E9>
+death.mob.CREEPER.3=<#EF5350>%player_name%</#EF5350> <#E8F5E9>miscalculated the distance from a creeper!</#E8F5E9>
+death.mob.SPIDER.1=<#7E57C2>%player_name%</#7E57C2> <#E8F5E9>got tangled in a web and lost!</#E8F5E9>
+death.mob.SPIDER.2=<#EF5350>%player_name%</#EF5350> <#E8F5E9>was bitten by a spider!</#E8F5E9>
+death.mob.SPIDER.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>learned that spiders aren't friends.</#E8F5E9>
+death.mob.WITCH.1=<#AB47BC>%player_name%</#AB47BC> <#E8F5E9>met a witch and her potions!</#E8F5E9>
+death.mob.WITCH.2=<#C62828>%player_name%</#C62828> <#E8F5E9>became a victim of witch magic!</#E8F5E9>
+death.mob.WITCH.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>didn't appreciate the power of potions.</#E8F5E9>
+death.mob.ENDERMAN.1=<#212121>%player_name%</#212121> <#E8F5E9>met an enderman... and vanished almost instantly!</#E8F5E9>
+death.mob.ENDERMAN.2=<#AB47BC>%player_name%</#AB47BC> <#E8F5E9>was caught by an enderman's gaze!</#E8F5E9>
+death.mob.ENDERMAN.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>learned that looking at endermen is dangerous.</#E8F5E9>
+death.mob.WARDEN.1=<#212121>%player_name%</#212121> <#E8F5E9>heard the Warden's heartbeat!</#E8F5E9>
+death.mob.WARDEN.2=<#616161>%player_name%</#616161> <#E8F5E9>didn't run fast enough!</#E8F5E9>
+death.mob.WARDEN.3=<#EF5350>%player_name%</#EF5350> <#E8F5E9>became a victim of the Warden!</#E8F5E9>
+death.mob.default.1=<#C62828>%player_name%</#C62828> <#E8F5E9>was killed by some evil mob!</#E8F5E9>
+death.mob.default.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>became a victim of a mysterious creature!</#E8F5E9>
+death.mob.default.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>felt death.</#E8F5E9>
 
 # ═══════════════ RESPAWN ═══════════════
-respawn.1=<green>✨ %player_name%, reincarnation successful. Good luck in your new life!</green>
-respawn.2=<yellow>⚡ %player_name% returned to life with new strength!</yellow>
-respawn.3=<aqua>%player_name% is ready for new adventures!</aqua>
+respawn.1=<gradient:#4CAF50:#FFC107>✨ %player_name%, reincarnation successful. Good luck in your new life!</gradient>
+respawn.2=<#8BC34A>⚡ %player_name% returned to life with new strength!</#8BC34A>
+respawn.3=<#4CAF50>%player_name% is ready for new adventures!</#4CAF50>
 
 # ═══════════════ HOLIDAYS ═══════════════
-holidays.new_year.messages.1=<gold>🎄 Happy New Year, %player_name%!</gold>
-holidays.new_year.messages.2=<gradient:#00BFFF:#FFFFFF>❄ Snowflakes are falling around you!</gradient>
-holidays.christmas.messages.1=<red>🎅 Merry Christmas, %player_name%!</red>
-holidays.valentine.messages.1=<red>❤ Happy Valentine's Day, %player_name%!</red>
-holidays.halloween.messages.1=<dark_purple>🎃 Happy Halloween, %player_name%!</dark_purple>
-holidays.easter.messages.1=<yellow>🐣 Happy Easter, %player_name%!</yellow>
-holidays.womens_day.messages.1=<light_purple>🌷 Happy Women's Day, %player_name%!</light_purple>
-holidays.defender_day.messages.1=<blue>🎖 Happy Defender's Day, %player_name%!</blue>
-holidays.april_fools.messages.1=<yellow>😜 Happy April Fools, %player_name%!</yellow>
-holidays.victory_day.messages.1=<red>🎗 Happy Victory Day, %player_name%!</red>
-holidays.default.messages.1=<gold>🎉 Happy holiday, %player_name%!</gold>
+holidays.new_year.messages.1=<#FFC107>🎄 Happy New Year, %player_name%!</#FFC107>
+holidays.new_year.messages.2=<gradient:#4CAF50:#E8F5E9>❄ Snowflakes are falling around you!</gradient>
+holidays.christmas.messages.1=<#EF5350>🎅 Merry Christmas, %player_name%!</#EF5350>
+holidays.valentine.messages.1=<#EF5350>❤ Happy Valentine's Day, %player_name%!</#EF5350>
+holidays.halloween.messages.1=<#AB47BC>🎃 Happy Halloween, %player_name%!</#AB47BC>
+holidays.easter.messages.1=<#FFC107>🐣 Happy Easter, %player_name%!</#FFC107>
+holidays.womens_day.messages.1=<#EC407A>🌷 Happy Women's Day, %player_name%!</#EC407A>
+holidays.defender_day.messages.1=<#42A5F5>🎖 Happy Defender's Day, %player_name%!</#42A5F5>
+holidays.april_fools.messages.1=<#FFA726>😜 Happy April Fools, %player_name%!</#FFA726>
+holidays.victory_day.messages.1=<#EF5350>🎗 Happy Victory Day, %player_name%!</#EF5350>
+holidays.default.messages.1=<gradient:#4CAF50:#FFC107>🎉 Happy holiday, %player_name%!</gradient>
 
 # ═══════════════ LINKS ═══════════════
-links.vk=<click:open_url:'https://vk.com/play_terra_craft_ru'>VK</click>
-links.site=<click:open_url:'https://terracraft.ru'>Website</click>
-links.discord=<click:open_url:'https://discord.gg/terracraft'>Discord</click>
-links.telegram=<click:open_url:'https://t.me/terracraft'>Telegram</click>
-links.youtube=<click:open_url:'https://youtube.com/@terracraft'>YouTube</click>
+links.vk=<click:open_url:'https://vk.com/play_terra_craft_ru'><gradient:#8BC34A:#FFC107>VK</gradient></click>
+links.site=<click:open_url:'https://terracraft.ru'><gradient:#8BC34A:#FFC107>Website</gradient></click>
+links.discord=<click:open_url:'https://discord.gg/terracraft'><gradient:#8BC34A:#FFC107>Discord</gradient></click>
+links.telegram=<click:open_url:'https://t.me/terracraft'><gradient:#8BC34A:#FFC107>Telegram</gradient></click>
+links.youtube=<click:open_url:'https://youtube.com/@terracraft'><gradient:#8BC34A:#FFC107>YouTube</gradient></click>
 
 # ═══════════════ COMMANDS ═══════════════
-commands.reload.success=<green>✔ Configuration reloaded <gray>(%time%ms)</gray></green>
-commands.reload.error=<red>✘ Reload error: <white>%error%</white></red>
-commands.language.success=<green>✔ Language changed to: <yellow>%lang%</yellow></green>
-commands.language.not_found=<red>✘ Language not found</red>
-commands.gui.player_only=<red>✘ GUI is available only to players!</red>
+commands.reload.success=<#4CAF50>✔</#4CAF50> <#E8F5E9>Configuration reloaded</#E8F5E9> <#A5D6A7>(%time%ms)</#A5D6A7>
+commands.reload.error=<#EF5350>✘ Reload error:</#EF5350> <white>%error%</white>
+commands.language.success=<#4CAF50>✔</#4CAF50> <#E8F5E9>Language changed to:</#E8F5E9> <#FFC107>%lang%</#FFC107>
+commands.language.not_found=<#EF5350>✘ Language not found</#EF5350>
+commands.gui.player_only=<#EF5350>✘ GUI is available only to players!</#EF5350>
 
 # ═══════════════ HELP ═══════════════
-help.header.1=╔══════════════════════════════════════╗
-help.header.2=║   <yellow><bold>Welcome Plugin — Help</bold></yellow>
-help.header.3=╠══════════════════════════════════════╣
+help.header.1=<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>
+help.header.2=<#1B5E20>║</#1B5E20>   <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient> <#A5D6A7>— Help</#A5D6A7>
+help.header.3=<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>
 
-help.commands.1=║ <yellow>/welcome</yellow> <white>— Greeting</white>
-help.commands.2=║ <yellow>/welcome version</yellow> <white>— Version</white>
-help.commands.3=║ <yellow>/welcome help</yellow> <white>— This help</white>
+help.commands.1=<#1B5E20>║</#1B5E20> <#FFC107>/welcome</#FFC107> <#E8F5E9>— Greeting</#E8F5E9>
+help.commands.2=<#1B5E20>║</#1B5E20> <#FFC107>/welcome version</#FFC107> <#E8F5E9>— Version</#E8F5E9>
+help.commands.3=<#1B5E20>║</#1B5E20> <#FFC107>/welcome help</#FFC107> <#E8F5E9>— This help</#E8F5E9>
 
-help.admin.1=╠══════════════════════════════════════╣
-help.admin.2=║ <red><bold>Administrator:</bold></red>
-help.admin.3=║ <yellow>/welcome reload</yellow> <white>— Reload</white>
-help.admin.4=║ <yellow>/welcome migrate</yellow> <white>— Update config</white>
-help.admin.5=║ <yellow>/welcome gui</yellow> <white>— Settings menu</white>
-help.admin.6=║ <yellow>/welcome language <lang></yellow> <white>— Change language</white>
+help.admin.1=<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>
+help.admin.2=<#1B5E20>║</#1B5E20> <#EF5350>Administrator:</#EF5350>
+help.admin.3=<#1B5E20>║</#1B5E20> <#FFC107>/welcome reload</#FFC107> <#E8F5E9>— Reload</#E8F5E9>
+help.admin.4=<#1B5E20>║</#1B5E20> <#FFC107>/welcome migrate</#FFC107> <#E8F5E9>— Update config</#E8F5E9>
+help.admin.5=<#1B5E20>║</#1B5E20> <#FFC107>/welcome gui</#FFC107> <#E8F5E9>— Settings menu</#E8F5E9>
+help.admin.6=<#1B5E20>║</#1B5E20> <#FFC107>/welcome language <lang></#FFC107> <#E8F5E9>— Change language</#E8F5E9>
 
-help.footer.1=╚══════════════════════════════════════╝
+help.footer.1=<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>
 
 # ═══════════════ INFO ═══════════════
-info.header.1=╔══════════════════════════════════════╗
-info.header.2=║     <yellow><bold>Welcome Plugin</bold></yellow>
-info.header.3=║   <gold>v%version% by luci</gold>
-info.header.4=╠══════════════════════════════════════╣
+info.header.1=<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>
+info.header.2=<#1B5E20>║</#1B5E20>     <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient>
+info.header.3=<#1B5E20>║</#1B5E20>   <#FFC107>v%version% by luci</#FFC107>
+info.header.4=<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>
 
-info.body.1=║   PlaceholderAPI: %papi%
-info.body.2=║   Vault: %vault%
-info.body.3=║   LuckPerms: %luckperms%
+info.body.1=<#1B5E20>║</#1B5E20>   <#E8F5E9>PlaceholderAPI:</#E8F5E9> %papi%
+info.body.2=<#1B5E20>║</#1B5E20>   <#E8F5E9>Vault:</#E8F5E9> %vault%
+info.body.3=<#1B5E20>║</#1B5E20>   <#E8F5E9>LuckPerms:</#E8F5E9> %luckperms%
 
-info.footer.1=╚══════════════════════════════════════╝
+info.footer.1=<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>
+
 # ═══════════════ ERRORS ═══════════════
-errors.api_unavailable=<red>✘ WelcomeAPI unavailable</red>
-errors.generic=<red>✘ Error: <white>%error%</white></red>
-errors.gui_open=<red>✘ Failed to open menu: <white>%error%</white></red>
+errors.api_unavailable=<#EF5350>✘ WelcomeAPI unavailable</#EF5350>
+errors.generic=<#EF5350>✘ Error:</#EF5350> <white>%error%</white>
+errors.gui_open=<#EF5350>✘ Failed to open menu:</#EF5350> <white>%error%</white>
 
 # ═══════════════ GUI ═══════════════
-gui.title=⚙ Welcome Settings
-gui.toggle.lore=Click to toggle
+gui.title=<gradient:#4CAF50:#FFC107>⚙ Welcome Settings</gradient>
+gui.toggle.lore=<#A5D6A7>Click to toggle</#A5D6A7>
 
-gui.sound.name=Sounds
-gui.particles.name=Particles
-gui.holidays.name=Holidays
+gui.sound.name=<#E8F5E9>Sounds</#E8F5E9>
+gui.particles.name=<#E8F5E9>Particles</#E8F5E9>
+gui.holidays.name=<#E8F5E9>Holidays</#E8F5E9>
 
-gui.language.name=🌍 Language: <white>%lang%</white>
-gui.language.lore.click=Click to change language
-gui.language.lore.available=Available: <dark_gray>%list%</dark_gray>
+gui.language.name=<#E8F5E9>Language:</#E8F5E9> <#FFC107>%lang%</#FFC107>
+gui.language.lore.click=<#A5D6A7>Click to change language</#A5D6A7>
+gui.language.lore.available=<#A5D6A7>Available:</#A5D6A7> <#616161>%list%</#616161>
 
-gui.info.name=ℹ Information
-gui.info.version=Version: <white>%version%</white>
-gui.info.author=Author: <white>luci</white>
-gui.info.papi=PlaceholderAPI: %status%
-gui.info.vault=Vault: %status%
+gui.info.name=<#E8F5E9>Information</#E8F5E9>
+gui.info.version=<#E8F5E9>Version:</#E8F5E9> <white>%version%</white>
+gui.info.author=<#E8F5E9>Author:</#E8F5E9> <white>luci</white>
+gui.info.papi=<#E8F5E9>PlaceholderAPI:</#E8F5E9> %status%
+gui.info.vault=<#E8F5E9>Vault:</#E8F5E9> %status%
 
-gui.toggle.message=<white>%name%</white>: %state%
-gui.toggle.state.on=<green>✔ enabled</green>
-gui.toggle.state.off=<red>✘ disabled</red>
+gui.toggle.message=<white>%name%</white><#A5D6A7>:</#A5D6A7> %state%
+gui.toggle.state.on=<#4CAF50>✔ enabled</#4CAF50>
+gui.toggle.state.off=<#EF5350>✘ disabled</#EF5350>
 
-gui.info.message=<yellow>ℹ Welcome Plugin v%version% by luci</yellow>
+gui.info.message=<gradient:#4CAF50:#FFC107>Welcome Plugin v%version% by luci</gradient>

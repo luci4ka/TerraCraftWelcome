@@ -1,254 +1,262 @@
 # ═══════════════════════════════════════════
 #  Welcome Plugin — Русский язык (ru_ru)
+#  Палитра TerraCraft:
+#    Primary:   #4CAF50 (green)
+#    Secondary: #8BC34A (light green)
+#    Accent:    #FFC107 (gold)
+#    Divider:   #1B5E20 (dark green)
+#    Text:      #E8F5E9 (off-white)
+#    Muted:     #A5D6A7 (muted green)
 # ═══════════════════════════════════════════
 
 # ═══════════════ MOTD ═══════════════
-motd.lines.1=<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>
-motd.lines.2=<dark_purple>| <gray>Рады видеть тебя снова на сервере!</gray>
-motd.lines.3=<dark_purple>| <green>ВК: %welcome_vk_url%</green>
-motd.lines.4=<dark_purple>| <green>Сайт: %welcome_site_url%</green>
-motd.lines.5=<dark_purple>| <green>Discord: %welcome_discord_url%</green>
-motd.lines.6=<dark_purple>| <gray>Желаем приятной игры!</gray>
+motd.lines.1=<gradient:#4CAF50:#FFC107>TerraCraft</gradient> <#1B5E20>│</#1B5E20> <#E8F5E9>Привет, %player_name%!</#E8F5E9>
+motd.lines.2=<#A5D6A7>Рады видеть тебя снова на сервере!</#A5D6A7>
+motd.lines.3=<#A5D6A7>ВК:</#A5D6A7> <gradient:#8BC34A:#FFC107>%welcome_vk_url%</gradient>
+motd.lines.4=<#A5D6A7>Сайт:</#A5D6A7> <gradient:#8BC34A:#FFC107>%welcome_site_url%</gradient>
+motd.lines.5=<#A5D6A7>Discord:</#A5D6A7> <gradient:#8BC34A:#FFC107>%welcome_discord_url%</gradient>
+motd.lines.6=<#A5D6A7>Желаем приятной игры!</#A5D6A7>
 
 # ═══════════════ TITLES ═══════════════
-titles.first_join.title=<gold>Добро пожаловать!</gold>
-titles.first_join.subtitle=<gray>%player_name%, ты у нас впервые! <yellow>#%number%</yellow></gray>
-titles.join.title=<green>С возвращением!</green>
-titles.join.subtitle=<gray>%player_name%</gray>
-titles.death.title=<red>Вы погибли!</red>
-titles.death.subtitle=<gray>Но вы ещё вернётесь...</gray>
+titles.first_join.title=<gradient:#4CAF50:#FFC107>Добро пожаловать!</gradient>
+titles.first_join.subtitle=<#E8F5E9>%player_name%, ты у нас впервые!</#E8F5E9> <#FFC107>#%number%</#FFC107>
+titles.join.title=<gradient:#4CAF50:#FFC107>С возвращением!</gradient>
+titles.join.subtitle=<#E8F5E9>%player_name%</#E8F5E9>
+titles.death.title=<#EF5350>Вы погибли!</#EF5350>
+titles.death.subtitle=<#A5D6A7>Но вы ещё вернётесь...</#A5D6A7>
 
 # ═══════════════ ACTION BAR ═══════════════
-actionbar.first_join=<gold>✨ Добро пожаловать на сервер, %player_name%!</gold>
-actionbar.join=<green>С возвращением, %player_name%!</green>
+actionbar.first_join=<gradient:#4CAF50:#FFC107>Добро пожаловать на сервер, %player_name%!</gradient>
+actionbar.join=<#8BC34A>С возвращением, %player_name%!</#8BC34A>
 
 # ═══════════════ JOIN ═══════════════
-join.first_join.1=<gold>🎉 Новичок на сервере! Встречаем <white>%player_name%</white> бурными аплодисментами! <gray>(#%number%)</gray></gold>
-join.first_join.2=<green>✨ <white>%player_name%</white> только что присоединился! <gray>(#%number%)</gray></green>
-join.first_join.3=<aqua>Добро пожаловать, %player_name%! Ты #%number% новичок!</aqua>
+join.first_join.1=<gradient:#4CAF50:#FFC107>Новичок на сервере!</gradient> <#E8F5E9>Встречаем</#E8F5E9> <white>%player_name%</white> <#A5D6A7>(#%number%)</#A5D6A7>
+join.first_join.2=<gradient:#8BC34A:#FFC107>%player_name%</gradient> <#E8F5E9>только что присоединился!</#E8F5E9> <#A5D6A7>(#%number%)</#A5D6A7>
+join.first_join.3=<#E8F5E9>Добро пожаловать,</#E8F5E9> <gradient:#4CAF50:#FFC107>%player_name%</gradient><#E8F5E9>! Ты #%number% новичок!</#E8F5E9>
 
-join.default.1=<green>Добро пожаловать, %player_name%!</green>
-join.default.2=<yellow>Привет, %player_name%!</yellow>
-join.default.3=<aqua>Рады видеть тебя, %player_name%!</aqua>
+join.default.1=<#8BC34A>Добро пожаловать, %player_name%!</#8BC34A>
+join.default.2=<#A5D6A7>Привет, %player_name%!</#A5D6A7>
+join.default.3=<#E8F5E9>Рады видеть тебя, %player_name%!</#E8F5E9>
 
-quit.default.1=<red>➖ <gray><white>%player_name%</white> вышел... наверное, за чаем.</gray>
-quit.default.2=<gray>%player_name% покинул сервер.</gray>
-quit.default.3=<yellow>До встречи, %player_name%!</yellow>
+quit.default.1=<#EF5350>➖</#EF5350> <#A5D6A7>%player_name% вышел... наверное, за чаем.</#A5D6A7>
+quit.default.2=<#A5D6A7>%player_name% покинул сервер.</#A5D6A7>
+quit.default.3=<#8BC34A>До встречи, %player_name%!</#8BC34A>
 
 # ═══════════════ GROUPS ═══════════════
 
 # ─── default ───
-groups.default.join.1=<green>➕ <gray>Опа! <white>%player_name%</white> заглянул в гости. Не забудь тапки у входа!</gray>
-groups.default.join.2=<blue>%player_name% присоединился к нам!</blue>
-groups.default.join.3=<yellow>Приветствуем %player_name%!</yellow>
-groups.default.quit.1=<red>➖ <gray><white>%player_name%</white> вышел... наверное, за чаем.</gray>
-groups.default.quit.2=<gray>%player_name% покинул сервер.</gray>
-groups.default.quit.3=<yellow>До встречи, %player_name%!</yellow>
+groups.default.join.1=<#4CAF50>➕</#4CAF50> <#A5D6A7>Опа! %player_name% заглянул в гости. Не забудь тапки у входа!</#A5D6A7>
+groups.default.join.2=<#8BC34A>%player_name% присоединился к нам!</#8BC34A>
+groups.default.join.3=<#A5D6A7>Приветствуем %player_name%!</#A5D6A7>
+groups.default.quit.1=<#EF5350>➖</#EF5350> <#A5D6A7>%player_name% вышел... наверное, за чаем.</#A5D6A7>
+groups.default.quit.2=<#A5D6A7>%player_name% покинул сервер.</#A5D6A7>
+groups.default.quit.3=<#8BC34A>До встречи, %player_name%!</#8BC34A>
 
 # ─── deluxe ───
-groups.deluxe.join.1=<aqua>💎 Делюкс <white>%player_name%</white> зашёл на огонёк!</aqua>
-groups.deluxe.join.2=<aqua>💎 <white>%player_name%</white> (Делюкс) на связи!</aqua>
-groups.deluxe.join.3=<light_purple>✨ Делюкс %player_name% здесь!</light_purple>
-groups.deluxe.quit.1=<aqua>💎 Делюкс <white>%player_name%</white> ушёл по своим делам.</aqua>
-groups.deluxe.quit.2=<gray>Делюкс %player_name% покинул нас.</gray>
-groups.deluxe.quit.3=<aqua>💎 Пока, %player_name%!</aqua>
+groups.deluxe.join.1=<#29B6F6>💎 Делюкс</#29B6F6> <white>%player_name%</white> <#A5D6A7>зашёл на огонёк!</#A5D6A7>
+groups.deluxe.join.2=<#29B6F6>💎 %player_name% (Делюкс) на связи!</#29B6F6>
+groups.deluxe.join.3=<#29B6F6>✨ Делюкс %player_name% здесь!</#29B6F6>
+groups.deluxe.quit.1=<#29B6F6>💎 Делюкс %player_name% ушёл по своим делам.</#29B6F6>
+groups.deluxe.quit.2=<#A5D6A7>Делюкс %player_name% покинул нас.</#A5D6A7>
+groups.deluxe.quit.3=<#29B6F6>💎 Пока, %player_name%!</#29B6F6>
 
 # ─── elite ───
-groups.elite.join.1=<light_purple>🌟 Элита <white>%player_name%</white> почтила нас присутствием!</light_purple>
-groups.elite.join.2=<light_purple>🌟 <white>%player_name%</white> (Элита) на связи!</light_purple>
-groups.elite.join.3=<gold>✨ Элита %player_name% здесь!</gold>
-groups.elite.quit.1=<light_purple>🌟 Элита <white>%player_name%</white> ушла в закат.</light_purple>
-groups.elite.quit.2=<gray>Элита %player_name% покинула сервер.</gray>
-groups.elite.quit.3=<light_purple>🌟 До встречи, %player_name%!</light_purple>
+groups.elite.join.1=<#AB47BC>🌟 Элита</#AB47BC> <white>%player_name%</white> <#A5D6A7>почтила нас присутствием!</#A5D6A7>
+groups.elite.join.2=<#AB47BC>🌟 %player_name% (Элита) на связи!</#AB47BC>
+groups.elite.join.3=<#AB47BC>✨ Элита %player_name% здесь!</#AB47BC>
+groups.elite.quit.1=<#AB47BC>🌟 Элита %player_name% ушла в закат.</#AB47BC>
+groups.elite.quit.2=<#A5D6A7>Элита %player_name% покинула сервер.</#A5D6A7>
+groups.elite.quit.3=<#AB47BC>🌟 До встречи, %player_name%!</#AB47BC>
 
 # ─── overlord ───
-groups.overlord.join.1=<gold>👑 Владыка <white>%player_name%</white> снизошёл к смертным!</gold>
-groups.overlord.join.2=<gold>👑 <white>%player_name%</white> (Владыка) на связи!</gold>
-groups.overlord.join.3=<dark_gold>⚜ Владыка %player_name% прибыл!</dark_gold>
-groups.overlord.quit.1=<gold>👑 Владыка <white>%player_name%</white> отбыл в свои чертоги.</gold>
-groups.overlord.quit.2=<gray>Владыка %player_name% покинул нас.</gray>
-groups.overlord.quit.3=<gold>⚜ До встречи, Владыка %player_name%!</gold>
+groups.overlord.join.1=<#FFC107>👑 Владыка</#FFC107> <white>%player_name%</white> <#A5D6A7>снизошёл к смертным!</#A5D6A7>
+groups.overlord.join.2=<#FFC107>👑 %player_name% (Владыка) на связи!</#FFC107>
+groups.overlord.join.3=<#FF8F00>⚜ Владыка %player_name% прибыл!</#FF8F00>
+groups.overlord.quit.1=<#FFC107>👑 Владыка %player_name% отбыл в свои чертоги.</#FFC107>
+groups.overlord.quit.2=<#A5D6A7>Владыка %player_name% покинул нас.</#A5D6A7>
+groups.overlord.quit.3=<#FFC107>⚜ До встречи, Владыка %player_name%!</#FFC107>
 
 # ─── oldtimer ───
-groups.oldtimer.join.1=<yellow>🏆 Старичок <white>%player_name%</white> снова с нами!</yellow>
-groups.oldtimer.join.2=<yellow>🏆 <white>%player_name%</white> (Старичок) на связи!</yellow>
-groups.oldtimer.join.3=<gold>Ветеран %player_name% вернулся!</gold>
-groups.oldtimer.quit.1=<yellow>🏆 Старичок <white>%player_name%</white> ушёл. Легенда ушла.</yellow>
-groups.oldtimer.quit.2=<gray>Старичок %player_name% покинул нас.</gray>
-groups.oldtimer.quit.3=<yellow>До встречи, %player_name%!</yellow>
+groups.oldtimer.join.1=<#FFA726>🏆 Старичок</#FFA726> <white>%player_name%</white> <#A5D6A7>снова с нами!</#A5D6A7>
+groups.oldtimer.join.2=<#FFA726>🏆 %player_name% (Старичок) на связи!</#FFA726>
+groups.oldtimer.join.3=<#FFA726>Ветеран %player_name% вернулся!</#FFA726>
+groups.oldtimer.quit.1=<#FFA726>🏆 Старичок %player_name% ушёл. Легенда ушла.</#FFA726>
+groups.oldtimer.quit.2=<#A5D6A7>Старичок %player_name% покинул нас.</#A5D6A7>
+groups.oldtimer.quit.3=<#FFA726>До встречи, %player_name%!</#FFA726>
 
 # ─── helper ───
-groups.helper.join.1=<green>🛠 Помощник <white>%player_name%</white> на связи!</green>
-groups.helper.join.2=<green>🛠 <white>%player_name%</white> (Помощник) готов помочь!</green>
-groups.helper.join.3=<aqua>Помощник %player_name% прибыл!</aqua>
-groups.helper.quit.1=<green>🛠 Помощник <white>%player_name%</white> ушёл.</green>
-groups.helper.quit.2=<gray>Помощник %player_name% покинул нас.</gray>
-groups.helper.quit.3=<green>До встречи, %player_name%!</green>
+groups.helper.join.1=<#8BC34A>🛠 Помощник</#8BC34A> <white>%player_name%</white> <#A5D6A7>на связи!</#A5D6A7>
+groups.helper.join.2=<#8BC34A>🛠 %player_name% (Помощник) готов помочь!</#8BC34A>
+groups.helper.join.3=<#8BC34A>Помощник %player_name% прибыл!</#8BC34A>
+groups.helper.quit.1=<#8BC34A>🛠 Помощник %player_name% ушёл.</#8BC34A>
+groups.helper.quit.2=<#A5D6A7>Помощник %player_name% покинул нас.</#A5D6A7>
+groups.helper.quit.3=<#8BC34A>До встречи, %player_name%!</#8BC34A>
 
 # ─── moderator ───
-groups.moderator.join.1=<blue>🛡 Модератор <white>%player_name%</white> на связи!</blue>
-groups.moderator.join.2=<blue>🛡 <white>%player_name%</white> (Модератор) следит за порядком!</blue>
-groups.moderator.join.3=<aqua>Модератор %player_name% прибыл!</aqua>
-groups.moderator.quit.1=<blue>🛡 Модератор <white>%player_name%</white> ушёл.</blue>
-groups.moderator.quit.2=<gray>Модератор %player_name% покинул нас.</gray>
-groups.moderator.quit.3=<blue>До свидания, %player_name%!</blue>
+groups.moderator.join.1=<#42A5F5>🛡 Модератор</#42A5F5> <white>%player_name%</white> <#A5D6A7>на связи!</#A5D6A7>
+groups.moderator.join.2=<#42A5F5>🛡 %player_name% (Модератор) следит за порядком!</#42A5F5>
+groups.moderator.join.3=<#42A5F5>Модератор %player_name% прибыл!</#42A5F5>
+groups.moderator.quit.1=<#42A5F5>🛡 Модератор %player_name% ушёл.</#42A5F5>
+groups.moderator.quit.2=<#A5D6A7>Модератор %player_name% покинул нас.</#A5D6A7>
+groups.moderator.quit.3=<#42A5F5>До свидания, %player_name%!</#42A5F5>
 
 # ─── admin ───
-groups.admin.join.1=<red>⚡ Админ <white>%player_name%</white> на связи!</red>
-groups.admin.join.2=<red>⚡ <white>%player_name%</white> (Админ) вошёл в игру!</red>
-groups.admin.join.3=<dark_red>Админ %player_name% прибыл!</dark_red>
-groups.admin.quit.1=<red>⚡ Админ <white>%player_name%</white> ушёл.</red>
-groups.admin.quit.2=<gray>Админ %player_name% покинул нас.</gray>
-groups.admin.quit.3=<red>До встречи, %player_name%!</red>
+groups.admin.join.1=<#EF5350>⚡ Админ</#EF5350> <white>%player_name%</white> <#A5D6A7>на связи!</#A5D6A7>
+groups.admin.join.2=<#EF5350>⚡ %player_name% (Админ) вошёл в игру!</#EF5350>
+groups.admin.join.3=<#EF5350>Админ %player_name% прибыл!</#EF5350>
+groups.admin.quit.1=<#EF5350>⚡ Админ %player_name% ушёл.</#EF5350>
+groups.admin.quit.2=<#A5D6A7>Админ %player_name% покинул нас.</#A5D6A7>
+groups.admin.quit.3=<#EF5350>До встречи, %player_name%!</#EF5350>
 
 # ─── headadmin ───
-groups.headadmin.join.1=<dark_red>👑 Гл.Админ <white>%player_name%</white> снизошёл к нам!</dark_red>
-groups.headadmin.join.2=<dark_red>👑 <white>%player_name%</white> (Гл.Админ) на связи!</dark_red>
-groups.headadmin.join.3=<gold>⚡ Гл.Админ %player_name% прибыл!</gold>
-groups.headadmin.quit.1=<dark_red>👑 Гл.Админ <white>%player_name%</white> покинул нас.</dark_red>
-groups.headadmin.quit.2=<gray>Гл.Админ %player_name% ушёл.</gray>
-groups.headadmin.quit.3=<dark_red>До встречи, Гл.Админ %player_name%!</dark_red>
+groups.headadmin.join.1=<#C62828>👑 Гл.Админ</#C62828> <white>%player_name%</white> <#A5D6A7>снизошёл к нам!</#A5D6A7>
+groups.headadmin.join.2=<#C62828>👑 %player_name% (Гл.Админ) на связи!</#C62828>
+groups.headadmin.join.3=<#C62828>⚡ Гл.Админ %player_name% прибыл!</#C62828>
+groups.headadmin.quit.1=<#C62828>👑 Гл.Админ %player_name% покинул нас.</#C62828>
+groups.headadmin.quit.2=<#A5D6A7>Гл.Админ %player_name% ушёл.</#A5D6A7>
+groups.headadmin.quit.3=<#C62828>До встречи, Гл.Админ %player_name%!</#C62828>
 
 # ═══════════════ DEATH ═══════════════
-death.pvp.1=<red>⚔ {killer} показал {victim}, кто тут босс!</red>
-death.pvp.2=<gold>{killer}</gold> выписал <red>{victim}</red> пропуск в мир духов!
-death.pvp.3=<dark_red>{victim}</dark_red> не устоял против могущества {killer}!
+death.pvp.1=<#EF5350>⚔</#EF5350> <#E8F5E9>{killer} показал {victim}, кто тут босс!</#E8F5E9>
+death.pvp.2=<#FFC107>{killer}</#FFC107> <#E8F5E9>выписал</#E8F5E9> <#EF5350>{victim}</#EF5350> <#E8F5E9>пропуск в мир духов!</#E8F5E9>
+death.pvp.3=<#C62828>{victim}</#C62828> <#E8F5E9>не устоял против могущества {killer}!</#E8F5E9>
 
-death.lava.1=<red>🔥 %player_name% пытался обняться с лавой. Не вышло.</red>
-death.lava.2=<gold>%player_name%</gold> превратился в шашлык... Не самый вкусный.
-death.lava.3=<dark_red>%player_name%</dark_red> понял, что лаву лучше смотреть издалека.
+death.lava.1=<#EF5350>🔥 %player_name% пытался обняться с лавой. Не вышло.</#EF5350>
+death.lava.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>превратился в шашлык... Не самый вкусный.</#E8F5E9>
+death.lava.3=<#C62828>%player_name%</#C62828> <#E8F5E9>понял, что лаву лучше смотреть издалека.</#E8F5E9>
 
-death.fall.1=<gray>💥 %player_name% решил, что умеет летать. Спойлер: нет.</gray>
-death.fall.2=<red>☠ %player_name%</red> проиграл битву с гравитацией.
-death.fall.3=<yellow>%player_name%</yellow> изучил законы физики на практике.
+death.fall.1=<#A5D6A7>💥 %player_name% решил, что умеет летать. Спойлер: нет.</#A5D6A7>
+death.fall.2=<#EF5350>☠ %player_name%</#EF5350> <#E8F5E9>проиграл битву с гравитацией.</#E8F5E9>
+death.fall.3=<#FFA726>%player_name%</#FFA726> <#E8F5E9>изучил законы физики на практике.</#E8F5E9>
 
-death.explosion.1=<red>💥 %player_name% взорвался!</red>
-death.explosion.2=<gold>%player_name%</gold> слишком близко подошёл к взрывчатке.
+death.explosion.1=<#EF5350>💥 %player_name% взорвался!</#EF5350>
+death.explosion.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>слишком близко подошёл к взрывчатке.</#E8F5E9>
 
-death.drowning.1=<blue>💧 %player_name% утонул. Рыбы передают привет.</blue>
-death.drowning.2=<aqua>%player_name%</aqua> не научился дышать под водой.
+death.drowning.1=<#29B6F6>💧 %player_name% утонул. Рыбы передают привет.</#29B6F6>
+death.drowning.2=<#29B6F6>%player_name%</#29B6F6> <#E8F5E9>не научился дышать под водой.</#E8F5E9>
 
-death.fire.1=<red>🔥 %player_name% сгорел. Это было горячо.</red>
-death.fire.2=<gold>%player_name%</gold> стал факелом для сервера.
+death.fire.1=<#EF5350>🔥 %player_name% сгорел. Это было горячо.</#EF5350>
+death.fire.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>стал факелом для сервера.</#E8F5E9>
 
-death.void.1=<dark_purple>🌌 %player_name% упал в пустоту. Прощай, странник.</dark_purple>
-death.void.2=<dark_gray>%player_name%</dark_gray> покинул этот мир буквально.
+death.void.1=<#7E57C2>🌌 %player_name% упал в пустоту. Прощай, странник.</#7E57C2>
+death.void.2=<#616161>%player_name%</#616161> <#E8F5E9>покинул этот мир буквально.</#E8F5E9>
 
-death.player_kill.1=<red>💀 %player_name%</red> улетел в лучший мир. По билету без возврата.
-death.player_kill.2=<gold>⚰ %player_name%</gold> получил удар судьбы... или киркой.
-death.player_kill.3=<gray>%player_name%</gray> неожиданно встретил свою смерть.
+death.player_kill.1=<#EF5350>💀 %player_name%</#EF5350> <#E8F5E9>улетел в лучший мир. По билету без возврата.</#E8F5E9>
+death.player_kill.2=<#FFC107>⚰ %player_name%</#FFC107> <#E8F5E9>получил удар судьбы... или киркой.</#E8F5E9>
+death.player_kill.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>неожиданно встретил свою смерть.</#E8F5E9>
 
-death.mob.ZOMBIE.1=<dark_red>%player_name%</dark_red> был влюблен в зомби... теперь это не важно!
-death.mob.ZOMBIE.2=<gold>%player_name%</gold> стал любимым обедом для зомби!
-death.mob.ZOMBIE.3=<gray>%player_name% попытался дружить с зомби, не вышло.</gray>
-death.mob.SKELETON.1=<gray>%player_name%</gray> стал перекрёстной мишенью для скелетов!
-death.mob.SKELETON.2=<white>%player_name%</white> встретил стрелы скелета лицом к лицу!
-death.mob.SKELETON.3=<yellow>%player_name%</yellow> понял, что кости могут быть смертельны.
-death.mob.CREEPER.1=<green>%player_name%</green> слишком близко подошёл к зелёному взрывному другу!
-death.mob.CREEPER.2=<yellow>%player_name%</yellow> превратился в кучку блоков после встречи с крипером!
-death.mob.CREEPER.3=<red>%player_name%</red> не рассчитал дистанцию от крипера!
-death.mob.SPIDER.1=<dark_purple>%player_name%</dark_purple> запутался в паутине и проиграл!
-death.mob.SPIDER.2=<red>%player_name%</red> был укушен пауком!
-death.mob.SPIDER.3=<gray>%player_name%</gray> понял, что пауки не друзья.
-death.mob.WITCH.1=<purple>%player_name%</purple> столкнулся с ведьмой и её зелиями!
-death.mob.WITCH.2=<dark_red>%player_name%</dark_red> стал жертвой магии ведьмы!
-death.mob.WITCH.3=<gray>%player_name%</gray> не оценил силу зелий.
-death.mob.ENDERMAN.1=<black>%player_name%</black> встретил эндермена... и исчез почти сразу!
-death.mob.ENDERMAN.2=<purple>%player_name%</purple> был схвачен взглядом эндермена!
-death.mob.ENDERMAN.3=<gray>%player_name%</gray> понял, что смотреть на эндермена опасно.
-death.mob.WARDEN.1=<black>%player_name%</black> услышал стук Варда!
-death.mob.WARDEN.2=<dark_gray>%player_name%</dark_gray> не успел убежать!
-death.mob.WARDEN.3=<red>%player_name%</red> стал жертвой Варда!
-death.mob.default.1=<dark_red>%player_name%</dark_red> был убит каким-то злым мобом!
-death.mob.default.2=<gold>%player_name%</gold> стал жертвой загадочного существа!
-death.mob.default.3=<gray>%player_name%</gray> почувствовал смерть.
+death.mob.ZOMBIE.1=<#C62828>%player_name%</#C62828> <#E8F5E9>был влюблен в зомби... теперь это не важно!</#E8F5E9>
+death.mob.ZOMBIE.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>стал любимым обедом для зомби!</#E8F5E9>
+death.mob.ZOMBIE.3=<#A5D6A7>%player_name% попытался дружить с зомби, не вышло.</#A5D6A7>
+death.mob.SKELETON.1=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>стал перекрёстной мишенью для скелетов!</#E8F5E9>
+death.mob.SKELETON.2=<#E8F5E9>%player_name% встретил стрелы скелета лицом к лицу!</#E8F5E9>
+death.mob.SKELETON.3=<#FFA726>%player_name%</#FFA726> <#E8F5E9>понял, что кости могут быть смертельны.</#E8F5E9>
+death.mob.CREEPER.1=<#8BC34A>%player_name%</#8BC34A> <#E8F5E9>слишком близко подошёл к зелёному взрывному другу!</#E8F5E9>
+death.mob.CREEPER.2=<#FFA726>%player_name%</#FFA726> <#E8F5E9>превратился в кучку блоков после встречи с крипером!</#E8F5E9>
+death.mob.CREEPER.3=<#EF5350>%player_name%</#EF5350> <#E8F5E9>не рассчитал дистанцию от крипера!</#E8F5E9>
+death.mob.SPIDER.1=<#7E57C2>%player_name%</#7E57C2> <#E8F5E9>запутался в паутине и проиграл!</#E8F5E9>
+death.mob.SPIDER.2=<#EF5350>%player_name%</#EF5350> <#E8F5E9>был укушен пауком!</#E8F5E9>
+death.mob.SPIDER.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>понял, что пауки не друзья.</#E8F5E9>
+death.mob.WITCH.1=<#AB47BC>%player_name%</#AB47BC> <#E8F5E9>столкнулся с ведьмой и её зелиями!</#E8F5E9>
+death.mob.WITCH.2=<#C62828>%player_name%</#C62828> <#E8F5E9>стал жертвой магии ведьмы!</#E8F5E9>
+death.mob.WITCH.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>не оценил силу зелий.</#E8F5E9>
+death.mob.ENDERMAN.1=<#212121>%player_name%</#212121> <#E8F5E9>встретил эндермена... и исчез почти сразу!</#E8F5E9>
+death.mob.ENDERMAN.2=<#AB47BC>%player_name%</#AB47BC> <#E8F5E9>был схвачен взглядом эндермена!</#E8F5E9>
+death.mob.ENDERMAN.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>понял, что смотреть на эндермена опасно.</#E8F5E9>
+death.mob.WARDEN.1=<#212121>%player_name%</#212121> <#E8F5E9>услышал стук Варда!</#E8F5E9>
+death.mob.WARDEN.2=<#616161>%player_name%</#616161> <#E8F5E9>не успел убежать!</#E8F5E9>
+death.mob.WARDEN.3=<#EF5350>%player_name%</#EF5350> <#E8F5E9>стал жертвой Варда!</#E8F5E9>
+death.mob.default.1=<#C62828>%player_name%</#C62828> <#E8F5E9>был убит каким-то злым мобом!</#E8F5E9>
+death.mob.default.2=<#FFC107>%player_name%</#FFC107> <#E8F5E9>стал жертвой загадочного существа!</#E8F5E9>
+death.mob.default.3=<#A5D6A7>%player_name%</#A5D6A7> <#E8F5E9>почувствовал смерть.</#E8F5E9>
 
 # ═══════════════ RESPAWN ═══════════════
-respawn.1=<green>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</green>
-respawn.2=<yellow>⚡ %player_name% вернулся к жизни с новыми силами!</yellow>
-respawn.3=<aqua>%player_name% готов к новым приключениям!</aqua>
+respawn.1=<gradient:#4CAF50:#FFC107>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</gradient>
+respawn.2=<#8BC34A>⚡ %player_name% вернулся к жизни с новыми силами!</#8BC34A>
+respawn.3=<#4CAF50>%player_name% готов к новым приключениям!</#4CAF50>
 
 # ═══════════════ HOLIDAYS ═══════════════
-holidays.new_year.messages.1=<gold>🎄 С Новым Годом, %player_name%!</gold>
-holidays.new_year.messages.2=<gradient:#00BFFF:#FFFFFF>❄ Снежинки кружатся вокруг тебя!</gradient>
-holidays.christmas.messages.1=<red>🎅 С Рождеством, %player_name%!</red>
-holidays.valentine.messages.1=<red>❤ С Днём Святого Валентина, %player_name%!</red>
-holidays.halloween.messages.1=<dark_purple>🎃 С Хэллоуином, %player_name%!</dark_purple>
-holidays.easter.messages.1=<yellow>🐣 Со Светлой Пасхой, %player_name%!</yellow>
-holidays.womens_day.messages.1=<light_purple>🌷 С 8 Марта, %player_name%!</light_purple>
-holidays.defender_day.messages.1=<blue>🎖 С Днём Защитника Отечества, %player_name%!</blue>
-holidays.april_fools.messages.1=<yellow>😜 С 1 Апреля, %player_name%!</yellow>
-holidays.victory_day.messages.1=<red>🎗 С Днём Победы, %player_name%!</red>
-holidays.default.messages.1=<gold>🎉 С праздником, %player_name%!</gold>
+holidays.new_year.messages.1=<#FFC107>🎄 С Новым Годом, %player_name%!</#FFC107>
+holidays.new_year.messages.2=<gradient:#4CAF50:#E8F5E9>❄ Снежинки кружатся вокруг тебя!</gradient>
+holidays.christmas.messages.1=<#EF5350>🎅 С Рождеством, %player_name%!</#EF5350>
+holidays.valentine.messages.1=<#EF5350>❤ С Днём Святого Валентина, %player_name%!</#EF5350>
+holidays.halloween.messages.1=<#AB47BC>🎃 С Хэллоуином, %player_name%!</#AB47BC>
+holidays.easter.messages.1=<#FFC107>🐣 Со Светлой Пасхой, %player_name%!</#FFC107>
+holidays.womens_day.messages.1=<#EC407A>🌷 С 8 Марта, %player_name%!</#EC407A>
+holidays.defender_day.messages.1=<#42A5F5>🎖 С Днём Защитника Отечества, %player_name%!</#42A5F5>
+holidays.april_fools.messages.1=<#FFA726>😜 С 1 Апреля, %player_name%!</#FFA726>
+holidays.victory_day.messages.1=<#EF5350>🎗 С Днём Победы, %player_name%!</#EF5350>
+holidays.default.messages.1=<gradient:#4CAF50:#FFC107>🎉 С праздником, %player_name%!</gradient>
 
 # ═══════════════ LINKS ═══════════════
-links.vk=<click:open_url:'https://vk.com/terracraft'>ВКонтакте</click>
-links.site=<click:open_url:'https://terracraft.net.ru'>Наш сайт</click>
-links.discord=<click:open_url:'https://discord.gg/terracraft'>Discord</click>
-links.telegram=<click:open_url:'https://t.me/terracraft'>Telegram</click>
-links.youtube=<click:open_url:'https://youtube.com/@terracraft'>YouTube</click>
+links.vk=<click:open_url:'https://vk.com/terracraft'><gradient:#8BC34A:#FFC107>ВКонтакте</gradient></click>
+links.site=<click:open_url:'https://terracraft.net.ru'><gradient:#8BC34A:#FFC107>Наш сайт</gradient></click>
+links.discord=<click:open_url:'https://discord.gg/terracraft'><gradient:#8BC34A:#FFC107>Discord</gradient></click>
+links.telegram=<click:open_url:'https://t.me/terracraft'><gradient:#8BC34A:#FFC107>Telegram</gradient></click>
+links.youtube=<click:open_url:'https://youtube.com/@terracraft'><gradient:#8BC34A:#FFC107>YouTube</gradient></click>
 
 # ═══════════════ COMMANDS ═══════════════
-commands.reload.success=<green>✔ Конфигурация перезагружена <gray>(%time%мс)</gray></green>
-commands.reload.error=<red>✘ Ошибка перезагрузки: <white>%error%</white></red>
-commands.language.success=<green>✔ Язык изменён на: <yellow>%lang%</yellow></green>
-commands.language.not_found=<red>✘ Язык не найден</red>
-commands.gui.player_only=<red>✘ GUI доступен только игрокам!</red>
+commands.reload.success=<#4CAF50>✔</#4CAF50> <#E8F5E9>Конфигурация перезагружена</#E8F5E9> <#A5D6A7>(%time%мс)</#A5D6A7>
+commands.reload.error=<#EF5350>✘ Ошибка перезагрузки:</#EF5350> <white>%error%</white>
+commands.language.success=<#4CAF50>✔</#4CAF50> <#E8F5E9>Язык изменён на:</#E8F5E9> <#FFC107>%lang%</#FFC107>
+commands.language.not_found=<#EF5350>✘ Язык не найден</#EF5350>
+commands.gui.player_only=<#EF5350>✘ GUI доступен только игрокам!</#EF5350>
 
-help.header.1=╔══════════════════════════════════════╗
-help.header.2=║   <yellow><bold>Welcome Plugin — Помощь</bold></yellow>
-help.header.3=╠══════════════════════════════════════╣
+# ═══════════════ HELP ═══════════════
+help.header.1=<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>
+help.header.2=<#1B5E20>║</#1B5E20>   <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient> <#A5D6A7>— Помощь</#A5D6A7>
+help.header.3=<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>
 
-help.commands.1=║ <yellow>/welcome</yellow> <white>— Приветствие</white>
-help.commands.2=║ <yellow>/welcome version</yellow> <white>— Версия</white>
-help.commands.3=║ <yellow>/welcome help</yellow> <white>— Эта справка</white>
+help.commands.1=<#1B5E20>║</#1B5E20> <#FFC107>/welcome</#FFC107> <#E8F5E9>— Приветствие</#E8F5E9>
+help.commands.2=<#1B5E20>║</#1B5E20> <#FFC107>/welcome version</#FFC107> <#E8F5E9>— Версия</#E8F5E9>
+help.commands.3=<#1B5E20>║</#1B5E20> <#FFC107>/welcome help</#FFC107> <#E8F5E9>— Эта справка</#E8F5E9>
 
-help.admin.1=╠══════════════════════════════════════╣
-help.admin.2=║ <red><bold>Администратор:</bold></red>
-help.admin.3=║ <yellow>/welcome reload</yellow> <white>— Перезагрузка</white>
-help.admin.4=║ <yellow>/welcome migrate</yellow> <white>— Обновить конфиг</white>
-help.admin.5=║ <yellow>/welcome gui</yellow> <white>— Меню настроек</white>
-help.admin.6=║ <yellow>/welcome language <lang></yellow> <white>— Сменить язык</white>
+help.admin.1=<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>
+help.admin.2=<#1B5E20>║</#1B5E20> <#EF5350>Администратор:</#EF5350>
+help.admin.3=<#1B5E20>║</#1B5E20> <#FFC107>/welcome reload</#FFC107> <#E8F5E9>— Перезагрузка</#E8F5E9>
+help.admin.4=<#1B5E20>║</#1B5E20> <#FFC107>/welcome migrate</#FFC107> <#E8F5E9>— Обновить конфиг</#E8F5E9>
+help.admin.5=<#1B5E20>║</#1B5E20> <#FFC107>/welcome gui</#FFC107> <#E8F5E9>— Меню настроек</#E8F5E9>
+help.admin.6=<#1B5E20>║</#1B5E20> <#FFC107>/welcome language <lang></#FFC107> <#E8F5E9>— Сменить язык</#E8F5E9>
 
-help.footer.1=╚══════════════════════════════════════╝
+help.footer.1=<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>
 
 # ═══════════════ INFO ═══════════════
-info.header.1=╔══════════════════════════════════════╗
-info.header.2=║     <yellow><bold>Welcome Plugin</bold></yellow>
-info.header.3=║   <gold>v%version% by luci</gold>
-info.header.4=╠══════════════════════════════════════╣
+info.header.1=<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>
+info.header.2=<#1B5E20>║</#1B5E20>     <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient>
+info.header.3=<#1B5E20>║</#1B5E20>   <#FFC107>v%version% by luci</#FFC107>
+info.header.4=<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>
 
-info.body.1=║   PlaceholderAPI: %papi%
-info.body.2=║   Vault: %vault%
-info.body.3=║   LuckPerms: %luckperms%
+info.body.1=<#1B5E20>║</#1B5E20>   <#E8F5E9>PlaceholderAPI:</#E8F5E9> %papi%
+info.body.2=<#1B5E20>║</#1B5E20>   <#E8F5E9>Vault:</#E8F5E9> %vault%
+info.body.3=<#1B5E20>║</#1B5E20>   <#E8F5E9>LuckPerms:</#E8F5E9> %luckperms%
 
-info.footer.1=╚══════════════════════════════════════╝
+info.footer.1=<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>
 
 # ═══════════════ ERRORS ═══════════════
-errors.api_unavailable=<red>✘ WelcomeAPI недоступен</red>
-errors.generic=<red>✘ Ошибка: <white>%error%</white></red>
-errors.gui_open=<red>✘ Ошибка открытия меню: <white>%error%</white></red>
+errors.api_unavailable=<#EF5350>✘ WelcomeAPI недоступен</#EF5350>
+errors.generic=<#EF5350>✘ Ошибка:</#EF5350> <white>%error%</white>
+errors.gui_open=<#EF5350>✘ Ошибка открытия меню:</#EF5350> <white>%error%</white>
 
 # ═══════════════ GUI ═══════════════
-gui.title=⚙ Настройки Welcome
-gui.toggle.lore=Нажмите для переключения
+gui.title=<gradient:#4CAF50:#FFC107>⚙ Настройки Welcome</gradient>
+gui.toggle.lore=<#A5D6A7>Нажмите для переключения</#A5D6A7>
 
-gui.sound.name=Звуки
-gui.particles.name=Частицы
-gui.holidays.name=Праздники
+gui.sound.name=<#E8F5E9>Звуки</#E8F5E9>
+gui.particles.name=<#E8F5E9>Частицы</#E8F5E9>
+gui.holidays.name=<#E8F5E9>Праздники</#E8F5E9>
 
-gui.language.name=🌍 Язык: <white>%lang%</white>
-gui.language.lore.click=Нажмите для смены языка
-gui.language.lore.available=Доступные: <dark_gray>%list%</dark_gray>
+gui.language.name=<#E8F5E9>Язык:</#E8F5E9> <#FFC107>%lang%</#FFC107>
+gui.language.lore.click=<#A5D6A7>Нажмите для смены языка</#A5D6A7>
+gui.language.lore.available=<#A5D6A7>Доступные:</#A5D6A7> <#616161>%list%</#616161>
 
-gui.info.name=ℹ Информация
-gui.info.version=Версия: <white>%version%</white>
-gui.info.author=Автор: <white>luci</white>
-gui.info.papi=PlaceholderAPI: %status%
-gui.info.vault=Vault: %status%
+gui.info.name=<#E8F5E9>Информация</#E8F5E9>
+gui.info.version=<#E8F5E9>Версия:</#E8F5E9> <white>%version%</white>
+gui.info.author=<#E8F5E9>Автор:</#E8F5E9> <white>luci</white>
+gui.info.papi=<#E8F5E9>PlaceholderAPI:</#E8F5E9> %status%
+gui.info.vault=<#E8F5E9>Vault:</#E8F5E9> %status%
 
-gui.toggle.message=<white>%name%</white>: %state%
-gui.toggle.state.on=<green>✔ включено</green>
-gui.toggle.state.off=<red>✘ выключено</red>
+gui.toggle.message=<white>%name%</white><#A5D6A7>:</#A5D6A7> %state%
+gui.toggle.state.on=<#4CAF50>✔ включено</#4CAF50>
+gui.toggle.state.off=<#EF5350>✘ выключено</#EF5350>
 
-gui.info.message=<yellow>ℹ Welcome Plugin v%version% by luci</yellow>
+gui.info.message=<gradient:#4CAF50:#FFC107>Welcome Plugin v%version% by luci</gradient>
