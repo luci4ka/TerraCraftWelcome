@@ -8,7 +8,7 @@ import ru.terracraft.welcome.config.ConfigLoader;
 import ru.terracraft.welcome.config.MainConfig;
 import ru.terracraft.welcome.core.feature.*;
 import ru.terracraft.welcome.core.group.GroupManager;
-import ru.terracraft.welcome.core.i18n.LanguageManager;
+import ru.terracraft.welcome.core.lang.LanguageManager;
 import ru.terracraft.welcome.core.integration.IntegrationManager;
 import ru.terracraft.welcome.core.listener.PlayerListener;
 import ru.terracraft.welcome.core.scheduler.TaskScheduler;
@@ -23,8 +23,8 @@ import java.util.Map;
  */
 public class PluginContext {
 
-    private static final String GITHUB_OWNER = "luci";
-    private static final String GITHUB_REPO = "Welcome";
+    private static final String GITHUB_OWNER = "luci4a";
+    private static final String GITHUB_REPO = "TerraCraftWelcome";
 
     private final WelcomePlugin plugin;
     private final ServiceRegistry registry = new ServiceRegistry();

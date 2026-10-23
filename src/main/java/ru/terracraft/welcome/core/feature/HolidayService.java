@@ -5,8 +5,8 @@ import org.bukkit.entity.Player;
 import ru.terracraft.welcome.WelcomePlugin;
 import ru.terracraft.welcome.api.event.WelcomeHolidayEvent;
 import ru.terracraft.welcome.config.MainConfig;
-import ru.terracraft.welcome.core.i18n.LanguageManager;
-import ru.terracraft.welcome.core.i18n.MessageKey;
+import ru.terracraft.welcome.core.lang.LanguageManager;
+import ru.terracraft.welcome.core.lang.MessageKey;
 import ru.terracraft.welcome.core.integration.IntegrationManager;
 
 import java.time.LocalDate;

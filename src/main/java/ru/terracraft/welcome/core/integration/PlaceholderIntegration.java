@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import ru.terracraft.welcome.WelcomePlugin;
 import ru.terracraft.welcome.core.feature.FirstJoinCounter;
-import ru.terracraft.welcome.core.i18n.LanguageManager;
-import ru.terracraft.welcome.core.i18n.MessageKey;
+import ru.terracraft.welcome.core.lang.LanguageManager;
+import ru.terracraft.welcome.core.lang.MessageKey;
 
 import java.util.HashMap;
 import java.util.Map;

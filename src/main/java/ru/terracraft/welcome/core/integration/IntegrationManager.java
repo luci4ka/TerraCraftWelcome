@@ -12,7 +12,6 @@ public class IntegrationManager {
 
     private PlaceholderIntegration placeholder;
     private VaultIntegration vault;
-    private LuckPermsIntegration luckPerms;
     private MetricsIntegration metrics;
 
     public IntegrationManager(WelcomePlugin plugin) {
@@ -27,7 +26,6 @@ public class IntegrationManager {
     public void loadAll() {
         loadPlaceholder();
         loadVault();
-        loadLuckPerms();
         loadMetrics();
     }
 
@@ -55,20 +53,6 @@ public class IntegrationManager {
             plugin.getLogger().info("✓ Vault подключён");
         } else {
             plugin.getLogger().warning("✗ Vault: экономика не найдена");
-        }
-    }
-
-    private void loadLuckPerms() {
-        if (plugin.getServer().getPluginManager().getPlugin("LuckPerms") == null) {
-            plugin.getLogger().warning("LuckPerms не найден");
-            return;
-        }
-        this.luckPerms = new LuckPermsIntegration(plugin);
-        if (luckPerms.setup()) {
-            plugin.getLogger().info("✓ LuckPerms подключён");
-        } else {
-            plugin.getLogger().warning("✗ LuckPerms: ошибка подключения");
-            this.luckPerms = null;
         }
     }
 
@@ -105,10 +89,6 @@ public class IntegrationManager {
         return vault != null && vault.isEnabled();
     }
 
-    public boolean isLuckPermsEnabled() {
-        return luckPerms != null && luckPerms.isEnabled();
-    }
-
     public boolean isMetricsEnabled() {
         return metrics != null && metrics.isEnabled();
     }
@@ -121,10 +101,6 @@ public class IntegrationManager {
 
     public VaultIntegration getVault() {
         return vault;
-    }
-
-    public LuckPermsIntegration getLuckPerms() {
-        return luckPerms;
     }
 
     public MetricsIntegration getMetrics() {

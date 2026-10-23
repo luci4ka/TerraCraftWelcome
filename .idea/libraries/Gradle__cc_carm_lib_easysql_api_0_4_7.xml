@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cc.carm.lib:easysql-api:0.4.7" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="cc.carm.lib" artifactId="easysql-api" version="0.4.7" baseVersion="0.4.7" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/cc.carm.lib/easysql-api/0.4.7/5c90459363ea63e240b0b498aab40db9a6a6ea61/easysql-api-0.4.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/cc.carm.lib/easysql-api/0.4.7/a44e11e67bd43b325b7f3b4406a8dafd0f40abf5/easysql-api-0.4.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

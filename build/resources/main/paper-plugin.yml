@@ -1,12 +1,13 @@
-name: Welcome
-version: '2.0'
-main: ru.net.terracraft.welcome.WelcomePlugin
-api-version: '1.21'
+name: TerraCraftWelcome
+version: '1.1.1'
+main: ru.terracraft.welcome.WelcomePlugin
+api-version: '26.1'
+java-version: '25'
 authors: [luci]
 description: |
   Welcome: оповещения о входе, выходе и смерти игроков
   с настраиваемыми эффектами звука и частиц
-website: terracraft.net.ru
+website: terra-craft.ru
 
 dependencies:
   server:

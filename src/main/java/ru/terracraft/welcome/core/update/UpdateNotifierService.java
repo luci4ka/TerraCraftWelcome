@@ -5,7 +5,7 @@ import com.github.ezplugins.updater.UpdateResult;
 import ru.terracraft.welcome.WelcomePlugin;
 
 /**
- * Обёртка над ez-plugins/github-update-checker.
+ * Обёртка над ez-plugins/mc-plugin-update-notifier.
  * Проверяет обновления через GitHub Releases API.
  */
 public class UpdateNotifierService {
@@ -24,13 +24,14 @@ public class UpdateNotifierService {
 
     /**
      * Инициализирует UpdateChecker.
-     * Можно передать GitHub-токен через env GITHUB_TOKEN для приватных репозиториев.
+     * Токен не требуется для публичного репозитория.
      */
     public void init() {
         try {
             String currentVersion = plugin.getPluginMeta().getVersion();
 
-            this.checker = UpdateChecker.builder(owner, repo, currentVersion)
+            this.checker = UpdateChecker
+                    .builder(owner, repo, currentVersion)
                     .build();
 
             plugin.getLogger().info("UpdateChecker инициализирован ("

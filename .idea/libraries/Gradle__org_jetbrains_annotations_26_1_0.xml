@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains:annotations:26.1.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains" artifactId="annotations" version="26.1.0" baseVersion="26.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/org.jetbrains/annotations/26.1.0/c1e9226d7ca6661020c58c94397da0cc3673d5e4/annotations-26.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

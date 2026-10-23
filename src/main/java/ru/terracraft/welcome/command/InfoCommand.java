@@ -2,8 +2,8 @@ package ru.terracraft.welcome.command;
 
 import dev.jorel.commandapi.CommandAPICommand;
 import ru.terracraft.welcome.WelcomePlugin;
-import ru.terracraft.welcome.core.i18n.LanguageManager;
-import ru.terracraft.welcome.core.i18n.MessageKey;
+import ru.terracraft.welcome.core.lang.LanguageManager;
+import ru.terracraft.welcome.core.lang.MessageKey;
 
 import java.util.List;
 

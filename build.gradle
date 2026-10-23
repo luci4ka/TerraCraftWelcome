@@ -1,43 +1,39 @@
 plugins {
     id 'java'
-    id "io.papermc.paperweight.userdev" version "2.0.0-beta.23"
     id 'com.gradleup.shadow' version '9.3.2'
 }
 
 group = 'ru.terracraft'
-version = '2.0'
+version = '1.1.1'
 
 repositories {
-    mavenCentral()
 
-    maven { url 'https://repo.papermc.io/repository/maven-public/' }
-    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
-    maven { url 'https://jitpack.io' }
-    maven { url 'https://repo.lucko.me/repository/maven-public/' }
-    maven { url 'https://repo.codemc.io/repository/maven-public/' }
-    maven { url 'https://repo.tchristofferson.com/repository/maven-snapshots/' }
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://raw.githubusercontent.com/CarmJos/MineSQL/repo/' }
+    maven { url = 'https://repo.carm.cc/repository/maven-public/' }
+    maven { url = 'https://repo.codemc.org/repository/maven-public/' }
 }
 
 dependencies {
-    // Paper API
-    paperweight.paperDevBundle('1.21.11-R0.1-SNAPSHOT')
+    // ==================== PAPER ====================
+    compileOnly 'io.papermc.paper:paper-api:26.2.build.+'
 
-    // ConfigLib (Exlll)
-    implementation 'de.exlll:configlib-paper:4.8.1'
-
-    // CommandAPI (Paper)
-    compileOnly("dev.jorel:commandapi-paper-core:12.1.0")
-
-    // Update checker (ez-plugins)
-    implementation('com.github.ez-plugins:mc-plugin-update-notifier:1.0.0')
-
-    // bStats
-    implementation 'org.bstats:bstats-bukkit:3.2.1'
-
-    // Compile-only
+    // ==================== COMPILE ONLY ====================
     compileOnly 'me.clip:placeholderapi:2.12.3'
-    compileOnly 'net.luckperms:api:5.5'
+    compileOnly "cc.carm.plugin:minesql-api:1.4.2"
+    compileOnly 'cc.carm.lib:easysql-api:0.4.7'
+    compileOnly 'dev.jorel:commandapi-paper-core:12.1.0'
     compileOnly 'com.github.Foulest:Vault:2.5.0'
+
+
+    // ==================== RUNTIME (BUNDLED) ====================
+    implementation("org.bstats:bstats-bukkit:3.2.1")
+
+    implementation("de.exlll:configlib-paper:4.8.1")
+    implementation('com.github.ez-plugins:mc-plugin-update-notifier:1.0.0')
 }
 
 shadowJar {

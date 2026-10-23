@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.decentsoftware-eu:decentholograms:2.10.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.github.decentsoftware-eu" artifactId="decentholograms" version="2.10.2" baseVersion="2.10.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/com.github.decentsoftware-eu/decentholograms/2.10.2/c327992e554a9fc1ff91f6380d02c3ed97ad57c6/decentholograms-2.10.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

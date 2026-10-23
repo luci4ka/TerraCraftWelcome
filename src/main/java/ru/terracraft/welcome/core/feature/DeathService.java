@@ -16,8 +16,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import ru.terracraft.welcome.WelcomePlugin;
 import ru.terracraft.welcome.api.event.WelcomeDeathEvent;
 import ru.terracraft.welcome.config.MainConfig;
-import ru.terracraft.welcome.core.i18n.LanguageManager;
-import ru.terracraft.welcome.core.i18n.MessageKey;
+import ru.terracraft.welcome.core.lang.LanguageManager;
+import ru.terracraft.welcome.core.lang.MessageKey;
 import ru.terracraft.welcome.core.integration.IntegrationManager;
 
 import java.util.List;

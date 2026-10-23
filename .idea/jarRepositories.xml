@@ -76,5 +76,20 @@
       <option name="name" value="maven4" />
       <option name="url" value="https://maven.pkg.github.com/ez-plugins/mc-plugin-update-notifier" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="https://raw.githubusercontent.com/CarmJos/MineSQL/repo/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="https://repo.carm.cc/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven6" />
+      <option name="name" value="maven6" />
+      <option name="url" value="https://repo.codemc.org/repository/maven-public/" />
+    </remote-repository>
   </component>
 </project>

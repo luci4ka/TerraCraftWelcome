@@ -1,0 +1,356 @@
+# ═══════════════════════════════════════════
+#  Welcome Plugin — English (en_us)
+#  TerraCraft Palette:
+#    Primary:   #4CAF50 (green)
+#    Secondary: #8BC34A (light green)
+#    Accent:    #FFC107 (gold)
+#    Divider:   #1B5E20 (dark green)
+#    Text:      #FFFFFF (white)
+#    Muted:     #B0BEC5 (light gray)
+# ═══════════════════════════════════════════
+
+# ═══════════════ MOTD ═══════════════
+motd:
+  lines:
+    - "<gradient:#4CAF50:#FFC107>TerraCraft</gradient> <#1B5E20>│</#1B5E20> <#FFFFFF>Hello, %player_name%!</#FFFFFF>"
+    - "<#B0BEC5>Glad to see you back on the server!</#B0BEC5>"
+    - "<#B0BEC5>VK:</#B0BEC5> <gradient:#8BC34A:#FFC107>%welcome_vk_url%</gradient>"
+    - "<#B0BEC5>Website:</#B0BEC5> <gradient:#8BC34A:#FFC107>%welcome_site_url%</gradient>"
+    - "<#B0BEC5>Discord:</#B0BEC5> <gradient:#8BC34A:#FFC107>%welcome_discord_url%</gradient>"
+    - "<#B0BEC5>Have a nice game!</#B0BEC5>"
+
+# ═══════════════ TITLES ═══════════════
+titles:
+  first_join:
+    title: "<gradient:#4CAF50:#FFC107>Welcome!</gradient>"
+    subtitle: "<#FFFFFF>%player_name%, you're new here!</#FFFFFF> <#FFC107>#%number%</#FFC107>"
+  join:
+    title: "<gradient:#4CAF50:#FFC107>Welcome back!</gradient>"
+    subtitle: "<#FFFFFF>%player_name%</#FFFFFF>"
+  death:
+    title: "<#EF5350>You died!</#EF5350>"
+    subtitle: "<#B0BEC5>But you'll be back...</#B0BEC5>"
+
+# ═══════════════ ACTION BAR ═══════════════
+actionbar:
+  first_join: "<gradient:#4CAF50:#FFC107>Welcome to the server, %player_name%!</gradient>"
+  join: "<#8BC34A>Welcome back, %player_name%!</#8BC34A>"
+
+# ═══════════════ JOIN ═══════════════
+join:
+  first_join:
+    - "<gradient:#4CAF50:#FFC107>Newcomer alert!</gradient> <#FFFFFF>Let's welcome</#FFFFFF> <white>%player_name%</white> <#B0BEC5>(#%number%)</#B0BEC5>"
+    - "<gradient:#8BC34A:#FFC107>%player_name%</gradient> <#FFFFFF>just joined!</#FFFFFF> <#B0BEC5>(#%number%)</#B0BEC5>"
+    - "<#FFFFFF>Welcome,</#FFFFFF> <gradient:#4CAF50:#FFC107>%player_name%</gradient><#FFFFFF>! You're newcomer #%number%!</#FFFFFF>"
+  default:
+    - "<#8BC34A>Welcome, %player_name%!</#8BC34A>"
+    - "<#B0BEC5>Hi, %player_name%!</#B0BEC5>"
+    - "<#FFFFFF>Glad to see you, %player_name%!</#FFFFFF>"
+
+# ═══════════════ QUIT ═══════════════
+quit:
+  default:
+    - "<#EF5350>➖</#EF5350> <#B0BEC5>%player_name% left... probably to get some tea.</#B0BEC5>"
+    - "<#B0BEC5>%player_name% left the server.</#B0BEC5>"
+    - "<#8BC34A>See you, %player_name%!</#8BC34A>"
+
+# ═══════════════ GROUPS ═══════════════
+groups:
+
+  # ─── default ───
+  default:
+    join:
+      - "<#4CAF50>➕</#4CAF50> <#B0BEC5>Oops! %player_name% dropped by for a visit. Don't forget your slippers!</#B0BEC5>"
+      - "<#8BC34A>%player_name% joined us!</#8BC34A>"
+      - "<#B0BEC5>Welcome %player_name%!</#B0BEC5>"
+    quit:
+      - "<#EF5350>➖</#EF5350> <#B0BEC5>%player_name% left... probably to get some tea.</#B0BEC5>"
+      - "<#B0BEC5>%player_name% left the server.</#B0BEC5>"
+      - "<#8BC34A>See you, %player_name%!</#8BC34A>"
+
+  # ─── deluxe ───
+  deluxe:
+    join:
+      - "<#29B6F6>💎 Deluxe</#29B6F6> <white>%player_name%</white> <#B0BEC5>dropped by!</#B0BEC5>"
+      - "<#29B6F6>💎 %player_name% (Deluxe) is online!</#29B6F6>"
+      - "<#29B6F6>✨ Deluxe %player_name% is here!</#29B6F6>"
+    quit:
+      - "<#29B6F6>💎 Deluxe %player_name% left on business.</#29B6F6>"
+      - "<#B0BEC5>Deluxe %player_name% left us.</#B0BEC5>"
+      - "<#29B6F6>💎 Bye, %player_name%!</#29B6F6>"
+
+  # ─── elite ───
+  elite:
+    join:
+      - "<#AB47BC>🌟 Elite</#AB47BC> <white>%player_name%</white> <#B0BEC5>graced us with their presence!</#B0BEC5>"
+      - "<#AB47BC>🌟 %player_name% (Elite) is online!</#AB47BC>"
+      - "<#AB47BC>✨ Elite %player_name% is here!</#AB47BC>"
+    quit:
+      - "<#AB47BC>🌟 Elite %player_name% rode into the sunset.</#AB47BC>"
+      - "<#B0BEC5>Elite %player_name% left the server.</#B0BEC5>"
+      - "<#AB47BC>🌟 See you, %player_name%!</#AB47BC>"
+
+  # ─── overlord ───
+  overlord:
+    join:
+      - "<#FFC107>👑 Overlord</#FFC107> <white>%player_name%</white> <#B0BEC5>has descended upon mortals!</#B0BEC5>"
+      - "<#FFC107>👑 %player_name% (Overlord) is online!</#FFC107>"
+      - "<#FF8F00>⚜ Overlord %player_name% has arrived!</#FF8F00>"
+    quit:
+      - "<#FFC107>👑 Overlord %player_name% returned to their halls.</#FFC107>"
+      - "<#B0BEC5>Overlord %player_name% left us.</#B0BEC5>"
+      - "<#FFC107>⚜ Farewell, Overlord %player_name%!</#FFC107>"
+
+  # ─── oldtimer ───
+  oldtimer:
+    join:
+      - "<#FFA726>🏆 Oldtimer</#FFA726> <white>%player_name%</white> <#B0BEC5>is back with us!</#B0BEC5>"
+      - "<#FFA726>🏆 %player_name% (Oldtimer) is online!</#FFA726>"
+      - "<#FFA726>Veteran %player_name% has returned!</#FFA726>"
+    quit:
+      - "<#FFA726>🏆 Oldtimer %player_name% left. A legend is gone.</#FFA726>"
+      - "<#B0BEC5>Oldtimer %player_name% left us.</#B0BEC5>"
+      - "<#FFA726>See you, %player_name%!</#FFA726>"
+
+  # ─── helper ───
+  helper:
+    join:
+      - "<#8BC34A>🛠 Helper</#8BC34A> <white>%player_name%</white> <#B0BEC5>is online!</#B0BEC5>"
+      - "<#8BC34A>🛠 %player_name% (Helper) is ready to help!</#8BC34A>"
+      - "<#8BC34A>Helper %player_name% has arrived!</#8BC34A>"
+    quit:
+      - "<#8BC34A>🛠 Helper %player_name% left.</#8BC34A>"
+      - "<#B0BEC5>Helper %player_name% left us.</#B0BEC5>"
+      - "<#8BC34A>See you, %player_name%!</#8BC34A>"
+
+  # ─── moderator ───
+  moderator:
+    join:
+      - "<#42A5F5>🛡 Moderator</#42A5F5> <white>%player_name%</white> <#B0BEC5>is online!</#B0BEC5>"
+      - "<#42A5F5>🛡 %player_name% (Moderator) keeps order!</#42A5F5>"
+      - "<#42A5F5>Moderator %player_name% has arrived!</#42A5F5>"
+    quit:
+      - "<#42A5F5>🛡 Moderator %player_name% left.</#42A5F5>"
+      - "<#B0BEC5>Moderator %player_name% left us.</#B0BEC5>"
+      - "<#42A5F5>Goodbye, %player_name%!</#42A5F5>"
+
+  # ─── admin ───
+  admin:
+    join:
+      - "<#EF5350>⚡ Admin</#EF5350> <white>%player_name%</white> <#B0BEC5>is online!</#B0BEC5>"
+      - "<#EF5350>⚡ %player_name% (Admin) has joined!</#EF5350>"
+      - "<#EF5350>Admin %player_name% has arrived!</#EF5350>"
+    quit:
+      - "<#EF5350>⚡ Admin %player_name% left.</#EF5350>"
+      - "<#B0BEC5>Admin %player_name% left us.</#B0BEC5>"
+      - "<#EF5350>See you, %player_name%!</#EF5350>"
+
+  # ─── headadmin ───
+  headadmin:
+    join:
+      - "<#C62828>👑 Head Admin</#C62828> <white>%player_name%</white> <#B0BEC5>has descended upon us!</#B0BEC5>"
+      - "<#C62828>👑 %player_name% (Head Admin) is online!</#C62828>"
+      - "<#C62828>⚡ Head Admin %player_name% has arrived!</#C62828>"
+    quit:
+      - "<#C62828>👑 Head Admin %player_name% left us.</#C62828>"
+      - "<#B0BEC5>Head Admin %player_name% left.</#B0BEC5>"
+      - "<#C62828>Farewell, Head Admin %player_name%!</#C62828>"
+
+# ═══════════════ DEATH ═══════════════
+death:
+  pvp:
+    - "<#EF5350>⚔</#EF5350> <#FFFFFF>{killer} showed {victim} who's boss!</#FFFFFF>"
+    - "<#FFC107>{killer}</#FFC107> <#FFFFFF>sent</#FFFFFF> <#EF5350>{victim}</#EF5350> <#FFFFFF>to the spirit world!</#FFFFFF>"
+    - "<#C62828>{victim}</#C62828> <#FFFFFF>couldn't withstand {killer}'s power!</#FFFFFF>"
+
+  lava:
+    - "<#EF5350>🔥 %player_name% tried to hug lava. It didn't work.</#EF5350>"
+    - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>turned into barbecue... not the tastiest.</#FFFFFF>"
+    - "<#C62828>%player_name%</#C62828> <#FFFFFF>learned to admire lava from a distance.</#FFFFFF>"
+
+  fall:
+    - "<#B0BEC5>💥 %player_name% thought they could fly. Spoiler: no.</#B0BEC5>"
+    - "<#EF5350>☠ %player_name%</#EF5350> <#FFFFFF>lost the battle with gravity.</#FFFFFF>"
+    - "<#FFA726>%player_name%</#FFA726> <#FFFFFF>learned physics the hard way.</#FFFFFF>"
+
+  explosion:
+    - "<#EF5350>💥 %player_name% exploded!</#EF5350>"
+    - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>got too close to explosives.</#FFFFFF>"
+
+  drowning:
+    - "<#29B6F6>💧 %player_name% drowned. Fish say hi.</#29B6F6>"
+    - "<#29B6F6>%player_name%</#29B6F6> <#FFFFFF>never learned to breathe underwater.</#FFFFFF>"
+
+  fire:
+    - "<#EF5350>🔥 %player_name% burned. That was hot.</#EF5350>"
+    - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>became a torch for the server.</#FFFFFF>"
+
+  void:
+    - "<#7E57C2>🌌 %player_name% fell into the void. Farewell, traveller.</#7E57C2>"
+    - "<#616161>%player_name%</#616161> <#FFFFFF>literally left this world.</#FFFFFF>"
+
+  player_kill:
+    - "<#EF5350>💀 %player_name%</#EF5350> <#FFFFFF>flew to a better world. One-way ticket.</#FFFFFF>"
+    - "<#FFC107>⚰ %player_name%</#FFC107> <#FFFFFF>got hit by fate... or a pickaxe.</#FFFFFF>"
+    - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>unexpectedly met their death.</#FFFFFF>"
+
+  mob:
+    ZOMBIE:
+      - "<#C62828>%player_name%</#C62828> <#FFFFFF>was in love with a zombie... doesn't matter now!</#FFFFFF>"
+      - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>became a zombie's favourite meal!</#FFFFFF>"
+      - "<#B0BEC5>%player_name% tried to befriend a zombie. It didn't work.</#B0BEC5>"
+    SKELETON:
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>became target practice for skeletons!</#FFFFFF>"
+      - "<#FFFFFF>%player_name% met skeleton arrows face to face!</#FFFFFF>"
+      - "<#FFA726>%player_name%</#FFA726> <#FFFFFF>learned that bones can be deadly.</#FFFFFF>"
+    CREEPER:
+      - "<#8BC34A>%player_name%</#8BC34A> <#FFFFFF>got too close to a green explosive friend!</#FFFFFF>"
+      - "<#FFA726>%player_name%</#FFA726> <#FFFFFF>turned into a pile of blocks after meeting a creeper!</#FFFFFF>"
+      - "<#EF5350>%player_name%</#EF5350> <#FFFFFF>miscalculated the distance from a creeper!</#FFFFFF>"
+    SPIDER:
+      - "<#7E57C2>%player_name%</#7E57C2> <#FFFFFF>got tangled in a web and lost!</#FFFFFF>"
+      - "<#EF5350>%player_name%</#EF5350> <#FFFFFF>was bitten by a spider!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>learned that spiders aren't friends.</#FFFFFF>"
+    WITCH:
+      - "<#AB47BC>%player_name%</#AB47BC> <#FFFFFF>met a witch and her potions!</#FFFFFF>"
+      - "<#C62828>%player_name%</#C62828> <#FFFFFF>became a victim of witch magic!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>didn't appreciate the power of potions.</#FFFFFF>"
+    ENDERMAN:
+      - "<#212121>%player_name%</#212121> <#FFFFFF>met an enderman... and vanished almost instantly!</#FFFFFF>"
+      - "<#AB47BC>%player_name%</#AB47BC> <#FFFFFF>was caught by an enderman's gaze!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>learned that looking at endermen is dangerous.</#FFFFFF>"
+    WARDEN:
+      - "<#212121>%player_name%</#212121> <#FFFFFF>heard the Warden's heartbeat!</#FFFFFF>"
+      - "<#616161>%player_name%</#616161> <#FFFFFF>didn't run fast enough!</#FFFFFF>"
+      - "<#EF5350>%player_name%</#EF5350> <#FFFFFF>became a victim of the Warden!</#FFFFFF>"
+    default:
+      - "<#C62828>%player_name%</#C62828> <#FFFFFF>was killed by some evil mob!</#FFFFFF>"
+      - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>became a victim of a mysterious creature!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>felt death.</#FFFFFF>"
+
+# ═══════════════ RESPAWN ═══════════════
+respawn:
+  - "<gradient:#4CAF50:#FFC107>✨ %player_name%, reincarnation successful. Good luck in your new life!</gradient>"
+  - "<#8BC34A>⚡ %player_name% returned to life with new strength!</#8BC34A>"
+  - "<#4CAF50>%player_name% is ready for new adventures!</#4CAF50>"
+
+# ═══════════════ HOLIDAYS ═══════════════
+holidays:
+  new_year:
+    messages:
+      - "<#FFC107>🎄 Happy New Year, %player_name%!</#FFC107>"
+      - "<gradient:#4CAF50:#FFFFFF>❄ Snowflakes are falling around you!</gradient>"
+  christmas:
+    messages:
+      - "<#EF5350>🎅 Merry Christmas, %player_name%!</#EF5350>"
+  valentine:
+    messages:
+      - "<#EF5350>❤ Happy Valentine's Day, %player_name%!</#EF5350>"
+  halloween:
+    messages:
+      - "<#AB47BC>🎃 Happy Halloween, %player_name%!</#AB47BC>"
+  easter:
+    messages:
+      - "<#FFC107>🐣 Happy Easter, %player_name%!</#FFC107>"
+  womens_day:
+    messages:
+      - "<#EC407A>🌷 Happy Women's Day, %player_name%!</#EC407A>"
+  defender_day:
+    messages:
+      - "<#42A5F5>🎖 Happy Defender's Day, %player_name%!</#42A5F5>"
+  april_fools:
+    messages:
+      - "<#FFA726>😜 Happy April Fools, %player_name%!</#FFA726>"
+  victory_day:
+    messages:
+      - "<#EF5350>🎗 Happy Victory Day, %player_name%!</#EF5350>"
+  default:
+    messages:
+      - "<gradient:#4CAF50:#FFC107>🎉 Happy holiday, %player_name%!</gradient>"
+
+# ═══════════════ LINKS ═══════════════
+links:
+  vk: "<click:open_url:'https://vk.com/play_terra_craft_ru'><gradient:#8BC34A:#FFC107>VK</gradient></click>"
+  site: "<click:open_url:'https://terracraft.ru'><gradient:#8BC34A:#FFC107>Website</gradient></click>"
+  discord: "<click:open_url:'https://discord.gg/terracraft'><gradient:#8BC34A:#FFC107>Discord</gradient></click>"
+  telegram: "<click:open_url:'https://t.me/terracraft'><gradient:#8BC34A:#FFC107>Telegram</gradient></click>"
+  youtube: "<click:open_url:'https://youtube.com/@terracraft'><gradient:#8BC34A:#FFC107>YouTube</gradient></click>"
+
+# ═══════════════ COMMANDS ═══════════════
+commands:
+  reload:
+    success: "<#4CAF50>✔</#4CAF50> <#FFFFFF>Configuration reloaded</#FFFFFF> <#B0BEC5>(%time%ms)</#B0BEC5>"
+    error: "<#EF5350>✘ Reload error:</#EF5350> <white>%error%</white>"
+  language:
+    success: "<#4CAF50>✔</#4CAF50> <#FFFFFF>Language changed to:</#FFFFFF> <#FFC107>%lang%</#FFC107>"
+    not_found: "<#EF5350>✘ Language not found</#EF5350>"
+  gui:
+    player_only: "<#EF5350>✘ GUI is available only to players!</#EF5350>"
+
+# ═══════════════ HELP ═══════════════
+help:
+  header:
+    - "<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>"
+    - "<#1B5E20>║</#1B5E20>   <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient> <#B0BEC5>— Help</#B0BEC5>"
+    - "<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>"
+  commands:
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome</#FFC107> <#FFFFFF>— Greeting</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome version</#FFC107> <#FFFFFF>— Version</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome help</#FFC107> <#FFFFFF>— This help</#FFFFFF>"
+  admin:
+    - "<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>"
+    - "<#1B5E20>║</#1B5E20> <#EF5350>Administrator:</#EF5350>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome reload</#FFC107> <#FFFFFF>— Reload</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome migrate</#FFC107> <#FFFFFF>— Update config</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome gui</#FFC107> <#FFFFFF>— Settings menu</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome language <lang></#FFC107> <#FFFFFF>— Change language</#FFFFFF>"
+  footer:
+    - "<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>"
+
+# ═══════════════ INFO ═══════════════
+info:
+  header:
+    - "<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>"
+    - "<#1B5E20>║</#1B5E20>     <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient>"
+    - "<#1B5E20>║</#1B5E20>   <#FFC107>v%version% by luci</#FFC107>"
+    - "<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>"
+  body:
+    - "<#1B5E20>║</#1B5E20>   <#FFFFFF>PlaceholderAPI:</#FFFFFF> %papi%"
+    - "<#1B5E20>║</#1B5E20>   <#FFFFFF>Vault:</#FFFFFF> %vault%"
+    - "<#1B5E20>║</#1B5E20>   <#FFFFFF>LuckPerms:</#FFFFFF> %luckperms%"
+  footer:
+    - "<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>"
+
+# ═══════════════ ERRORS ═══════════════
+errors:
+  api_unavailable: "<#EF5350>✘ WelcomeAPI unavailable</#EF5350>"
+  generic: "<#EF5350>✘ Error:</#EF5350> <white>%error%</white>"
+  gui_open: "<#EF5350>✘ Failed to open menu:</#EF5350> <white>%error%</white>"
+
+# ═══════════════ GUI ═══════════════
+gui:
+  title: "<gradient:#4CAF50:#FFC107>⚙ Welcome Settings</gradient>"
+  toggle:
+    lore: "<#B0BEC5>Click to toggle</#B0BEC5>"
+    message: "<white>%name%</white><#B0BEC5>:</#B0BEC5> %state%"
+    state:
+      on: "<#4CAF50>✔ enabled</#4CAF50>"
+      off: "<#EF5350>✘ disabled</#EF5350>"
+  sound:
+    name: "<#FFFFFF>Sounds</#FFFFFF>"
+  particles:
+    name: "<#FFFFFF>Particles</#FFFFFF>"
+  holidays:
+    name: "<#FFFFFF>Holidays</#FFFFFF>"
+  language:
+    name: "<#FFFFFF>Language:</#FFFFFF> <#FFC107>%lang%</#FFC107>"
+    lore:
+      click: "<#B0BEC5>Click to change language</#B0BEC5>"
+      available: "<#B0BEC5>Available:</#B0BEC5> <#616161>%list%</#616161>"
+  info:
+    name: "<#FFFFFF>Information</#FFFFFF>"
+    version: "<#FFFFFF>Version:</#FFFFFF> <white>%version%</white>"
+    author: "<#FFFFFF>Author:</#FFFFFF> <white>luci</white>"
+    papi: "<#FFFFFF>PlaceholderAPI:</#FFFFFF> %status%"
+    vault: "<#FFFFFF>Vault:</#FFFFFF> %status%"
+    message: "<gradient:#4CAF50:#FFC107>Welcome Plugin v%version% by luci</gradient>"

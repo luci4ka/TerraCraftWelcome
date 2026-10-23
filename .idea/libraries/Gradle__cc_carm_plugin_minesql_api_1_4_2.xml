@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cc.carm.plugin:minesql-api:1.4.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="cc.carm.plugin" artifactId="minesql-api" version="1.4.2" baseVersion="1.4.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/cc.carm.plugin/minesql-api/1.4.2/2d8729868246c8721163fa40d0e06eaf495d563f/minesql-api-1.4.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/scoop/apps/gradle/wrapper/dists/gradle-9.1.0-bin/caches/modules-2/files-2.1/cc.carm.plugin/minesql-api/1.4.2/a7c27a1afe1bfc530ad8ea4ceb3849984a634ba7/minesql-api-1.4.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
