@@ -1,4 +1,4 @@
-# 🎉 Welcome
+# 🎉 TerraCraftWelcome
 
 [![Paper](https://img.shields.io/badge/Paper-1.21-blue)](https://papermc.io)
 ![Java](https://img.shields.io/badge/Java-25-orange)
@@ -17,9 +17,9 @@
 |----------|----------|
 | **Вход/выход** | MOTD, Title, ActionBar, фейерверк при первом входе, счётчик «#N новичок» |
 | **Группы** | Наследование (`inherits`), приоритеты, per-group join/quit сообщения |
-| **Смерти** | PvP, мобы (ZOMBIE, SKELETON, CREEPER, WITCH, ENDERMAN, WARDEN), лава, падение, взрыв, утопление, огонь, пустота |
+| **Смерти** | PvP, мобы (ZOMBIE, SKELETON, CREEPER, SPIDER, WITCH, ENDERMAN, WARDEN), лава, падение, взрыв, утопление, огонь, пустота |
 | **Праздники** | Новый год, Рождество, Валентин, Хэллоуин, Пасха, 8 Марта, 23 Февраля, 1 Апреля, День Победы — авто по дате или вручную |
-| **Локализация** | Формат `.lang`, локаль игрока (клиент → `ru_ru` / `en_us`), fallback |
+| **Локализация** | Формат **YAML**, локаль игрока (клиент → `ru_ru` / `en_us`), fallback |
 | **PlaceholderAPI** | `%welcome_last_join%`, `%welcome_deaths%`, `%welcome_last_death_cause%`, `%welcome_first_join_number%`, `%welcome_total_players%`, ссылки |
 | **GUI** | `/welcome gui` — тумблеры звуков/частиц/праздников, смена языка |
 | **API** | `WelcomeAPI` через `ServicesManager`, три события (`WelcomeJoinEvent`, `WelcomeDeathEvent`, `WelcomeHolidayEvent`) |
@@ -150,28 +150,45 @@ groups:
     priority: 50
     inherits: [elite, deluxe, default]
 
-  # ... oldtimer, helper, moderator, admin, headadmin
 ```
 
 Наследование: группа использует свои сообщения + сообщения всех `inherits`.
 
-### `lang/ru_ru.lang` и `lang/en_us.lang`
+### `lang/ru_ru.yml` и `lang/en_us.yml`
 
-Формат **Minecraft `.lang`**:
+Формат — **YAML** (нативные списки вместо `key.1/key.2`):
 
-```properties
-motd.lines.1=<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>
-motd.lines.2=<dark_purple>| <gray>Рады видеть тебя снова!</gray>
+```yaml
+motd:
+  lines:
+    - "<dark_purple>| <gold>Приветик, %player_name%!</gold></dark_purple>"
+    - "<dark_purple>| <gray>Рады видеть тебя снова!</gray>"
 
-join.first_join.1=<gold>🎉 Новичок #%number%!</gold>
-join.first_join.2=<green>✨ %player_name% впервые у нас!</green>
+join:
+  first_join:
+    - "<gold>🎉 Новичок #%number%!</gold>"
+    - "<green>✨ %player_name% впервые у нас!</green>"
 
-groups.overlord.join.1=<gold>👑 Владыка %player_name% снизошёл!</gold>
+groups:
+  overlord:
+    join:
+      - "<gold>👑 Владыка %player_name% снизошёл!</gold>"
 ```
 
 Локаль определяется по клиенту игрока: `ru_ru`, `en_us`. Fallback — `config.language`.
 
 ---
+
+## 📡 API
+
+### Получение API
+
+```java
+WelcomeAPI api = Bukkit.getServicesManager().load(WelcomeAPI.class);
+if (api != null) {
+    api.sendWelcomeMessage(player);
+}
+```
 
 ### События
 
@@ -204,19 +221,20 @@ cd Welcome
 
 **Требования:**
 - JDK 25
-- Gradle 8.8+
+- Gradle 9.0+
+- Paper 1.21+
 
 ---
 
 ## 🌍 Языки
 
-Поддерживаются форматы `.lang` (Minecraft-стиль):
+Поддерживаются YAML-файлы локализации:
 - `ru_ru` — русский
 - `en_us` — английский
 
 Локализация — **на локали клиента**, а не на языке плагина. Каждый игрок видит сообщения на своём языке (для join/quit/death/holidays).
 
-Хочешь добавить язык? Положи `lang/<code>.lang` в `plugins/Welcome/lang/`.
+Хочешь добавить язык? Положи `lang/<code>.yml` в `plugins/Welcome/lang/`.
 
 ---
 
@@ -240,4 +258,4 @@ cd Welcome
 
 ## 📄 Лицензия
 
-MIT © [luci](https://github.com/luci)
+MIT © [LICENSE](https://github.com/luci4ka/LICENSE)

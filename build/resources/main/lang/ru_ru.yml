@@ -1,0 +1,356 @@
+# ═══════════════════════════════════════════
+#  Welcome Plugin — Русский язык (ru_ru)
+#  Палитра TerraCraft:
+#    Primary:    #4CAF50 (green)
+#    Secondary:  #8BC34A (light green)
+#    Accent:     #FFC107 (gold)
+#    Divider:    #1B5E20 (dark green)
+#    Text:       #FFFFFF (white)
+#    Muted:      #B0BEC5 (light gray)
+# ═══════════════════════════════════════════
+
+# ═══════════════ MOTD ═══════════════
+motd:
+  lines:
+    - "<gradient:#4CAF50:#FFC107>TerraCraft</gradient> <#1B5E20>│</#1B5E20> <#FFFFFF>Привет, %player_name%!</#FFFFFF>"
+    - "<#B0BEC5>Рады видеть тебя снова на сервере!</#B0BEC5>"
+    - "<#B0BEC5>ВК:</#B0BEC5> <gradient:#8BC34A:#FFC107>%welcome_vk_url%</gradient>"
+    - "<#B0BEC5>Сайт:</#B0BEC5> <gradient:#8BC34A:#FFC107>%welcome_site_url%</gradient>"
+    - "<#B0BEC5>Discord:</#B0BEC5> <gradient:#8BC34A:#FFC107>%welcome_discord_url%</gradient>"
+    - "<#B0BEC5>Желаем приятной игры!</#B0BEC5>"
+
+# ═══════════════ TITLES ═══════════════
+titles:
+  first_join:
+    title: "<gradient:#4CAF50:#FFC107>Добро пожаловать!</gradient>"
+    subtitle: "<#FFFFFF>%player_name%, ты у нас впервые!</#FFFFFF> <#FFC107>#%number%</#FFC107>"
+  join:
+    title: "<gradient:#4CAF50:#FFC107>С возвращением!</gradient>"
+    subtitle: "<#FFFFFF>%player_name%</#FFFFFF>"
+  death:
+    title: "<#EF5350>Вы погибли!</#EF5350>"
+    subtitle: "<#B0BEC5>Но вы ещё вернётесь...</#B0BEC5>"
+
+# ═══════════════ ACTION BAR ═══════════════
+actionbar:
+  first_join: "<gradient:#4CAF50:#FFC107>Добро пожаловать на сервер, %player_name%!</gradient>"
+  join: "<#8BC34A>С возвращением, %player_name%!</#8BC34A>"
+
+# ═══════════════ JOIN ═══════════════
+join:
+  first_join:
+    - "<gradient:#4CAF50:#FFC107>Новичок на сервере!</gradient> <#FFFFFF>Встречаем</#FFFFFF> <white>%player_name%</white> <#B0BEC5>(#%number%)</#B0BEC5>"
+    - "<gradient:#8BC34A:#FFC107>%player_name%</gradient> <#FFFFFF>только что присоединился!</#FFFFFF> <#B0BEC5>(#%number%)</#B0BEC5>"
+    - "<#FFFFFF>Добро пожаловать,</#FFFFFF> <gradient:#4CAF50:#FFC107>%player_name%</gradient><#FFFFFF>! Ты #%number% новичок!</#FFFFFF>"
+  default:
+    - "<#8BC34A>Добро пожаловать, %player_name%!</#8BC34A>"
+    - "<#B0BEC5>Привет, %player_name%!</#B0BEC5>"
+    - "<#FFFFFF>Рады видеть тебя, %player_name%!</#FFFFFF>"
+
+# ═══════════════ QUIT ═══════════════
+quit:
+  default:
+    - "<#EF5350>➖</#EF5350> <#B0BEC5>%player_name% вышел... наверное, за чаем.</#B0BEC5>"
+    - "<#B0BEC5>%player_name% покинул сервер.</#B0BEC5>"
+    - "<#8BC34A>До встречи, %player_name%!</#8BC34A>"
+
+# ═══════════════ GROUPS ═══════════════
+groups:
+
+  # ─── default ───
+  default:
+    join:
+      - "<#4CAF50>➕</#4CAF50> <#B0BEC5>Опа! %player_name% заглянул в гости. Не забудь тапки у входа!</#B0BEC5>"
+      - "<#8BC34A>%player_name% присоединился к нам!</#8BC34A>"
+      - "<#B0BEC5>Приветствуем %player_name%!</#B0BEC5>"
+    quit:
+      - "<#EF5350>➖</#EF5350> <#B0BEC5>%player_name% вышел... наверное, за чаем.</#B0BEC5>"
+      - "<#B0BEC5>%player_name% покинул сервер.</#B0BEC5>"
+      - "<#8BC34A>До встречи, %player_name%!</#8BC34A>"
+
+  # ─── deluxe ───
+  deluxe:
+    join:
+      - "<#29B6F6>💎 Делюкс</#29B6F6> <white>%player_name%</white> <#B0BEC5>зашёл на огонёк!</#B0BEC5>"
+      - "<#29B6F6>💎 %player_name% (Делюкс) на связи!</#29B6F6>"
+      - "<#29B6F6>✨ Делюкс %player_name% здесь!</#29B6F6>"
+    quit:
+      - "<#29B6F6>💎 Делюкс %player_name% ушёл по своим делам.</#29B6F6>"
+      - "<#B0BEC5>Делюкс %player_name% покинул нас.</#B0BEC5>"
+      - "<#29B6F6>💎 Пока, %player_name%!</#29B6F6>"
+
+  # ─── elite ───
+  elite:
+    join:
+      - "<#AB47BC>🌟 Элита</#AB47BC> <white>%player_name%</white> <#B0BEC5>почтила нас присутствием!</#B0BEC5>"
+      - "<#AB47BC>🌟 %player_name% (Элита) на связи!</#AB47BC>"
+      - "<#AB47BC>✨ Элита %player_name% здесь!</#AB47BC>"
+    quit:
+      - "<#AB47BC>🌟 Элита %player_name% ушла в закат.</#AB47BC>"
+      - "<#B0BEC5>Элита %player_name% покинула сервер.</#B0BEC5>"
+      - "<#AB47BC>🌟 До встречи, %player_name%!</#AB47BC>"
+
+  # ─── overlord ───
+  overlord:
+    join:
+      - "<#FFC107>👑 Владыка</#FFC107> <white>%player_name%</white> <#B0BEC5>снизошёл к смертным!</#B0BEC5>"
+      - "<#FFC107>👑 %player_name% (Владыка) на связи!</#FFC107>"
+      - "<#FF8F00>⚜ Владыка %player_name% прибыл!</#FF8F00>"
+    quit:
+      - "<#FFC107>👑 Владыка %player_name% отбыл в свои чертоги.</#FFC107>"
+      - "<#B0BEC5>Владыка %player_name% покинул нас.</#B0BEC5>"
+      - "<#FFC107>⚜ До встречи, Владыка %player_name%!</#FFC107>"
+
+  # ─── oldtimer ───
+  oldtimer:
+    join:
+      - "<#FFA726>🏆 Старичок</#FFA726> <white>%player_name%</white> <#B0BEC5>снова с нами!</#B0BEC5>"
+      - "<#FFA726>🏆 %player_name% (Старичок) на связи!</#FFA726>"
+      - "<#FFA726>Ветеран %player_name% вернулся!</#FFA726>"
+    quit:
+      - "<#FFA726>🏆 Старичок %player_name% ушёл. Легенда ушла.</#FFA726>"
+      - "<#B0BEC5>Старичок %player_name% покинул нас.</#B0BEC5>"
+      - "<#FFA726>До встречи, %player_name%!</#FFA726>"
+
+  # ─── helper ───
+  helper:
+    join:
+      - "<#8BC34A>🛠 Помощник</#8BC34A> <white>%player_name%</white> <#B0BEC5>на связи!</#B0BEC5>"
+      - "<#8BC34A>🛠 %player_name% (Помощник) готов помочь!</#8BC34A>"
+      - "<#8BC34A>Помощник %player_name% прибыл!</#8BC34A>"
+    quit:
+      - "<#8BC34A>🛠 Помощник %player_name% ушёл.</#8BC34A>"
+      - "<#B0BEC5>Помощник %player_name% покинул нас.</#B0BEC5>"
+      - "<#8BC34A>До встречи, %player_name%!</#8BC34A>"
+
+  # ─── moderator ───
+  moderator:
+    join:
+      - "<#42A5F5>🛡 Модератор</#42A5F5> <white>%player_name%</white> <#B0BEC5>на связи!</#B0BEC5>"
+      - "<#42A5F5>🛡 %player_name% (Модератор) следит за порядком!</#42A5F5>"
+      - "<#42A5F5>Модератор %player_name% прибыл!</#42A5F5>"
+    quit:
+      - "<#42A5F5>🛡 Модератор %player_name% ушёл.</#42A5F5>"
+      - "<#B0BEC5>Модератор %player_name% покинул нас.</#B0BEC5>"
+      - "<#42A5F5>До свидания, %player_name%!</#42A5F5>"
+
+  # ─── admin ───
+  admin:
+    join:
+      - "<#EF5350>⚡ Админ</#EF5350> <white>%player_name%</white> <#B0BEC5>на связи!</#B0BEC5>"
+      - "<#EF5350>⚡ %player_name% (Админ) вошёл в игру!</#EF5350>"
+      - "<#EF5350>Админ %player_name% прибыл!</#EF5350>"
+    quit:
+      - "<#EF5350>⚡ Админ %player_name% ушёл.</#EF5350>"
+      - "<#B0BEC5>Админ %player_name% покинул нас.</#B0BEC5>"
+      - "<#EF5350>До встречи, %player_name%!</#EF5350>"
+
+  # ─── headadmin ───
+  headadmin:
+    join:
+      - "<#C62828>👑 Гл.Админ</#C62828> <white>%player_name%</white> <#B0BEC5>снизошёл к нам!</#B0BEC5>"
+      - "<#C62828>👑 %player_name% (Гл.Админ) на связи!</#C62828>"
+      - "<#C62828>⚡ Гл.Админ %player_name% прибыл!</#C62828>"
+    quit:
+      - "<#C62828>👑 Гл.Админ %player_name% покинул нас.</#C62828>"
+      - "<#B0BEC5>Гл.Админ %player_name% ушёл.</#B0BEC5>"
+      - "<#C62828>До встречи, Гл.Админ %player_name%!</#C62828>"
+
+# ═══════════════ DEATH ═══════════════
+death:
+  pvp:
+    - "<#EF5350>⚔</#EF5350> <#FFFFFF>{killer} показал {victim}, кто тут босс!</#FFFFFF>"
+    - "<#FFC107>{killer}</#FFC107> <#FFFFFF>выписал</#FFFFFF> <#EF5350>{victim}</#EF5350> <#FFFFFF>пропуск в мир духов!</#FFFFFF>"
+    - "<#C62828>{victim}</#C62828> <#FFFFFF>не устоял против могущества {killer}!</#FFFFFF>"
+
+  lava:
+    - "<#EF5350>🔥 %player_name% пытался обняться с лавой. Не вышло.</#EF5350>"
+    - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>превратился в шашлык... Не самый вкусный.</#FFFFFF>"
+    - "<#C62828>%player_name%</#C62828> <#FFFFFF>понял, что лаву лучше смотреть издалека.</#FFFFFF>"
+
+  fall:
+    - "<#B0BEC5>💥 %player_name% решил, что умеет летать. Спойлер: нет.</#B0BEC5>"
+    - "<#EF5350>☠ %player_name%</#EF5350> <#FFFFFF>проиграл битву с гравитацией.</#FFFFFF>"
+    - "<#FFA726>%player_name%</#FFA726> <#FFFFFF>изучил законы физики на практике.</#FFFFFF>"
+
+  explosion:
+    - "<#EF5350>💥 %player_name% взорвался!</#EF5350>"
+    - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>слишком близко подошёл к взрывчатке.</#FFFFFF>"
+
+  drowning:
+    - "<#29B6F6>💧 %player_name% утонул. Рыбы передают привет.</#29B6F6>"
+    - "<#29B6F6>%player_name%</#29B6F6> <#FFFFFF>не научился дышать под водой.</#FFFFFF>"
+
+  fire:
+    - "<#EF5350>🔥 %player_name% сгорел. Это было горячо.</#EF5350>"
+    - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>стал факелом для сервера.</#FFFFFF>"
+
+  void:
+    - "<#7E57C2>🌌 %player_name% упал в пустоту. Прощай, странник.</#7E57C2>"
+    - "<#616161>%player_name%</#616161> <#FFFFFF>покинул этот мир буквально.</#FFFFFF>"
+
+  player_kill:
+    - "<#EF5350>💀 %player_name%</#EF5350> <#FFFFFF>улетел в лучший мир. По билету без возврата.</#FFFFFF>"
+    - "<#FFC107>⚰ %player_name%</#FFC107> <#FFFFFF>получил удар судьбы... или киркой.</#FFFFFF>"
+    - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>неожиданно встретил свою смерть.</#FFFFFF>"
+
+  mob:
+    ZOMBIE:
+      - "<#C62828>%player_name%</#C62828> <#FFFFFF>был влюблен в зомби... теперь это не важно!</#FFFFFF>"
+      - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>стал любимым обедом для зомби!</#FFFFFF>"
+      - "<#B0BEC5>%player_name% попытался дружить с зомби, не вышло.</#B0BEC5>"
+    SKELETON:
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>стал перекрёстной мишенью для скелетов!</#FFFFFF>"
+      - "<#FFFFFF>%player_name% встретил стрелы скелета лицом к лицу!</#FFFFFF>"
+      - "<#FFA726>%player_name%</#FFA726> <#FFFFFF>понял, что кости могут быть смертельны.</#FFFFFF>"
+    CREEPER:
+      - "<#8BC34A>%player_name%</#8BC34A> <#FFFFFF>слишком близко подошёл к зелёному взрывному другу!</#FFFFFF>"
+      - "<#FFA726>%player_name%</#FFA726> <#FFFFFF>превратился в кучку блоков после встречи с крипером!</#FFFFFF>"
+      - "<#EF5350>%player_name%</#EF5350> <#FFFFFF>не рассчитал дистанцию от крипера!</#FFFFFF>"
+    SPIDER:
+      - "<#7E57C2>%player_name%</#7E57C2> <#FFFFFF>запутался в паутине и проиграл!</#FFFFFF>"
+      - "<#EF5350>%player_name%</#EF5350> <#FFFFFF>был укушен пауком!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>понял, что пауки не друзья.</#FFFFFF>"
+    WITCH:
+      - "<#AB47BC>%player_name%</#AB47BC> <#FFFFFF>столкнулся с ведьмой и её зелиями!</#FFFFFF>"
+      - "<#C62828>%player_name%</#C62828> <#FFFFFF>стал жертвой магии ведьмы!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>не оценил силу зелий.</#FFFFFF>"
+    ENDERMAN:
+      - "<#212121>%player_name%</#212121> <#FFFFFF>встретил эндермена... и исчез почти сразу!</#FFFFFF>"
+      - "<#AB47BC>%player_name%</#AB47BC> <#FFFFFF>был схвачен взглядом эндермена!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>понял, что смотреть на эндермена опасно.</#FFFFFF>"
+    WARDEN:
+      - "<#212121>%player_name%</#212121> <#FFFFFF>услышал стук Варда!</#FFFFFF>"
+      - "<#616161>%player_name%</#616161> <#FFFFFF>не успел убежать!</#FFFFFF>"
+      - "<#EF5350>%player_name%</#EF5350> <#FFFFFF>стал жертвой Варда!</#FFFFFF>"
+    default:
+      - "<#C62828>%player_name%</#C62828> <#FFFFFF>был убит каким-то злым мобом!</#FFFFFF>"
+      - "<#FFC107>%player_name%</#FFC107> <#FFFFFF>стал жертвой загадочного существа!</#FFFFFF>"
+      - "<#B0BEC5>%player_name%</#B0BEC5> <#FFFFFF>почувствовал смерть.</#FFFFFF>"
+
+# ═══════════════ RESPAWN ═══════════════
+respawn:
+  - "<gradient:#4CAF50:#FFC107>✨ %player_name%, реинкарнация прошла успешно. Удачи в новой жизни!</gradient>"
+  - "<#8BC34A>⚡ %player_name% вернулся к жизни с новыми силами!</#8BC34A>"
+  - "<#4CAF50>%player_name% готов к новым приключениям!</#4CAF50>"
+
+# ═══════════════ HOLIDAYS ═══════════════
+holidays:
+  new_year:
+    messages:
+      - "<#FFC107>🎄 С Новым Годом, %player_name%!</#FFC107>"
+      - "<gradient:#4CAF50:#FFFFFF>❄ Снежинки кружатся вокруг тебя!</gradient>"
+  christmas:
+    messages:
+      - "<#EF5350>🎅 С Рождеством, %player_name%!</#EF5350>"
+  valentine:
+    messages:
+      - "<#EF5350>❤ С Днём Святого Валентина, %player_name%!</#EF5350>"
+  halloween:
+    messages:
+      - "<#AB47BC>🎃 С Хэллоуином, %player_name%!</#AB47BC>"
+  easter:
+    messages:
+      - "<#FFC107>🐣 Со Светлой Пасхой, %player_name%!</#FFC107>"
+  womens_day:
+    messages:
+      - "<#EC407A>🌷 С 8 Марта, %player_name%!</#EC407A>"
+  defender_day:
+    messages:
+      - "<#42A5F5>🎖 С Днём Защитника Отечества, %player_name%!</#42A5F5>"
+  april_fools:
+    messages:
+      - "<#FFA726>😜 С 1 Апреля, %player_name%!</#FFA726>"
+  victory_day:
+    messages:
+      - "<#EF5350>🎗 С Днём Победы, %player_name%!</#EF5350>"
+  default:
+    messages:
+      - "<gradient:#4CAF50:#FFC107>🎉 С праздником, %player_name%!</gradient>"
+
+# ═══════════════ LINKS ═══════════════
+links:
+  vk: "<click:open_url:'https://vk.com/play_terra_craft_ru'><gradient:#8BC34A:#FFC107>ВКонтакте</gradient></click>"
+  site: "<click:open_url:'https://terracraft.ru'><gradient:#8BC34A:#FFC107>Наш сайт</gradient></click>"
+  discord: "<click:open_url:'https://discord.gg/terracraft'><gradient:#8BC34A:#FFC107>Discord</gradient></click>"
+  telegram: "<click:open_url:'https://t.me/terracraft'><gradient:#8BC34A:#FFC107>Telegram</gradient></click>"
+  youtube: "<click:open_url:'https://youtube.com/@terracraft'><gradient:#8BC34A:#FFC107>YouTube</gradient></click>"
+
+# ═══════════════ COMMANDS ═══════════════
+commands:
+  reload:
+    success: "<#4CAF50>✔</#4CAF50> <#FFFFFF>Конфигурация перезагружена</#FFFFFF> <#B0BEC5>(%time%мс)</#B0BEC5>"
+    error: "<#EF5350>✘ Ошибка перезагрузки:</#EF5350> <white>%error%</white>"
+  language:
+    success: "<#4CAF50>✔</#4CAF50> <#FFFFFF>Язык изменён на:</#FFFFFF> <#FFC107>%lang%</#FFC107>"
+    not_found: "<#EF5350>✘ Язык не найден</#EF5350>"
+  gui:
+    player_only: "<#EF5350>✘ GUI доступен только игрокам!</#EF5350>"
+
+# ═══════════════ HELP ═══════════════
+help:
+  header:
+    - "<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>"
+    - "<#1B5E20>║</#1B5E20>   <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient> <#B0BEC5>— Помощь</#B0BEC5>"
+    - "<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>"
+  commands:
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome</#FFC107> <#FFFFFF>— Приветствие</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome version</#FFC107> <#FFFFFF>— Версия</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome help</#FFC107> <#FFFFFF>— Эта справка</#FFFFFF>"
+  admin:
+    - "<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>"
+    - "<#1B5E20>║</#1B5E20> <#EF5350>Администратор:</#EF5350>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome reload</#FFC107> <#FFFFFF>— Перезагрузка</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome migrate</#FFC107> <#FFFFFF>— Обновить конфиг</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome gui</#FFC107> <#FFFFFF>— Меню настроек</#FFFFFF>"
+    - "<#1B5E20>║</#1B5E20> <#FFC107>/welcome language <lang></#FFC107> <#FFFFFF>— Сменить язык</#FFFFFF>"
+  footer:
+    - "<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>"
+
+# ═══════════════ INFO ═══════════════
+info:
+  header:
+    - "<#1B5E20>╔══════════════════════════════════════╗</#1B5E20>"
+    - "<#1B5E20>║</#1B5E20>     <gradient:#4CAF50:#FFC107>Welcome Plugin</gradient>"
+    - "<#1B5E20>║</#1B5E20>   <#FFC107>v%version% by luci</#FFC107>"
+    - "<#1B5E20>╠══════════════════════════════════════╣</#1B5E20>"
+  body:
+    - "<#1B5E20>║</#1B5E20>   <#FFFFFF>PlaceholderAPI:</#FFFFFF> %papi%"
+    - "<#1B5E20>║</#1B5E20>   <#FFFFFF>Vault:</#FFFFFF> %vault%"
+    - "<#1B5E20>║</#1B5E20>   <#FFFFFF>LuckPerms:</#FFFFFF> %luckperms%"
+  footer:
+    - "<#1B5E20>╚══════════════════════════════════════╝</#1B5E20>"
+
+# ═══════════════ ERRORS ═══════════════
+errors:
+  api_unavailable: "<#EF5350>✘ WelcomeAPI недоступен</#EF5350>"
+  generic: "<#EF5350>✘ Ошибка:</#EF5350> <white>%error%</white>"
+  gui_open: "<#EF5350>✘ Ошибка открытия меню:</#EF5350> <white>%error%</white>"
+
+# ═══════════════ GUI ═══════════════
+gui:
+  title: "<gradient:#4CAF50:#FFC107>⚙ Настройки Welcome</gradient>"
+  toggle:
+    lore: "<#B0BEC5>Нажмите для переключения</#B0BEC5>"
+    message: "<white>%name%</white><#B0BEC5>:</#B0BEC5> %state%"
+    state:
+      on: "<#4CAF50>✔ включено</#4CAF50>"
+      off: "<#EF5350>✘ выключено</#EF5350>"
+  sound:
+    name: "<#FFFFFF>Звуки</#FFFFFF>"
+  particles:
+    name: "<#FFFFFF>Частицы</#FFFFFF>"
+  holidays:
+    name: "<#FFFFFF>Праздники</#FFFFFF>"
+  language:
+    name: "<#FFFFFF>Язык:</#FFFFFF> <#FFC107>%lang%</#FFC107>"
+    lore:
+      click: "<#B0BEC5>Нажмите для смены языка</#B0BEC5>"
+      available: "<#B0BEC5>Доступные:</#B0BEC5> <#616161>%list%</#616161>"
+  info:
+    name: "<#FFFFFF>Информация</#FFFFFF>"
+    version: "<#FFFFFF>Версия:</#FFFFFF> <white>%version%</white>"
+    author: "<#FFFFFF>Автор:</#FFFFFF> <white>luci</white>"
+    papi: "<#FFFFFF>PlaceholderAPI:</#FFFFFF> %status%"
+    vault: "<#FFFFFF>Vault:</#FFFFFF> %status%"
+    message: "<gradient:#4CAF50:#FFC107>Welcome Plugin v%version% by luci</gradient>"
